@@ -44,5 +44,7 @@ namespace NigthWorks.Repository
         {
             return db.Posts;
         }
+
+
     }
 }

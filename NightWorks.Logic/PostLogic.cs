@@ -67,5 +67,15 @@ namespace NigthWorks.Logic
                 throw new Exception("Some Data is not valid");
             }
         }
+
+        public IEnumerable<Post> GetAllPostByUserId(int id)
+        {
+            var result = repo.ReadAll().Where(x => x.PostUserId == id);
+            return result;
+        }
+        public User GetUserByEmail(string email)
+        {
+            return repo.GetUserbyEmail(email);
+        }
     }
 }

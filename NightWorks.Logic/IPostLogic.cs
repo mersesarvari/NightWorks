@@ -16,5 +16,7 @@ namespace NigthWorks.Logic
         void Delete(int id);
 
         Post MostUsedWeapon();
+
+        public IEnumerable<Post> GetAllPostByUserId(int id);
     }
 }

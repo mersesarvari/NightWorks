@@ -15,5 +15,7 @@ namespace NigthWorks.Repository
         Post Read(int id);
         IQueryable<Post> ReadAll();
         void Update(Post post);
+
+        
     }
 }
