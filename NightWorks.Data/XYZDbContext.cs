@@ -36,7 +36,7 @@ namespace NigthWorks.Data
             {
                 entity.HasOne(u => u.Role)
                     .WithMany(i => i.Users)
-                    .HasForeignKey(s => s.roleid)
+                    .HasForeignKey(s => s.Roleid)
                     .OnDelete(DeleteBehavior.NoAction);
             });
             mb.Entity<Post>(entity =>
@@ -53,11 +53,13 @@ namespace NigthWorks.Data
             Role role4 = new Role() { Id = 4, Name = "user", Permission = 20 };
             Role role5 = new Role() { Id = 5, Name = "guest", Permission = 10 };
 
-            User a = new User() { Id = 1, Username = "test1", Email = "test1@test.com", Password= PasswordLogic.Encrypt("theonenazmoxking","test"),roleid=role1.Id, Money=500, Validated = false };
-            User b = new User() { Id = 2, Username = "test2", Email = "test2@test.com", Password= PasswordLogic.Encrypt("theonenazmoxking", "test"), roleid = role3.Id, Money =200, Validated = false };
+            //User a = new User() { Id = 1, Username = "test1", Email = "test1@test.com", Password= PasswordLogic.Encrypt("theonenazmoxking","test"),Roleid=role1.Id, Money=500, Validated = false };
+            //User b = new User() { Id = 2, Username = "test2", Email = "test2@test.com", Password= PasswordLogic.Encrypt("theonenazmoxking", "test"), Roleid = role3.Id, Money =200, Validated = false };
+
+            User a = new User() { Id = 1, Username = "test1", Email = "test1@test.com", Password= "test",Roleid=role1.Id, Money=500, Validated = false };
+            User b = new User() { Id = 2, Username = "test2", Email = "test2@test.com", Password = "test", Roleid = role3.Id, Money =200, Validated = false };
 
 
-            
 
             var posts = new List<Post>()
             {

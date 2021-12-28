@@ -46,17 +46,15 @@ namespace RestService.Controllers
         [HttpDelete("{id}")]
         public Object Delete(int id)
         {
-            CommunicationMessage message;
             try
             {
-                message= new CommunicationMessage("Deleting was succesfull: " + id);
                 cl.Delete(id);
+                return new CommunicationMessage("Deleting was succesfull: " + id);
             }
             catch (Exception ex)
             {
-                message = new CommunicationMessage(ex.Message);
+                return new CommunicationMessage(ex.Message);
             }
-            return message;
         }
         [HttpDelete]
         public Object Delete([FromBody] string email)
@@ -90,7 +88,6 @@ namespace RestService.Controllers
         [HttpPost("manage")]
         public void RegisterUser([FromBody] User value)
         {
-            value.Password = PasswordLogic.Encrypt("theonenazmoxking",value.Password);
             cl.Create(value);
         }
     }

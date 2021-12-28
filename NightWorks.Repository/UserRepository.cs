@@ -65,7 +65,14 @@ namespace NigthWorks.Repository
 
         public User GetUserbyEmail(string email)
         {
-            return db.Users.FirstOrDefault(t => t.Email == email);
+            if (db.Users.FirstOrDefault(t => t.Email == email) != null)
+            {
+                return db.Users.FirstOrDefault(t => t.Email == email)
+            }
+            else
+            {
+                throw new Exception("Email address doesnt exists!");
+            }
         }
 
     }

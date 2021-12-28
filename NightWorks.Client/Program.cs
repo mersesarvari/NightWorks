@@ -9,17 +9,23 @@ namespace NigthWorks.Client
     {
         static void Main(string[] args)
         {
-            RestService restService = new RestService("http://localhost:51716");
+            RestService restService = new RestService("http://localhost:5000");
             Thread.Sleep(8000);
 
             var roles = restService.Get<Role>("role");
             var users = restService.Get<User>("user");
             var posts = restService.Get<Post>("post");
 
-            foreach (var i in users)
+            User u = new User()
             {
-                Console.WriteLine(i.ToString()); 
-            }
+                Username = "client",
+                Email = "client@c.com",
+                Password = "client",
+                Money = 0,
+                Validated = false,
+                Roleid = 1
+            };
+            restService.Post<User>(u, "User");
             
 
         }

@@ -35,7 +35,7 @@ namespace NigthWorks.Models
         public virtual Role Role { get; set; }
 
         [ForeignKey(nameof(Role))]
-        public int roleid { get; set; }
+        public int Roleid { get; set; }
         [NotMapped]
         [JsonIgnore]//nem volt itt
         public virtual ICollection<Post> Posts { get; set; }
