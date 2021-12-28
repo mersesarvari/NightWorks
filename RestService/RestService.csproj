@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NightWorks.Data\NightWorks.Data.csproj" />
+    <ProjectReference Include="..\NightWorks.Logic\NightWorks.Logic.csproj" />
+    <ProjectReference Include="..\NightWorks.Models\NightWorks.Models.csproj" />
+    <ProjectReference Include="..\NightWorks.Repository\NightWorks.Repository.csproj" />
+  </ItemGroup>
+
+</Project>
