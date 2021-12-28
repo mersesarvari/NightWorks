@@ -53,13 +53,9 @@ namespace NigthWorks.Data
             Role role4 = new Role() { Id = 4, Name = "user", Permission = 20 };
             Role role5 = new Role() { Id = 5, Name = "guest", Permission = 10 };
 
-<<<<<<< Updated upstream
-            User a = new User() { Id = 1, Username = "test1", Email = "test1@test.com", Password="test",roleid=role1.Id, Money=500, Validated = false };
-            User b = new User() { Id = 2, Username = "test2", Email = "test2@test.com", Password="test",roleid = role3.Id, Money =200, Validated = false };
-=======
-            User a = new User() { Id = 1, Username = "test1", Email = "test1@test.com", Password= PasswordLogic.Encrypt("theonenazmoxking","test"),Roleid=role1.Id, Money=500, Validated = false };
-            User b = new User() { Id = 2, Username = "test2", Email = "test2@test.com", Password= PasswordLogic.Encrypt("theonenazmoxking", "test"), Roleid = role3.Id, Money =200, Validated = false };
->>>>>>> Stashed changes
+            User a = new User() { Id = 1, Username = "test1", Email = "test1@test.com", Password= PasswordLogic.Encrypt("theonenazmoxking","test"),roleid=role1.Id, Money=500, Validated = false };
+            User b = new User() { Id = 2, Username = "test2", Email = "test2@test.com", Password= PasswordLogic.Encrypt("theonenazmoxking", "test"), roleid = role3.Id, Money =200, Validated = false };
+
 
             
 

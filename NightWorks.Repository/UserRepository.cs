@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NigthWorks.Data;
 using NigthWorks.Models;
+using NightWorks.Models;
 
 namespace NigthWorks.Repository
 {
@@ -26,19 +27,7 @@ namespace NigthWorks.Repository
         public void Create(User obj)
         {
             var context = new XYZDbContext();
-<<<<<<< Updated upstream
-            var s = new User
-            {
-                Id = obj.Id, //Ez a rész lehet felesleges
-                Username = obj.Username,
-                Email = obj.Email,
-                Money = obj.Money,
-                Validated = false
-            };
-            context.Add(s);
-=======
             context.Add(obj);
->>>>>>> Stashed changes
             context.SaveChanges();
         }
 
