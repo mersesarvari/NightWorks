@@ -33,14 +33,14 @@ namespace NigthWorks.Logic
                 //Kell egy email check
                 throw new Exception("Email must be longer than 3 char");
             }
-            o.Password = Secure.Encrypt("admin",o.Password);
+            o.Password = Secure.Encrypt(o.Password);
             repo.Create(o);
         }
         public void Update(User obj)
         {
             if (obj != null && obj.Username.Trim().Length>=4 && obj.Email.Trim().Length >= 4)
             {
-                obj.Password = Secure.Encrypt("admin",obj.Password);
+                obj.Password = Secure.Encrypt(obj.Password);
                 repo.Update(obj);
             }
             else
@@ -87,16 +87,30 @@ namespace NigthWorks.Logic
             
         }
         //Login
+        /*
         public User Login(string email, string password)
         {
             User temp = repo.GetUserbyEmail(email);
-            if (temp.Email == email && temp.Password == Secure.Encrypt("admin",password))
+            if (temp.Email == email && temp.Password == Secure.Encrypt(password))
             {
                 return repo.GetUserbyEmail(email);
             }
             else
             {
                 throw new Exception("Email address or password not matching");
+            }
+        }
+        */
+        public bool Login(string email, string password)
+        {
+            User temp = repo.GetUserbyEmail(email);
+            if (temp.Email == email && temp.Password == Secure.Encrypt(password))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
 

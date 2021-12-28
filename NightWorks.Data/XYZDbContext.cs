@@ -56,8 +56,8 @@ namespace NigthWorks.Data
             //User a = new User() { Id = 1, Username = "test1", Email = "test1@test.com", Password= PasswordLogic.Encrypt("theonenazmoxking","test"),Roleid=role1.Id, Money=500, Validated = false };
             //User b = new User() { Id = 2, Username = "test2", Email = "test2@test.com", Password= PasswordLogic.Encrypt("theonenazmoxking", "test"), Roleid = role3.Id, Money =200, Validated = false };
 
-            User a = new User() { Id = 1, Username = "test1", Email = "test1@test.com", Password= Secure.Encrypt("admin","test"),Roleid=role1.Id, Money=500, Validated = false };
-            User b = new User() { Id = 2, Username = "test2", Email = "test2@test.com", Password = Secure.Encrypt("admin", "test"), Roleid = role3.Id, Money =200, Validated = false };
+            User a = new User() { Id = 1, Username = "test1", Email = "test1@test.com", Password= Secure.Encrypt("test"),Roleid=role1.Id, Money=500, Validated = false };
+            User b = new User() { Id = 2, Username = "test2", Email = "test2@test.com", Password = Secure.Encrypt("test"), Roleid = role3.Id, Money =200, Validated = false };
 
 
 
