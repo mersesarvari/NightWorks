@@ -14,15 +14,27 @@ namespace NigthWorks.Controllers
     [ApiController]
     public class StatController : ControllerBase
     {
-        IUserLogic cl;
-        IPostLogic wl;
-        IRoleLogic bl;
+        IUserLogic ul;
+        IPostLogic pl;
+        IRoleLogic rl;
 
-        public StatController(IUserLogic cl, IRoleLogic bl, IPostLogic wl)
+        public StatController(IUserLogic ul, IRoleLogic rl, IPostLogic pl)
         {
-            this.cl = cl;
-            this.bl = bl;
-            this.wl = wl;
+            this.ul = ul;
+            this.rl = rl;
+            this.pl = pl;
+        }
+        [HttpGet("{id}")]
+        public IEnumerable<Post> GetAllPostById(int id)
+        {
+            //int id = userlogic.GetUserByEmail(email).Id;
+            return pl.GetAllPostByUserId(id);
+        }
+        [HttpGet("{email}")]
+        public IEnumerable<Post> GetAllPostById(string email)
+        {
+            int id = ul.GetUserByEmail(email).Id;
+            return pl.GetAllPostByUserId(id);
         }
 
 

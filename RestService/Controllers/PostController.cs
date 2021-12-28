@@ -10,7 +10,6 @@ namespace RestService.Controllers
     public class PostController : ControllerBase
     {
         IPostLogic logic;
-        IUserLogic userlogic;
 
         public PostController(IPostLogic brandLogic)
         {
@@ -28,12 +27,7 @@ namespace RestService.Controllers
         {
             return logic.Read(id);
         }
-        [HttpGet("action/{id}")]
-        public IEnumerable<Post> GetAllPostByEmail(string email)
-        {
-            int id = userlogic.GetUserByEmail(email).Id;
-            return logic.GetAllPostByUserId(id);
-        }
+        
 
         [HttpPost]
         public void Post([FromBody] Post value)

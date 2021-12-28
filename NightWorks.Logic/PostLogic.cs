@@ -73,9 +73,5 @@ namespace NigthWorks.Logic
             var result = repo.ReadAll().Where(x => x.PostUserId == id);
             return result;
         }
-        public User GetUserByEmail(string email)
-        {
-            return repo.GetUserbyEmail(email);
-        }
     }
 }
