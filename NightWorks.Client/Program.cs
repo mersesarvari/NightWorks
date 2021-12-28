@@ -25,8 +25,14 @@ namespace NigthWorks.Client
                 Validated = false,
                 Roleid = 1
             };
+            Post p = new Post()
+            {
+                Data = "fromclient",
+                Postuserid = 1
+            };
             restService.Post<User>(u, "User");
-            
+            restService.Post<Post>(p, "post");
+
 
         }
         

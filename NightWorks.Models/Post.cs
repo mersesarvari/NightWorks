@@ -11,14 +11,14 @@ namespace NigthWorks.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        public string Text { get; set; }
+        public string Data { get; set; }
 
         [NotMapped]
         [JsonIgnore]
         public virtual User User { get; set; }
 
         [ForeignKey(nameof(User))]
-        public int PostUserId { get; set; }
+        public int Postuserid { get; set; }
 
     }
 }

@@ -36,7 +36,7 @@ namespace NigthWorks.Repository
         public void Update(Post obj)
         {
             var oldbrand = Read(obj.Id);
-            oldbrand.Text = obj.Text;
+            oldbrand.Data = obj.Data;
             db.SaveChanges();
         }
 

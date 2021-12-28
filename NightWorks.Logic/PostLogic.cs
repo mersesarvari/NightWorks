@@ -18,7 +18,7 @@ namespace NigthWorks.Logic
         }
         public void Create(Post obj)
         {
-            if (obj.Text == "")
+            if (obj.Data == "")
             {
                 throw new Exception("Must be a text");
             }
@@ -58,7 +58,7 @@ namespace NigthWorks.Logic
 
         public void Update(Post obj)
         {
-            if (obj.Text != "")
+            if (obj.Data != "")
             {
                 repo.Update(obj);
             }
@@ -70,7 +70,7 @@ namespace NigthWorks.Logic
 
         public IEnumerable<Post> GetAllPostByUserId(int id)
         {
-            var result = repo.ReadAll().Where(x => x.PostUserId == id);
+            var result = repo.ReadAll().Where(x => x.Postuserid == id);
             return result;
         }
     }

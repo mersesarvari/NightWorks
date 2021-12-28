@@ -31,7 +31,7 @@ namespace NigthWorks.Controllers
             return pl.GetAllPostByUserId(id);
         }
         [HttpGet("{email}")]
-        public IEnumerable<Post> GetAllPostById(string email)
+        public IEnumerable<Post> GetAllPostByEmail(string email)
         {
             int id = ul.GetUserByEmail(email).Id;
             return pl.GetAllPostByUserId(id);

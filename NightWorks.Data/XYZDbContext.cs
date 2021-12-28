@@ -37,14 +37,14 @@ namespace NigthWorks.Data
                 entity.HasOne(u => u.Role)
                     .WithMany(i => i.Users)
                     .HasForeignKey(s => s.Roleid)
-                    .OnDelete(DeleteBehavior.NoAction);
+                    .OnDelete(DeleteBehavior.Cascade);
             });
             mb.Entity<Post>(entity =>
             {
                 entity.HasOne(u => u.User)
                     .WithMany(i => i.Posts)
-                    .HasForeignKey(s => s.PostUserId)
-                    .OnDelete(DeleteBehavior.NoAction);
+                    .HasForeignKey(s => s.Postuserid)
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
             Role role1 = new Role() { Id = 1, Name = "root", Permission = 100 };
@@ -63,11 +63,11 @@ namespace NigthWorks.Data
 
             var posts = new List<Post>()
             {
-                new Post() { Id = 1, Text = "Loren Imsum1", PostUserId= a.Id},
-                new Post() { Id = 2, Text = "Loren Imsum2", PostUserId=b.Id},
-                new Post() { Id = 3, Text = "Loren Imsum3", PostUserId=a.Id},
-                new Post() { Id = 4, Text = "Loren Imsum4", PostUserId=b.Id},
-                new Post() { Id = 5, Text = "Loren Imsum5", PostUserId=a.Id}
+                new Post() { Id = 1, Data = "Loren Imsum1", Postuserid= a.Id},
+                new Post() { Id = 2, Data = "Loren Imsum2", Postuserid=b.Id},
+                new Post() { Id = 3, Data = "Loren Imsum3", Postuserid=a.Id},
+                new Post() { Id = 4, Data = "Loren Imsum4", Postuserid=b.Id},
+                new Post() { Id = 5, Data = "Loren Imsum5", Postuserid=a.Id}
                 
             };
 
