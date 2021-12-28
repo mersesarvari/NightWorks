@@ -67,7 +67,7 @@ namespace NigthWorks.Repository
         {
             if (db.Users.FirstOrDefault(t => t.Email == email) != null)
             {
-                return db.Users.FirstOrDefault(t => t.Email == email)
+                return db.Users.FirstOrDefault(t => t.Email == email);
             }
             else
             {
