@@ -5,6 +5,7 @@ using System.Text.Json.Serialization;
 
 namespace NigthWorks.Models
 {
+
     public class Post
     {
         [Key]
