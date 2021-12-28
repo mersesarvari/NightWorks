@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using System.Security.Cryptography;
 using System.IO;
 
-namespace NightWorks.Logic
+namespace NightWorks.Models
 {
-    public static class PasswordLogic
+    public static class Secure
     {
         public static string Encrypt(string key, string plainText)
         {
