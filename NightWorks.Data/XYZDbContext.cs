@@ -10,7 +10,10 @@ namespace NigthWorks.Data
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<Post> Posts { get; set; }
-        
+        public virtual DbSet<Post> Events { get; set; }
+        public virtual DbSet<Post> Eventaddresses { get; set; }
+        public virtual DbSet<Post> Eventtypes { get; set; }
+
 
         public XYZDbContext()
         {
@@ -32,6 +35,7 @@ namespace NigthWorks.Data
 
         protected override void OnModelCreating(ModelBuilder mb)
         {
+            //User -> Role
             mb.Entity<User>(entity =>
             {
                 entity.HasOne(u => u.Role)
@@ -39,6 +43,7 @@ namespace NigthWorks.Data
                     .HasForeignKey(s => s.Roleid)
                     .OnDelete(DeleteBehavior.Cascade);
             });
+            //User -> Posts
             mb.Entity<Post>(entity =>
             {
                 entity.HasOne(u => u.User)
@@ -53,11 +58,8 @@ namespace NigthWorks.Data
             Role role4 = new Role() { Id = 4, Name = "user", Permission = 20 };
             Role role5 = new Role() { Id = 5, Name = "guest", Permission = 10 };
 
-            //User a = new User() { Id = 1, Username = "test1", Email = "test1@test.com", Password= PasswordLogic.Encrypt("theonenazmoxking","test"),Roleid=role1.Id, Money=500, Validated = false };
-            //User b = new User() { Id = 2, Username = "test2", Email = "test2@test.com", Password= PasswordLogic.Encrypt("theonenazmoxking", "test"), Roleid = role3.Id, Money =200, Validated = false };
-
-            User a = new User() { Id = 1, Username = "test1", Email = "test1@test.com", Password= Secure.Encrypt("test"),Roleid=role1.Id, Money=500, Validated = false };
-            User b = new User() { Id = 2, Username = "test2", Email = "test2@test.com", Password = Secure.Encrypt("test"), Roleid = role3.Id, Money =200, Validated = false };
+            User a = new User() { Id = 1, Username = "test1", Email = "test1@test.com", Password = Secure.Encrypt("test"), Roleid = role1.Id, Money = 500, Validated = false };
+            User b = new User() { Id = 2, Username = "test2", Email = "test2@test.com", Password = Secure.Encrypt("test"), Roleid = role3.Id, Money = 200, Validated = false };
 
 
 
@@ -68,7 +70,16 @@ namespace NigthWorks.Data
                 new Post() { Id = 3, Data = "Loren Imsum3", Postuserid=a.Id},
                 new Post() { Id = 4, Data = "Loren Imsum4", Postuserid=b.Id},
                 new Post() { Id = 5, Data = "Loren Imsum5", Postuserid=a.Id}
-                
+
+            };
+
+            var eventA = new Event()
+            {
+                Ownerid = 1,
+                Startingdate = new System.DateTime(2021, 10, 28, 10, 0, 0),
+                Endingdate = new System.DateTime(2021, 10, 28, 17, 0, 0),
+                EventName="Bebaszáska",
+                EventText="Ez itt a bebaszáska event próba szövege"
             };
 
 
