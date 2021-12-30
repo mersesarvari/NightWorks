@@ -12,7 +12,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\NightWorks.Data\NightWorks.Data.csproj" />
+    <ProjectReference Include="..\NightWorks.Logic\NightWorks.Logic.csproj" />
     <ProjectReference Include="..\NightWorks.Models\NightWorks.Models.csproj" />
+    <ProjectReference Include="..\NightWorks.Repository\NightWorks.Repository.csproj" />
+    <ProjectReference Include="..\RestService\RestService.csproj" />
   </ItemGroup>
 
 </Project>

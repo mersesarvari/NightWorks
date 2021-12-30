@@ -16,6 +16,6 @@ namespace NightWorks.Models
         public int Id { get; set; }
         public string Name { get; set; }
 
-        public virtual List<Event_TypeConnect> ETConns { get; set; }
+        public virtual List<Event_TypeConnect> ETypeConns { get; set; }
     }
 }

@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using NightWorks.Data;
+using NightWorks.Models;
+using NightWorks.Repository;
+using NigthWorks.Data;
 using NigthWorks.Models;
 
 namespace NigthWorks.Client
@@ -36,12 +40,13 @@ namespace NigthWorks.Client
             restService.Post<Post>(p, "post");
             */
             Console.WriteLine("Program Started:");
-            EventDBContext o = new EventDBContext();
+            NWDbContext o = new NWDbContext();
             Console.WriteLine("Connected");
 
-            foreach (var item in o.Events)
+            EventRepository e = new EventRepository(o);
+            foreach (var item in e.GetEventTypes(1))
             {
-                Console.WriteLine(item.EventName);
+                Console.WriteLine(item.Name);
             }
 
 

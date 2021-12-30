@@ -31,7 +31,7 @@ namespace NigthWorks.Data
             if (!builder.IsConfigured)
             {
                 string conn =
-                    @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\NWData.mdf;Integrated Security=True";
+                    @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database\NWData.mdf;Integrated Security=True";
                 builder
                     .UseLazyLoadingProxies()
                     .UseSqlServer(conn);
@@ -66,8 +66,8 @@ namespace NigthWorks.Data
 
             //Event <--> EventType
             mb.Entity<Event_TypeConnect>().HasKey(pt => new { pt.TypeId, pt.EventId });
-            mb.Entity<Event_TypeConnect>().HasOne(y => y.EventType).WithMany(y => y.ETConns).HasForeignKey(y => y.TypeId).OnDelete(DeleteBehavior.Cascade);
-            mb.Entity<Event_TypeConnect>().HasOne(x => x.Event).WithMany(x => x.ETConns).HasForeignKey(x => x.EventId).OnDelete(DeleteBehavior.Cascade);
+            mb.Entity<Event_TypeConnect>().HasOne(y => y.EventType).WithMany(y => y.ETypeConns).HasForeignKey(y => y.TypeId).OnDelete(DeleteBehavior.Cascade);
+            mb.Entity<Event_TypeConnect>().HasOne(x => x.Event).WithMany(x => x.ETypeConns).HasForeignKey(x => x.EventId).OnDelete(DeleteBehavior.Cascade);
 
             //Event <--> EventAddress
             mb.Entity<Event_AddressConnect>().HasKey(pt => new { pt.AddressId, pt.EventId });
