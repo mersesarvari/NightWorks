@@ -8,20 +8,15 @@ using System.Threading.Tasks;
 
 namespace NightWorks.Models
 {
-    public class EventAddress
+    public class Event_TypeConnect
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        [Required]
-        public string Country { get; set; }
-        [Required]
-        public string City { get; set; }
-        [Required]
-        public int PostalCode { get; set; }
-        [Required]
-        public string Street { get; set; }
-        [Required]
-        public int BuildingNumber { get; set; }
+
+        public int EventId { get; set; }
+        public virtual Event Event { get; set; }
+        public int EventTypeId { get; set; }
+        public virtual Type EventType { get; set; }
     }
 }

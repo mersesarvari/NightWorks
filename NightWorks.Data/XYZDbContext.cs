@@ -10,6 +10,9 @@ namespace NigthWorks.Data
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<Post> Posts { get; set; }
+        
+        
+        //Újak
         public virtual DbSet<Post> Events { get; set; }
         public virtual DbSet<Post> Eventaddresses { get; set; }
         public virtual DbSet<Post> Eventtypes { get; set; }
@@ -38,19 +41,29 @@ namespace NigthWorks.Data
             //User -> Role
             mb.Entity<User>(entity =>
             {
-                entity.HasOne(u => u.Role)
-                    .WithMany(i => i.Users)
-                    .HasForeignKey(s => s.Roleid)
+                entity.HasOne(x => x.Role)
+                    .WithMany(y => y.Users)
+                    .HasForeignKey(x => x.Roleid)
                     .OnDelete(DeleteBehavior.Cascade);
             });
             //User -> Posts
             mb.Entity<Post>(entity =>
             {
-                entity.HasOne(u => u.User)
-                    .WithMany(i => i.Posts)
-                    .HasForeignKey(s => s.Postuserid)
+                entity.HasOne(x => x.User)
+                    .WithMany(y => y.Posts)
+                    .HasForeignKey(x => x.Postuserid)
                     .OnDelete(DeleteBehavior.Cascade);
             });
+            //Events <--> Eventtypes
+            mb.Entity<Event>()
+                .HasMany<Type>(x => x.EventTypes)
+                .WithMany(y => y.Events)
+                .Map(cs =>
+                {
+                    cs.MapLeftKey("StudentRefId");
+                    cs.MapRightKey("CourseRefId");
+                    cs.ToTable("StudentCourse");
+                });
 
             Role role1 = new Role() { Id = 1, Name = "root", Permission = 100 };
             Role role2 = new Role() { Id = 2, Name = "admin", Permission = 90 };
@@ -75,11 +88,21 @@ namespace NigthWorks.Data
 
             var eventA = new Event()
             {
+                Id = 1,
                 Ownerid = 1,
                 Startingdate = new System.DateTime(2021, 10, 28, 10, 0, 0),
                 Endingdate = new System.DateTime(2021, 10, 28, 17, 0, 0),
-                EventName="Bebaszáska",
-                EventText="Ez itt a bebaszáska event próba szövege"
+                EventName = "Bebaszáska",
+                EventText = "Ez itt a bebaszáska event próba szövege",
+                Address = new Address()
+                {
+                    Id = 1,
+                    Country = "Hungary",
+                    PostalCode = 1029,
+                    City = "Budapest",
+                    BuildingNumber = 25,
+                    Street = "Broken St"
+                }
             };
 
 

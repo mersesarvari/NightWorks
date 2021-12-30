@@ -14,42 +14,35 @@ namespace NightWorks.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public int EventId { get; set; }
 
+        [MaxLength(50)]
+        [Required]
+        public string EventName { get; set; }
+        
         [Required]
         public DateTime Startingdate { get; set; }
 
         [Required]
         public DateTime Endingdate { get; set; }
 
-        [MaxLength(50)]
-        [Required]
-        public string EventName { get; set; }
 
         [MaxLength(2000)]
         [Required]
         public string EventText { get; set; }
 
-        [Required]
-        public EventAddress Address { get; set; }
+        [NotMapped]
+        [JsonIgnore] //nem volt itt
+        public virtual User User { get; set; }
 
-        [Required]
         [ForeignKey(nameof(User))]
-        public int Ownerid { get; set; }
+        public int OwnerId { get; set; }
 
+        public virtual List<Event_TypeConnect> ETypeConns { get; set; }
 
-        [NotMapped]
-        [JsonIgnore]
-        public virtual ICollection<EventType> Types { get; set; }
+        public virtual List<Event_AddressConnect> EAddressConns { get; set; }
 
-        [NotMapped]
-        [JsonIgnore]
-        public virtual ICollection<User> Authors { get; set; }
+        public virtual List<Event_UserConnect> EUserConns { get; set; }
 
-        public Event()
-        {
-            Types = new HashSet<EventType>();
-            Authors = new HashSet<User>();
-        }
     }
 }
