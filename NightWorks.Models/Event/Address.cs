@@ -25,7 +25,6 @@ namespace NightWorks.Models
         [Required]
         public int BuildingNumber { get; set; }
 
-        //public virtual List<Event_AddressConnect> EAddressConns { get; set; }
 
         [NotMapped]
         [JsonIgnore] //Ez eredetileg nem volt itt

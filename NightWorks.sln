@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31424.327
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{8FADCF29-97B8-42E3-BD2A-B0B0D94075D2}"
 EndProject
@@ -25,6 +25,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NightWorks.Models", "NightWorks.Models\NightWorks.Models.csproj", "{FE037AD4-8E26-4A15-920C-9B2F60DFDFE6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestService", "RestService\RestService.csproj", "{197B5200-21C0-462E-A8A5-D4AC70131E8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NightWorks.EventLifetime", "NightWorks.EventLifetime\NightWorks.EventLifetime.csproj", "{C5C44B09-506B-4F0D-AAD9-0D9EA86A06E2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -56,6 +58,10 @@ Global
 		{197B5200-21C0-462E-A8A5-D4AC70131E8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{197B5200-21C0-462E-A8A5-D4AC70131E8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{197B5200-21C0-462E-A8A5-D4AC70131E8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5C44B09-506B-4F0D-AAD9-0D9EA86A06E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5C44B09-506B-4F0D-AAD9-0D9EA86A06E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5C44B09-506B-4F0D-AAD9-0D9EA86A06E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5C44B09-506B-4F0D-AAD9-0D9EA86A06E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

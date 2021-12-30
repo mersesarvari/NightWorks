@@ -51,9 +51,13 @@ namespace NightWorks.Models
         [ForeignKey(nameof(Address))]
         public int AddressId { get; set; }
 
+
+        [NotMapped]
+        [JsonIgnore]
         public virtual List<Event_KeywordConnect> EKeywordConns { get; set; }
 
-
+        [NotMapped]
+        [JsonIgnore]
         public virtual List<Event_UserConnect> EUserConns { get; set; }
 
     }

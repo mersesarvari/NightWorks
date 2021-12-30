@@ -30,7 +30,7 @@ namespace NigthWorks.Data
             if (!builder.IsConfigured)
             {
                 string conn =
-                    @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database\NWData.mdf;Integrated Security=True";
+                    @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database\NWData.mdf;Integrated Security=True;MultipleActiveResultSets=true";
                 builder
                     .UseLazyLoadingProxies()
                     .UseSqlServer(conn);

@@ -46,7 +46,8 @@ namespace NigthWorks.Models
         {
             Posts = new HashSet<Post>();
         }
-
+        [NotMapped]
+        [JsonIgnore]
         public virtual List<Event_UserConnect> EUserConns { get; set; }
 
 

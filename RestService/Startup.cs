@@ -9,6 +9,7 @@ using NigthWorks.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace RestService
@@ -28,6 +29,10 @@ namespace RestService
             services.AddTransient<IRoleRepository, RoleRepository>();
             services.AddTransient<IPostRepository, PostRepository>();
             services.AddTransient<NWDbContext, NWDbContext>();
+
+            //Ez általa, hozzáadott rész
+            services.AddControllers().AddJsonOptions(x =>
+                x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
