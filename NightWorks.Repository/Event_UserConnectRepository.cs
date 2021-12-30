@@ -80,5 +80,28 @@ namespace NightWorks.Repository
             }
             return existing;
         }
+
+        public Event_UserConnect ReadByData(int eventid, int userid)
+        {
+            Event_UserConnect a = new Event_UserConnect();
+            var list = ReadAll();
+            foreach (var item in list)
+            {
+                if (item.EventId == eventid && item.UserId == userid)
+                {
+                    a.Id = item.Id;
+                    a.EventId = item.EventId;
+                    a.UserId = userid;
+                }
+            }
+            if (a != null)
+            {
+                return a;
+            }
+            else
+            {
+                throw new Exception("This item doestn exist!");
+            }
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using NightWorks.Models;
+﻿using NightWorks.Logic;
+using NightWorks.Models;
 using NigthWorks.Data;
 using NigthWorks.Models;
 using System;
@@ -9,19 +10,21 @@ using System.Threading.Tasks;
 
 namespace NightWorks.Repository
 {
-    public class EventRepository:IEventRepository 
+    public class EventLogic:IEventLogic 
     {
-        NWDbContext db;
-        public EventRepository(NWDbContext db)
+        IEventRepository repo;
+        IEvent_KeywordConnectRepository EKrepo;
+        IEvent_UserConnectRepository EUrepo;
+        public EventLogic(IEventRepository repo, IEvent_KeywordConnectRepository EKrepo, IEvent_UserConnectRepository EUrepo)
         {
-            this.db = db;
+            this.repo = repo;
+            this.EKrepo = EKrepo;
+            this.EUrepo = EUrepo;
         }        
 
         public void Create(Event item)
         {
-            var context = new NWDbContext();
-            context.Add(item);
-            context.SaveChanges();
+            repo.Create(item);
         }
 
         public void Delete(int id)
@@ -33,8 +36,7 @@ namespace NightWorks.Repository
                     "Event not found"
                 );
             }
-            db.Remove(x);
-            db.SaveChanges();
+            repo.Delete(id);
         }
 
         public List<Address> GetEventAddresses(int id)
@@ -66,12 +68,12 @@ namespace NightWorks.Repository
 
         public Event Read(int id)
         {
-            return db.Events.FirstOrDefault(t => t.Id == id);
+            return repo.Read(id);
         }
 
         public IQueryable<Event> ReadAll()
         {
-            return db.Events;
+            return repo.ReadAll();
         }        
 
         public void Update(Event item)
@@ -89,30 +91,39 @@ namespace NightWorks.Repository
             s.Startingdate = item.Startingdate;
             s.Endingdate = item.Endingdate;
             s.EventText = item.EventText;
-            db.SaveChanges();
+            repo.Update(s);
         }
 
 
         //TODO Have to write LOGIC
-        public void AddKeywordToEvent(User item)
+        public void AddKeywordToEvent(int eventid, int keywordid)
         {
-           
+            EKrepo.Create(new Event_KeywordConnect() { EventId = eventid, KeywordId = keywordid });
         }
 
-        public void AddUserToEvent(User item)
+        public void AddUserToEvent(int eventid, int userid)
         {
-            throw new NotImplementedException();
+            EUrepo.Create(new Event_UserConnect() { EventId = eventid, UserId = userid });
         }
 
-        public void RemoveKeywordToEvent(User item)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RemoveUserToEvent(User item)
+        public void RemoveKeywordFromEvent(User item)
         {
             throw new NotImplementedException();
         }
 
+        public void RemoveFromToEvent(User item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveUserFromEvent(int eventid, int userid)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveKeywordFromEvent(int eventid, int keywordid)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

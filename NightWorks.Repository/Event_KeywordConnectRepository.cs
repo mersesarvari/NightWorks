@@ -80,5 +80,28 @@ namespace NightWorks.Repository
             }
             return existing;
         }
+
+        public Event_KeywordConnect ReadByData(int eventid, int keywordid)
+        {
+            Event_KeywordConnect a=new Event_KeywordConnect();
+            var list = ReadAll();
+            foreach (var item in list)
+            {
+                if (item.EventId == eventid && item.KeywordId == keywordid)
+                {
+                    a.Id=item.Id;
+                    a.EventId = item.EventId;
+                    a.KeywordId=keywordid;
+                }
+            }
+            if (a!=null)
+            {
+                return a;
+            }
+            else
+            {
+                throw new Exception("This item doestn exist!");
+            }
+        }
     }
 }

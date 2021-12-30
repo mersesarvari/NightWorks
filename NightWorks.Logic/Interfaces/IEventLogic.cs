@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NightWorks.Repository
+namespace NightWorks.Logic
 {
-    public interface IEventRepository
+    public interface IEventLogic
     {
         Event Read(int id);
         IQueryable<Event> ReadAll();
@@ -21,10 +21,10 @@ namespace NightWorks.Repository
         List<Address> GetEventAddresses(int id);
 
         //Connection setups
-        void AddUserToEvent(User item);
-        void AddKeywordToEvent(User item);
-        void RemoveUserToEvent(User item);
-        void RemoveKeywordToEvent(User item);
+        void AddUserToEvent(int eventid, int userid);
+        void AddKeywordToEvent(int eventid, int keywordid);
+        void RemoveUserFromEvent(int eventid, int userid);
+        void RemoveKeywordFromEvent(int eventid, int keywordid);
 
 
     }

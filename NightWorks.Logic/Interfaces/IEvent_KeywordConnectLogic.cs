@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NightWorks.Repository
+namespace NightWorks.Logic
 {
-    public interface IEvent_KeywordConnectRepository
+    public interface IEvent_KeywordConnectLogic
     {
         public Event_KeywordConnect Read(int id);
         public void Create(Event_KeywordConnect obj);

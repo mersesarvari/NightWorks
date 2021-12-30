@@ -17,5 +17,9 @@ namespace NightWorks.Repository
         public void Delete(int id);
 
         public List<Event_KeywordConnect> ReadAll();
+
+        public bool NotExisting(int id, int id2);
+
+        public Event_KeywordConnect ReadByData(int evenid, int keywordid);
     }
 }

@@ -1,4 +1,5 @@
-﻿using NightWorks.Models;
+﻿using NightWorks.Logic;
+using NightWorks.Models;
 using NigthWorks.Data;
 using NigthWorks.Models;
 using System;
@@ -7,12 +8,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NightWorks.Repository
+namespace NightWorksLogic
 {
-    public class KeywordRepository : IKeywordRepository
+    public class KeywordLogic : IKeywordLogic
     {
         NWDbContext db;
-        public KeywordRepository(NWDbContext db)
+        public KeywordLogic(NWDbContext db)
         {
             this.db = db;
         }

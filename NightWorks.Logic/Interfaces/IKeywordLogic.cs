@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NightWorks.Repository
+namespace NightWorks.Logic
 {
-    public interface IKeywordRepository
+    public interface IKeywordLogic
     {
         Keyword Read(int id);
         IQueryable<Keyword> ReadAll();

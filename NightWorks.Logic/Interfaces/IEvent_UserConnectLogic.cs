@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NightWorks.Repository
+namespace NightWorks.Logic
 {
-    public interface IEvent_UserConnectRepository
+    public interface IEvent_UserConnectLogic
     {
         public Event_UserConnect Read(int id);
         public void Create(Event_UserConnect obj);

@@ -6,12 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NightWorks.Repository
+namespace NightWorks.Logic
 {
-    public class AddressRepository : IAddressRepository
+    public class AddressLogic : IAddressLogic
     {
         NWDbContext db;
-        public AddressRepository(NWDbContext db)
+        public AddressLogic(NWDbContext db)
         {
             this.db = db;
         }
