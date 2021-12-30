@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace NightWorks.Models
 {
     public enum EventUserRelation
-    {
-        Manager,
+    {        
         Interest,
         Going,
+        Manager,
     }
 }

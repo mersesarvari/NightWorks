@@ -41,7 +41,7 @@ namespace NightWorks.Data
             Event_Type et2 = new Event_Type() { Id = 1, Name = "Party" };
             Event_Type et3 = new Event_Type() { Id = 1, Name = "Biking" };
 
-            Event_TypeConnect etc1 = new Event_TypeConnect() { Id = 1, EventId = 1, TypeId = 2 };
+            Event_TypeConnect etc1 = new Event_TypeConnect() { Id = 1, EventId = 1, TypeId = 2};
             Event_TypeConnect etc2 = new Event_TypeConnect() { Id = 2, EventId = 1, TypeId = 1 };
 
             Event_UserConnect euc1 = new Event_UserConnect() { Id = 1, EventId = 1, UserId = 1 };

@@ -10,10 +10,7 @@ namespace NightWorks.Models
     {
         public static List<Object> LoadData()
         {
-            Address a1 = new Address() { Id = 1, City = "Budapest", Country = "Hungary", BuildingNumber = 12, PostalCode = 1029 };
-            Address a2 = new Address() { Id = 2, City = "Szeged", Country = "Hungary", BuildingNumber = 5, PostalCode = 1035 };
-            Address a3 = new Address() { Id = 3, City = "Pécs", Country = "Hungary", BuildingNumber = 68, PostalCode = 1040 };
-
+            //Event
             Event e1 = new Event()
             {
                 Id = 1,
@@ -35,18 +32,27 @@ namespace NightWorks.Models
 
             };
 
+            //Address
+            Address a1 = new Address() { Id = 1, City = "Budapest", Country = "Hungary", BuildingNumber = 12, PostalCode = 1029 };
+            Address a2 = new Address() { Id = 2, City = "Szeged", Country = "Hungary", BuildingNumber = 5, PostalCode = 1035 };
+            Address a3 = new Address() { Id = 3, City = "Pécs", Country = "Hungary", BuildingNumber = 68, PostalCode = 1040 };
+
+            //Eventtypet
             Event_Type et1 = new Event_Type() { Id = 1, Name = "Dance" };
             Event_Type et2 = new Event_Type() { Id = 1, Name = "Party" };
             Event_Type et3 = new Event_Type() { Id = 1, Name = "Biking" };
 
+            //Event-Type-Connect
             Event_TypeConnect etc1 = new Event_TypeConnect() { Id = 1, EventId = 1, TypeId = 2 };
             Event_TypeConnect etc2 = new Event_TypeConnect() { Id = 2, EventId = 1, TypeId = 1 };
 
-            Event_UserConnect euc1 = new Event_UserConnect() { Id = 1, EventId = 1, UserId = 1 };
-            Event_UserConnect euc2 = new Event_UserConnect() { Id = 2, EventId = 1, UserId = 2 };
-            Event_UserConnect euc3 = new Event_UserConnect() { Id = 3, EventId = 2, UserId = 1 };
-            Event_UserConnect euc4 = new Event_UserConnect() { Id = 4, EventId = 2, UserId = 2 };
+            //Event-User-Connect
+            Event_UserConnect euc1 = new Event_UserConnect() { Id = 1, EventId = 1, UserId = 1, Relation= (EventUserRelation)1};
+            Event_UserConnect euc2 = new Event_UserConnect() { Id = 2, EventId = 1, UserId = 2, Relation = (EventUserRelation)1 };
+            Event_UserConnect euc3 = new Event_UserConnect() { Id = 3, EventId = 2, UserId = 1, Relation = (EventUserRelation)1 };
+            Event_UserConnect euc4 = new Event_UserConnect() { Id = 4, EventId = 2, UserId = 2, Relation = (EventUserRelation)1 };
 
+            //Event-Address-Connect
             Event_AddressConnect eac1 = new Event_AddressConnect() { Id = 1, AddressId = 1, EventId = 1 };
             Event_AddressConnect eac2 = new Event_AddressConnect() { Id = 2, AddressId = 3, EventId = 1 };
 
@@ -71,17 +77,19 @@ namespace NightWorks.Models
             etclist.Add(etc1);
             etclist.Add(etc2);
 
+            //EventUserTypes
             var euclist = new List<Event_UserConnect>();
             euclist.Add(euc1);
             euclist.Add(euc2);
             euclist.Add(euc3);
             euclist.Add(euc4);
 
+            //EventAddressTypes
             var eaclist = new List<Event_AddressConnect>();
             eaclist.Add(eac1);
             eaclist.Add(eac2);
 
-
+            //Full List
             List<Object> list = new List<Object>();
             list.Add(alist);
             list.Add(elist);
