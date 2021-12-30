@@ -23,8 +23,8 @@ namespace NightWorks.Logic
         //Connection setups
         void AddUserToEvent(int eventid, int userid);
         void AddKeywordToEvent(int eventid, int keywordid);
-        void RemoveUserFromEvent(int eventid, int userid);
-        void RemoveKeywordFromEvent(int eventid, int keywordid);
+        void RemoveUserFromEvent(int id);
+        void RemoveKeywordFromEvent(int id);
 
 
     }

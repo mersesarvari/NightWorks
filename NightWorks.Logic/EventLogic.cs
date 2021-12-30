@@ -106,24 +106,14 @@ namespace NightWorks.Repository
             EUrepo.Create(new Event_UserConnect() { EventId = eventid, UserId = userid });
         }
 
-        public void RemoveKeywordFromEvent(User item)
+        public void RemoveUserFromEvent(int id)
         {
-            throw new NotImplementedException();
+            EUrepo.Delete(id);
         }
 
-        public void RemoveFromToEvent(User item)
+        public void RemoveKeywordFromEvent(int id)
         {
-            throw new NotImplementedException();
-        }
-
-        public void RemoveUserFromEvent(int eventid, int userid)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RemoveKeywordFromEvent(int eventid, int keywordid)
-        {
-            throw new NotImplementedException();
+            EKrepo.Delete(id);
         }
     }
 }
