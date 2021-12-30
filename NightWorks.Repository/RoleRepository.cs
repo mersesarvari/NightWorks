@@ -12,8 +12,8 @@ namespace NigthWorks.Repository
     //Crud: Create, Read, ReadAll, Update, Delete
     public class RoleRepository : IRoleRepository
     {
-        XYZDbContext db;
-        public RoleRepository(XYZDbContext db)
+        NWDbContext db;
+        public RoleRepository(NWDbContext db)
         {
             this.db = db;
         }

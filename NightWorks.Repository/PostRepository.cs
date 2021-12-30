@@ -11,8 +11,8 @@ namespace NigthWorks.Repository
 {
     public class PostRepository : IPostRepository
     {
-        XYZDbContext db;
-        public PostRepository(XYZDbContext db)
+        NWDbContext db;
+        public PostRepository(NWDbContext db)
         {
             this.db = db;
         }

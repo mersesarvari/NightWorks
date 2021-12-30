@@ -13,8 +13,8 @@ namespace NigthWorks.Repository
     public class UserRepository : IUserRepository
     {
 
-        XYZDbContext db;
-        public UserRepository(XYZDbContext db)
+        NWDbContext db;
+        public UserRepository(NWDbContext db)
         {
             this.db = db;  
         }
@@ -26,7 +26,7 @@ namespace NigthWorks.Repository
 
         public void Create(User obj)
         {
-            var context = new XYZDbContext();
+            var context = new NWDbContext();
             context.Add(obj);
             context.SaveChanges();
         }

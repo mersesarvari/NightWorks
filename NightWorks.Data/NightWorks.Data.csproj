@@ -5,15 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="NWData.mdf" />
-    <None Remove="NWData_log.ldf" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="NWData.mdf">
+    <Content Include="Database\NWData.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="NWData_log.ldf">
+    <Content Include="Database\NWData_log.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

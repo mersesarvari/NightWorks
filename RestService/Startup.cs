@@ -27,7 +27,7 @@ namespace RestService
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IRoleRepository, RoleRepository>();
             services.AddTransient<IPostRepository, PostRepository>();
-            services.AddTransient<XYZDbContext, XYZDbContext>();
+            services.AddTransient<NWDbContext, NWDbContext>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

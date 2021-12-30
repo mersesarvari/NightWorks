@@ -39,6 +39,11 @@ namespace NigthWorks.Client
             EventDBContext o = new EventDBContext();
             Console.WriteLine("Connected");
 
+            foreach (var item in o.Events)
+            {
+                Console.WriteLine(item.EventName);
+            }
+
 
         }
         

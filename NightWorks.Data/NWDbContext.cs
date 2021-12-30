@@ -1,15 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using NightWorks.Models;
-using NigthWorks.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using NigthWorks.Models;
+using NightWorks.Models;
+using NightWorks.Data;
 
-namespace NightWorks.Data
+namespace NigthWorks.Data
 {
-    public class EventDBContext : DbContext
+    public partial class NWDbContext : DbContext
     {
         //Hozzáadott
         public virtual DbSet<User> Users { get; set; }
@@ -24,7 +21,7 @@ namespace NightWorks.Data
         public virtual DbSet<Event_TypeConnect> Event_TypeConnects { get; set; }
         public virtual DbSet<Event_UserConnect> Event_UserConnects { get; set; }
 
-        public EventDBContext()
+        public NWDbContext()
         {
             Database.EnsureCreated();
         }
@@ -34,7 +31,7 @@ namespace NightWorks.Data
             if (!builder.IsConfigured)
             {
                 string conn =
-                    @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database\NWData.mdf;Integrated Security=True";
+                    @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\NWData.mdf;Integrated Security=True";
                 builder
                     .UseLazyLoadingProxies()
                     .UseSqlServer(conn);
