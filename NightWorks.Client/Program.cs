@@ -35,6 +35,11 @@ namespace NigthWorks.Client
                 Validated = false,
                 Roleid = 1
             };
+            Event_KeywordConnect ekc1 = new Event_KeywordConnect()
+            {
+                EventId = 1,
+                KeywordId = 1
+            };
             
             restService.Post<User>(u, "User");
             

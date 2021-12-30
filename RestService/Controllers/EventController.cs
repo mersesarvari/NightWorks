@@ -13,9 +13,13 @@ namespace RestService.Controllers
     public class EventController : ControllerBase
     {
         readonly IEventLogic o;
+        readonly IKeywordLogic k;
+        readonly IAddressLogic a;
 
-        public EventController(IEventLogic o)
+        public EventController(IEventLogic o, IAddressLogic a, IKeywordLogic k)
         {
+            this.k = k;
+            this.a = a;
             this.o = o;
         }
 
@@ -36,6 +40,11 @@ namespace RestService.Controllers
         public void Post([FromBody] Event value)
         {
             o.Create(value);
+        }
+        [HttpPost("/keyword")]
+        public void AddKeyword([FromBody] Keyword value)
+        {
+            k.Create(value);
         }
 
         [HttpPut]

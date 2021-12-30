@@ -62,19 +62,23 @@ namespace NightWorks.Data
             types.Add(et2);
             types.Add(et3); 
 
-            Event_KeywordConnect etc1 = new Event_KeywordConnect() {Id=1, EventId = 1, KeywordId = 2};
-            Event_KeywordConnect etc2 = new Event_KeywordConnect() {Id=2, EventId = 1, KeywordId = 1 };
+            Event_KeywordConnect etc1 = new Event_KeywordConnect() {Id=1, EventId = 1, KeywordId = 1};
+            Event_KeywordConnect etc2 = new Event_KeywordConnect() {Id=2, EventId = 1, KeywordId = 2 };
+            Event_KeywordConnect etc3 = new Event_KeywordConnect() { Id = 3, EventId = 2, KeywordId = 1 };
+            Event_KeywordConnect etc4 = new Event_KeywordConnect() { Id = 4, EventId = 2, KeywordId = 2 };
             etcs.Add(etc1);
             etcs.Add(etc2);
+            etcs.Add(etc3);
+            etcs.Add(etc4);
 
             Event_UserConnect euc1 = new Event_UserConnect() { Id = 1, EventId = 1, UserId = 1 };
             Event_UserConnect euc2 = new Event_UserConnect() { Id = 2, EventId = 1, UserId = 2 };
-            //Event_UserConnect euc3 = new Event_UserConnect() { Id = 3, EventId = 2, UserId = 1 };
-            //Event_UserConnect euc4 = new Event_UserConnect() { Id = 4, EventId = 2, UserId = 2 };
+            Event_UserConnect euc3 = new Event_UserConnect() { Id = 3, EventId = 2, UserId = 1 };
+            Event_UserConnect euc4 = new Event_UserConnect() { Id = 4, EventId = 2, UserId = 2 };
             eucs.Add(euc1);
             eucs.Add(euc2);
-            //eucs.Add(euc3);
-            //eucs.Add(euc4);
+            eucs.Add(euc3);
+            eucs.Add(euc4);
 
             mb.Entity<Event>().HasData(events);
             mb.Entity<Address>().HasData(addresses);
