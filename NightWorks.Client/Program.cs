@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
+using NightWorks.Data;
 using NigthWorks.Models;
 
 namespace NigthWorks.Client
@@ -9,6 +10,7 @@ namespace NigthWorks.Client
     {
         static void Main(string[] args)
         {
+            /*
             RestService restService = new RestService("http://localhost:5000");
             Thread.Sleep(8000);
 
@@ -32,6 +34,10 @@ namespace NigthWorks.Client
             };
             restService.Post<User>(u, "User");
             restService.Post<Post>(p, "post");
+            */
+            Console.WriteLine("Program Started:");
+            EventDBContext o = new EventDBContext();
+            Console.WriteLine("Connected");
 
 
         }

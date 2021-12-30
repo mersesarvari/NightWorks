@@ -9,7 +9,24 @@ namespace NightWorks.Data
 {
     public class EventDBSeed
     {
-        public static List<Object> LoadData()
+        public static List<Event> events = new List<Event>();
+        public static List<Address> addresses = new List<Address>();
+        public static List<Event_Type> eventtypes = new List<Event_Type>();
+        public static List<Event_AddressConnect> eac = new List<Event_AddressConnect>();
+        public static List<Event_TypeConnect> etc = new List<Event_TypeConnect>();
+        public static List<Event_UserConnect> euc = new List<Event_UserConnect>();
+        public EventDBSeed()
+        {
+            LoadData(events,addresses,eventtypes,eac,etc,euc);
+        }
+        public static void LoadData(
+            List<Event> events,
+            List<Address> addresses,
+            List<Event_Type> types,
+            List<Event_AddressConnect> eacs,
+            List<Event_TypeConnect> etcs,
+            List<Event_UserConnect> eucs
+            )
         {
             
             Event e1 = new Event()
@@ -32,69 +49,41 @@ namespace NightWorks.Data
                 OwnerId = 1,
 
             };
+            events.Add(e1);
+            events.Add(e2);
 
             Address a1 = new Address() { Id = 1, City = "Budapest", Country = "Hungary", BuildingNumber = 12, PostalCode = 1029 };
             Address a2 = new Address() { Id = 2, City = "Szeged", Country = "Hungary", BuildingNumber = 5, PostalCode = 1035 };
             Address a3 = new Address() { Id = 3, City = "Pécs", Country = "Hungary", BuildingNumber = 68, PostalCode = 1040 };
+            addresses.Add(a1);
+            addresses.Add(a2);
+            addresses.Add(a3);
 
             Event_Type et1 = new Event_Type() { Id = 1, Name = "Dance" };
             Event_Type et2 = new Event_Type() { Id = 1, Name = "Party" };
             Event_Type et3 = new Event_Type() { Id = 1, Name = "Biking" };
+            types.Add(et1);
+            types.Add(et2);
+            types.Add(et3); 
 
             Event_TypeConnect etc1 = new Event_TypeConnect() { Id = 1, EventId = 1, TypeId = 2};
             Event_TypeConnect etc2 = new Event_TypeConnect() { Id = 2, EventId = 1, TypeId = 1 };
+            etcs.Add(etc1);
+            etcs.Add(etc2);
 
             Event_UserConnect euc1 = new Event_UserConnect() { Id = 1, EventId = 1, UserId = 1 };
             Event_UserConnect euc2 = new Event_UserConnect() { Id = 2, EventId = 1, UserId = 2 };
             Event_UserConnect euc3 = new Event_UserConnect() { Id = 3, EventId = 2, UserId = 1 };
             Event_UserConnect euc4 = new Event_UserConnect() { Id = 4, EventId = 2, UserId = 2 };
+            eucs.Add(euc1);
+            eucs.Add(euc2);
+            eucs.Add(euc3);
+            eucs.Add(euc4);
 
             Event_AddressConnect eac1 = new Event_AddressConnect() { Id = 1, AddressId = 1, EventId = 1 };
             Event_AddressConnect eac2 = new Event_AddressConnect() { Id = 2, AddressId = 3, EventId = 1 };
-
-            //Addresses
-            var alist = new List<Address>();
-            alist.Add(a1);
-            alist.Add(a2);
-            alist.Add(a3);
-
-            //Events
-            var elist = new List<Event>();
-            elist.Add(e1);
-            elist.Add(e2);
-
-            //EventTypes
-            var etlist = new List<Event_Type>();
-            etlist.Add(et1);
-            etlist.Add(et2);
-
-            //EventTypes
-            var etclist = new List<Event_TypeConnect>();
-            etclist.Add(etc1);
-            etclist.Add(etc2);
-
-            var euclist = new List<Event_UserConnect>();
-            euclist.Add(euc1);
-            euclist.Add(euc2);
-            euclist.Add(euc3);
-            euclist.Add(euc4);
-
-            var eaclist = new List<Event_AddressConnect>();
-            eaclist.Add(eac1);
-            eaclist.Add(eac2);
-
-
-            List<Object> list = new List<Object>();  
-            
-            list.Add(elist);//Event
-            list.Add(alist);//Address
-            list.Add(etlist);//Type
-            list.Add(etclist);//Event-type
-            list.Add(euclist);//Event-User
-            list.Add(eaclist);//Event-Address
-
-
-            return list;
+            eacs.Add(eac1);
+            eacs.Add(eac2);
 
         }
         

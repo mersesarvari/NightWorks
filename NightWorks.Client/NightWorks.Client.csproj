@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\NightWorks.Data\NightWorks.Data.csproj" />
     <ProjectReference Include="..\NightWorks.Models\NightWorks.Models.csproj" />
   </ItemGroup>
 

@@ -52,16 +52,14 @@ namespace NightWorks.Data
             mb.Entity<Event_AddressConnect>().HasOne(x => x.EventAddress).WithMany(x => x.EAddressConns).HasForeignKey(x => x.AddressId);
 
 
-            List<Object> datalist = EventDBSeed.LoadData();
-            mb.Entity<Event>().HasData(datalist[0]);
-            mb.Entity<Address>().HasData(datalist[1]);
-            mb.Entity<Event_Type>().HasData(datalist[2]);
-            mb.Entity<Event_TypeConnect>().HasData(datalist[3]);
-            mb.Entity<Event_UserConnect>().HasData(datalist[4]);
-            mb.Entity<Event_AddressConnect>().HasData(datalist[5]);
+            EventDBSeed alpa = new EventDBSeed();
+        
+        
 
 
 
-        }
+
+
+    }
     }
 }
