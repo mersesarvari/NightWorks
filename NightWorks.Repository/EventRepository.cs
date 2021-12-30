@@ -48,13 +48,13 @@ namespace NightWorks.Repository
             return addresses;
         }
 
-        public List<Event_Type> GetEventTypes(int id)
+        public List<Keyword> GetEventTypes(int id)
         {
             Event x = Read(id);
-            List<Event_Type> types = new List<Event_Type>();
-            foreach (var item in x.ETypeConns)
+            List<Keyword> types = new List<Keyword>();
+            foreach (var item in x.EKeywordConns)
             {
-                types.Add(item.EventType);
+                types.Add(item.Keyword);
             }
             return types;
         }

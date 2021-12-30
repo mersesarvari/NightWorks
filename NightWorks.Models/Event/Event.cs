@@ -38,7 +38,7 @@ namespace NightWorks.Models
         [ForeignKey(nameof(User))]
         public int OwnerId { get; set; }
 
-        public virtual List<Event_TypeConnect> ETypeConns { get; set; }
+        public virtual List<Event_KeywordConnect> EKeywordConns { get; set; }
 
         public virtual List<Event_AddressConnect> EAddressConns { get; set; }
 

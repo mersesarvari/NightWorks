@@ -18,9 +18,9 @@ namespace NightWorks.Data
         {
             List<Event> events = new List<Event>();
             List<Address> addresses= new List<Address> ();
-            List<Event_Type> types = new List<Event_Type>();
+            List<Keyword> types = new List<Keyword>();
             List<Event_AddressConnect> eacs = new List<Event_AddressConnect>();
-            List<Event_TypeConnect> etcs = new List<Event_TypeConnect>();
+            List<Event_KeywordConnect> etcs = new List<Event_KeywordConnect>();
             List<Event_UserConnect> eucs = new List<Event_UserConnect>();
 
 
@@ -54,15 +54,15 @@ namespace NightWorks.Data
             addresses.Add(a2);
             addresses.Add(a3);
 
-            Event_Type et1 = new Event_Type() { Id = 1, Name = "Dance" };
-            Event_Type et2 = new Event_Type() { Id = 2, Name = "Party" };
-            Event_Type et3 = new Event_Type() { Id = 3, Name = "Biking" };
+            Keyword et1 = new Keyword() { Id = 1, Name = "Dance" };
+            Keyword et2 = new Keyword() { Id = 2, Name = "Party" };
+            Keyword et3 = new Keyword() { Id = 3, Name = "Biking" };
             types.Add(et1);
             types.Add(et2);
             types.Add(et3); 
 
-            Event_TypeConnect etc1 = new Event_TypeConnect() { Id = 1, EventId = 1, TypeId = 2};
-            Event_TypeConnect etc2 = new Event_TypeConnect() { Id = 2, EventId = 1, TypeId = 1 };
+            Event_KeywordConnect etc1 = new Event_KeywordConnect() { Id = 1, EventId = 1, KeywordId = 2};
+            Event_KeywordConnect etc2 = new Event_KeywordConnect() { Id = 2, EventId = 1, KeywordId = 1 };
             etcs.Add(etc1);
             etcs.Add(etc2);
 
@@ -82,8 +82,8 @@ namespace NightWorks.Data
 
             mb.Entity<Event>().HasData(events);
             mb.Entity<Address>().HasData(addresses);
-            mb.Entity<Event_Type>().HasData(types);
-            mb.Entity<Event_TypeConnect>().HasData(etcs);
+            mb.Entity<Keyword>().HasData(types);
+            mb.Entity<Event_KeywordConnect>().HasData(etcs);
             mb.Entity<Event_UserConnect>().HasData(eucs);
             mb.Entity<Event_AddressConnect>().HasData(eacs);
 

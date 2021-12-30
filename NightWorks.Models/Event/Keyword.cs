@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 
 namespace NightWorks.Models
 {
-    public class Event_Type
+    public class Keyword
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string Name { get; set; }
 
-        public virtual List<Event_TypeConnect> ETypeConns { get; set; }
+        public virtual List<Event_KeywordConnect> EKeywordConns { get; set; }
     }
 }

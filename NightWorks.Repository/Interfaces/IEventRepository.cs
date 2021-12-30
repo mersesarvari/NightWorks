@@ -17,7 +17,7 @@ namespace NightWorks.Repository
         void Delete(int id);
 
         List<User> GetEventUsers(int id);
-        List<Event_Type> GetEventTypes(int id);
+        List<Keyword> GetEventTypes(int id);
         List<Address> GetEventAddresses(int id);
         
         
