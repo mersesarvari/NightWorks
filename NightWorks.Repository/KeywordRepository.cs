@@ -49,12 +49,12 @@ namespace NightWorks.Repository
 
         public Keyword Read(int id)
         {
-            return db.Types.FirstOrDefault(t => t.Id == id);
+            return db.Keywords.FirstOrDefault(t => t.Id == id);
         }
 
         public IQueryable<Keyword> ReadAll()
         {
-            return db.Types;
+            return db.Keywords;
         }
 
         public void Update(Keyword item)
