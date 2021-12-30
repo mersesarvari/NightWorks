@@ -12,7 +12,7 @@ namespace RestService.Controllers
     [ApiController]
     public class EventController : ControllerBase
     {
-        IEventLogic o;
+        readonly IEventLogic o;
 
         public EventController(IEventLogic o)
         {

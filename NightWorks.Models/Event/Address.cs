@@ -26,8 +26,6 @@ namespace NightWorks.Models
         public int BuildingNumber { get; set; }
 
 
-        [NotMapped]
-        [JsonIgnore] //Ez eredetileg nem volt itt
         public virtual ICollection<Event> Events { get; set; }
 
         public Address()

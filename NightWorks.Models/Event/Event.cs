@@ -37,27 +37,21 @@ namespace NightWorks.Models
         [Required]
         public string EventText { get; set; }
 
-        [NotMapped]
-        [JsonIgnore] //nem volt itt
+
         public virtual User User { get; set; }
 
         [ForeignKey(nameof(User))]
         public int OwnerId { get; set; }
 
-        [NotMapped]
-        [JsonIgnore] //nem volt itt
         public virtual Address Address { get; set; }
 
         [ForeignKey(nameof(Address))]
         public int AddressId { get; set; }
 
 
-        [NotMapped]
-        [JsonIgnore]
         public virtual List<Event_KeywordConnect> EKeywordConns { get; set; }
 
-        [NotMapped]
-        [JsonIgnore]
+
         public virtual List<Event_UserConnect> EUserConns { get; set; }
 
     }

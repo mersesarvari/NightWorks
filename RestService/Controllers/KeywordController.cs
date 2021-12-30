@@ -11,11 +11,11 @@ namespace RestService.Controllers
     [ApiController]
     public class KeywordController : ControllerBase
     {
-        IKeywordLogic o;
+        readonly IKeywordLogic o;
 
         public KeywordController(IKeywordLogic o)
         {
-            o = o;
+            this.o = o;
         }
 
         [HttpGet]

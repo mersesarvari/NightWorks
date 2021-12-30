@@ -15,13 +15,16 @@ namespace NigthWorks.Client
     {
         static void Main(string[] args)
         {
-            /*
+            
             RestService restService = new RestService("http://localhost:5000");
             Thread.Sleep(8000);
 
             var roles = restService.Get<Role>("role");
             var users = restService.Get<User>("user");
             var posts = restService.Get<Post>("post");
+            var events = restService.Get<Event>("event");
+            var keyword = restService.Get<Keyword>("keyword");
+            var address = restService.Get<Address>("address");
 
             User u = new User()
             {
@@ -32,14 +35,9 @@ namespace NigthWorks.Client
                 Validated = false,
                 Roleid = 1
             };
-            Post p = new Post()
-            {
-                Data = "fromclient",
-                Postuserid = 1
-            };
+            
             restService.Post<User>(u, "User");
-            restService.Post<Post>(p, "post");
-            */
+            
            
 
             

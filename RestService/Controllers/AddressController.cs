@@ -11,11 +11,11 @@ namespace RestService.Controllers
     [ApiController]
     public class AddressController : ControllerBase
     {
-        IAddressLogic o;
+        readonly IAddressLogic o;
 
         public AddressController(IAddressLogic o)
         {
-            o = o;
+            this.o = o;
         }
 
         [HttpGet]
