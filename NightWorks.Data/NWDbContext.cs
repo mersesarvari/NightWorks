@@ -17,7 +17,6 @@ namespace NigthWorks.Data
         public virtual DbSet<Address> Addresses { get; set; }
         public virtual DbSet<Keyword> Keywords { get; set; }
         public virtual DbSet<Event> Events { get; set; }
-        public virtual DbSet<Event_AddressConnect> Event_AddressConnects { get; set; }
         public virtual DbSet<Event_KeywordConnect> Event_KeywordConnects { get; set; }
         public virtual DbSet<Event_UserConnect> Event_UserConnects { get; set; }
 
@@ -57,6 +56,13 @@ namespace NigthWorks.Data
                     .HasForeignKey(x => x.Postuserid)
                     .OnDelete(DeleteBehavior.Cascade);
             });
+            mb.Entity<Event>(entity =>
+            {
+                entity.HasOne(x => x.Address)
+                    .WithMany(y => y.Events)
+                    .HasForeignKey(x => x.AddressId)
+                    .OnDelete(DeleteBehavior.Cascade);
+            });
 
             //Alap
             //Event <--> User
@@ -69,10 +75,7 @@ namespace NigthWorks.Data
             mb.Entity<Event_KeywordConnect>().HasOne(y => y.Keyword).WithMany(y => y.EKeywordConns).HasForeignKey(y => y.KeywordId).OnDelete(DeleteBehavior.Cascade);
             mb.Entity<Event_KeywordConnect>().HasOne(x => x.Event).WithMany(x => x.EKeywordConns).HasForeignKey(x => x.EventId).OnDelete(DeleteBehavior.Cascade);
 
-            //Event <--> EventAddress
-            mb.Entity<Event_AddressConnect>().HasKey(pt => new { pt.AddressId, pt.EventId });
-            mb.Entity<Event_AddressConnect>().HasOne(y => y.Event).WithMany(y => y.EAddressConns).HasForeignKey(y => y.EventId).OnDelete(DeleteBehavior.Cascade); ;
-            mb.Entity<Event_AddressConnect>().HasOne(x => x.EventAddress).WithMany(x => x.EAddressConns).HasForeignKey(x => x.AddressId).OnDelete(DeleteBehavior.Cascade);
+           
 
             EventDBSeed.LoadData(mb);
             UserDBSeed.LoadData(mb);

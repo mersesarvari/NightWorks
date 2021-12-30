@@ -19,7 +19,6 @@ namespace NightWorks.Data
             List<Event> events = new List<Event>();
             List<Address> addresses= new List<Address> ();
             List<Keyword> types = new List<Keyword>();
-            List<Event_AddressConnect> eacs = new List<Event_AddressConnect>();
             List<Event_KeywordConnect> etcs = new List<Event_KeywordConnect>();
             List<Event_UserConnect> eucs = new List<Event_UserConnect>();
 
@@ -31,6 +30,7 @@ namespace NightWorks.Data
                 Startingdate = new DateTime(2021, 12, 15, 15, 30, 00),
                 Endingdate = new DateTime(2021, 12, 15, 18, 00, 00),
                 EventText = "[Event1] This is our test events text. This text will fill de body od our posts",
+                AddressId = 1,
                 OwnerId = 1,
 
             };
@@ -41,6 +41,7 @@ namespace NightWorks.Data
                 Startingdate = new DateTime(2021, 12, 15, 15, 30, 00),
                 Endingdate = new DateTime(2021, 12, 15, 18, 00, 00),
                 EventText = "[Event2] This is our test events text. This text will fill de body od our posts",
+                AddressId=2,
                 OwnerId = 1,
 
             };
@@ -75,17 +76,11 @@ namespace NightWorks.Data
             //eucs.Add(euc3);
             //eucs.Add(euc4);
 
-            Event_AddressConnect eac1 = new Event_AddressConnect() { Id = 1, AddressId = 1, EventId = 1 };
-            Event_AddressConnect eac2 = new Event_AddressConnect() { Id = 2, AddressId = 3, EventId = 1 };
-            eacs.Add(eac1);
-            eacs.Add(eac2);
-
             mb.Entity<Event>().HasData(events);
             mb.Entity<Address>().HasData(addresses);
             mb.Entity<Keyword>().HasData(types);
             mb.Entity<Event_KeywordConnect>().HasData(etcs);
             mb.Entity<Event_UserConnect>().HasData(eucs);
-            mb.Entity<Event_AddressConnect>().HasData(eacs);
 
         }
         

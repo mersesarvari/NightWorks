@@ -15,7 +15,7 @@ namespace NightWorks.Repository
         public EventRepository(NWDbContext db)
         {
             this.db = db;
-        }
+        }        
 
         public void Create(Event item)
         {
@@ -39,13 +39,7 @@ namespace NightWorks.Repository
 
         public List<Address> GetEventAddresses(int id)
         {
-            Event x = Read(id);
-            List<Address> addresses = new List<Address>();
-            foreach (var item in x.EAddressConns)
-            {
-                addresses.Add(item.EventAddress);
-            }
-            return addresses;
+            throw new NotImplementedException();
         }
 
         public List<Keyword> GetEventTypes(int id)
@@ -78,7 +72,7 @@ namespace NightWorks.Repository
         public IQueryable<Event> ReadAll()
         {
             return db.Events;
-        }
+        }        
 
         public void Update(Event item)
         {
@@ -89,6 +83,7 @@ namespace NightWorks.Repository
                     "Event not found"
                 );
             }
+            s.AddressId = item.AddressId;
             s.EventName = item.EventName;
             s.OwnerId = item.OwnerId;
             s.Startingdate = item.Startingdate;
@@ -96,5 +91,28 @@ namespace NightWorks.Repository
             s.EventText = item.EventText;
             db.SaveChanges();
         }
+
+
+        //TODO Have to write LOGIC
+        public void AddKeywordToEvent(User item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddUserToEvent(User item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveKeywordToEvent(User item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveUserToEvent(User item)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

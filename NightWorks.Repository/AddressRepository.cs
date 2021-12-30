@@ -39,9 +39,9 @@ namespace NightWorks.Repository
         {
             Address x = Read(id);
             List<Event> list = new List<Event>();
-            foreach (var item in x.EAddressConns)
+            foreach (var item in x.Events)
             {
-                list.Add(item.Event);
+                list.Add(item);
             }
             return list;
         }

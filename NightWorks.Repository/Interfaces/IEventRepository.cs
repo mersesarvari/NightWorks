@@ -19,7 +19,13 @@ namespace NightWorks.Repository
         List<User> GetEventUsers(int id);
         List<Keyword> GetEventTypes(int id);
         List<Address> GetEventAddresses(int id);
-        
-        
+
+        //Connection setups
+        void AddUserToEvent(User item);
+        void AddKeywordToEvent(User item);
+        void RemoveUserToEvent(User item);
+        void RemoveKeywordToEvent(User item);
+
+
     }
 }

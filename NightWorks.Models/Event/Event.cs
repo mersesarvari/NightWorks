@@ -12,6 +12,10 @@ namespace NightWorks.Models
 {
     public class Event
     {
+        public Event()
+        {
+            Creationtime = DateTime.Now;
+        }
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
@@ -19,7 +23,9 @@ namespace NightWorks.Models
         [MaxLength(50)]
         [Required]
         public string EventName { get; set; }
-        
+
+        public DateTime Creationtime { get; set; }
+
         [Required]
         public DateTime Startingdate { get; set; }
 
@@ -38,9 +44,15 @@ namespace NightWorks.Models
         [ForeignKey(nameof(User))]
         public int OwnerId { get; set; }
 
+        [NotMapped]
+        [JsonIgnore] //nem volt itt
+        public virtual Address Address { get; set; }
+
+        [ForeignKey(nameof(Address))]
+        public int AddressId { get; set; }
+
         public virtual List<Event_KeywordConnect> EKeywordConns { get; set; }
 
-        public virtual List<Event_AddressConnect> EAddressConns { get; set; }
 
         public virtual List<Event_UserConnect> EUserConns { get; set; }
 
