@@ -21,10 +21,12 @@ namespace NightWorks.Repository
         List<Address> GetEventAddresses(int id);
 
         //Connection setups
+        /*
         void AddUserToEvent(User item);
         void AddKeywordToEvent(User item);
         void RemoveUserToEvent(User item);
         void RemoveKeywordToEvent(User item);
+        */
 
 
     }

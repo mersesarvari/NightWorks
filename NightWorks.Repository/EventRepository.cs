@@ -91,28 +91,5 @@ namespace NightWorks.Repository
             s.EventText = item.EventText;
             db.SaveChanges();
         }
-
-
-        //TODO Have to write LOGIC
-        public void AddKeywordToEvent(User item)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void AddUserToEvent(User item)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RemoveKeywordToEvent(User item)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RemoveUserToEvent(User item)
-        {
-            throw new NotImplementedException();
-        }
-
     }
 }

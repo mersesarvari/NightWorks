@@ -29,7 +29,7 @@ namespace NightWorks.Repository
             if (x == null)
             {
                 throw new InvalidOperationException(
-                    "EventType with that id not found"
+                    "Keyword with that id not found"
                 );
             }
             db.Remove(x);
@@ -63,7 +63,7 @@ namespace NightWorks.Repository
             if (s == null)
             {
                 throw new InvalidOperationException(
-                    "Event not found"
+                    "Keyword not found"
                 );
             }
             s.Name = item.Name;

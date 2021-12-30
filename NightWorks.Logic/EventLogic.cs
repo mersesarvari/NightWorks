@@ -96,7 +96,7 @@ namespace NightWorks.Repository
         //TODO Have to write LOGIC
         public void AddKeywordToEvent(User item)
         {
-            throw new NotImplementedException();
+            
         }
 
         public void AddUserToEvent(User item)
