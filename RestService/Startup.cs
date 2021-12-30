@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NightWorks.Logic;
+using NightWorks.Repository;
+using NightWorksLogic;
 using NigthWorks.Data;
 using NigthWorks.Logic;
 using NigthWorks.Repository;
@@ -25,10 +28,22 @@ namespace RestService
             services.AddTransient<IUserLogic, UserLogic>();
             services.AddTransient<IRoleLogic, RoleLogic>();
             services.AddTransient<IPostLogic, PostLogic>();
+            //services.AddTransient<IEvent_KeywordConnectLogic, Event_KeywordConnectLogic>();
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IRoleRepository, RoleRepository>();
             services.AddTransient<IPostRepository, PostRepository>();
             services.AddTransient<NWDbContext, NWDbContext>();
+
+            
+            services.AddTransient<IEventLogic, EventLogic>();
+            services.AddTransient<IKeywordLogic, KeywordLogic>();
+            services.AddTransient<IAddressLogic, AddressLogic>();
+            services.AddTransient<IEventRepository, EventRepository>();
+            services.AddTransient<IAddressRepository, AddressRepository>();
+            services.AddTransient<IKeywordRepository, KeywordRepository>();
+            services.AddTransient<IEvent_KeywordConnectRepository, Event_KeywordConnectRepository>();
+            services.AddTransient<IEvent_UserConnectRepository, Event_UserConnectRepository>();
+            
 
             //Ez általa, hozzáadott rész
             services.AddControllers().AddJsonOptions(x =>

@@ -1,5 +1,6 @@
 ﻿using NightWorks.Logic;
 using NightWorks.Models;
+using NightWorks.Repository;
 using NigthWorks.Data;
 using NigthWorks.Models;
 using System;
@@ -8,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NightWorks.Repository
+namespace NightWorks.Logic
 {
     public class EventLogic:IEventLogic 
     {
