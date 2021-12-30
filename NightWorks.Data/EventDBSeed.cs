@@ -1,4 +1,5 @@
-﻿using NightWorks.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using NightWorks.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,26 +10,20 @@ namespace NightWorks.Data
 {
     public class EventDBSeed
     {
-        public static List<Event> events = new List<Event>();
-        public static List<Address> addresses = new List<Address>();
-        public static List<Event_Type> eventtypes = new List<Event_Type>();
-        public static List<Event_AddressConnect> eac = new List<Event_AddressConnect>();
-        public static List<Event_TypeConnect> etc = new List<Event_TypeConnect>();
-        public static List<Event_UserConnect> euc = new List<Event_UserConnect>();
-        public EventDBSeed()
+        public EventDBSeed(ModelBuilder mb)
         {
-            LoadData(events,addresses,eventtypes,eac,etc,euc);
+            LoadData(mb);
         }
-        public static void LoadData(
-            List<Event> events,
-            List<Address> addresses,
-            List<Event_Type> types,
-            List<Event_AddressConnect> eacs,
-            List<Event_TypeConnect> etcs,
-            List<Event_UserConnect> eucs
-            )
+        public static void LoadData(ModelBuilder mb)
         {
-            
+            List<Event> events = new List<Event>();
+            List<Address> addresses= new List<Address> ();
+            List<Event_Type> types = new List<Event_Type>();
+            List<Event_AddressConnect> eacs = new List<Event_AddressConnect>();
+            List<Event_TypeConnect> etcs = new List<Event_TypeConnect>();
+            List<Event_UserConnect> eucs = new List<Event_UserConnect>();
+
+
             Event e1 = new Event()
             {
                 Id = 1,
@@ -41,7 +36,7 @@ namespace NightWorks.Data
             };
             Event e2 = new Event()
             {
-                Id = 1,
+                Id = 2,
                 EventName = "ProbaEvent2",
                 Startingdate = new DateTime(2021, 12, 15, 15, 30, 00),
                 Endingdate = new DateTime(2021, 12, 15, 18, 00, 00),
@@ -52,16 +47,16 @@ namespace NightWorks.Data
             events.Add(e1);
             events.Add(e2);
 
-            Address a1 = new Address() { Id = 1, City = "Budapest", Country = "Hungary", BuildingNumber = 12, PostalCode = 1029 };
-            Address a2 = new Address() { Id = 2, City = "Szeged", Country = "Hungary", BuildingNumber = 5, PostalCode = 1035 };
-            Address a3 = new Address() { Id = 3, City = "Pécs", Country = "Hungary", BuildingNumber = 68, PostalCode = 1040 };
+            Address a1 = new Address() { Id = 1, City = "Budapest", Country = "Hungary", Street="budapest utca", BuildingNumber = 12, PostalCode = 1029 };
+            Address a2 = new Address() { Id = 2, City = "Szeged", Country = "Hungary", Street = "szeged utca", BuildingNumber = 5, PostalCode = 1035 };
+            Address a3 = new Address() { Id = 3, City = "Pécs", Country = "Hungary", Street = "pécs utca", BuildingNumber = 68, PostalCode = 1040 };
             addresses.Add(a1);
             addresses.Add(a2);
             addresses.Add(a3);
 
             Event_Type et1 = new Event_Type() { Id = 1, Name = "Dance" };
-            Event_Type et2 = new Event_Type() { Id = 1, Name = "Party" };
-            Event_Type et3 = new Event_Type() { Id = 1, Name = "Biking" };
+            Event_Type et2 = new Event_Type() { Id = 2, Name = "Party" };
+            Event_Type et3 = new Event_Type() { Id = 3, Name = "Biking" };
             types.Add(et1);
             types.Add(et2);
             types.Add(et3); 
@@ -73,17 +68,24 @@ namespace NightWorks.Data
 
             Event_UserConnect euc1 = new Event_UserConnect() { Id = 1, EventId = 1, UserId = 1 };
             Event_UserConnect euc2 = new Event_UserConnect() { Id = 2, EventId = 1, UserId = 2 };
-            Event_UserConnect euc3 = new Event_UserConnect() { Id = 3, EventId = 2, UserId = 1 };
-            Event_UserConnect euc4 = new Event_UserConnect() { Id = 4, EventId = 2, UserId = 2 };
+            //Event_UserConnect euc3 = new Event_UserConnect() { Id = 3, EventId = 2, UserId = 1 };
+            //Event_UserConnect euc4 = new Event_UserConnect() { Id = 4, EventId = 2, UserId = 2 };
             eucs.Add(euc1);
             eucs.Add(euc2);
-            eucs.Add(euc3);
-            eucs.Add(euc4);
+            //eucs.Add(euc3);
+            //eucs.Add(euc4);
 
             Event_AddressConnect eac1 = new Event_AddressConnect() { Id = 1, AddressId = 1, EventId = 1 };
             Event_AddressConnect eac2 = new Event_AddressConnect() { Id = 2, AddressId = 3, EventId = 1 };
             eacs.Add(eac1);
             eacs.Add(eac2);
+
+            mb.Entity<Event>().HasData(events);
+            mb.Entity<Address>().HasData(addresses);
+            mb.Entity<Event_Type>().HasData(types);
+            mb.Entity<Event_TypeConnect>().HasData(etcs);
+            mb.Entity<Event_UserConnect>().HasData(eucs);
+            mb.Entity<Event_AddressConnect>().HasData(eacs);
 
         }
         
