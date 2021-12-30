@@ -17,14 +17,29 @@ namespace NightWorks.Repository
         }
         public void Create(Event_UserConnect obj)
         {
-            db.Event_UserConnects.Add(obj);
-            db.SaveChanges();
+            if (NotExisting(obj.EventId, obj.UserId))
+            {
+                db.Event_UserConnects.Add(obj);
+                db.SaveChanges();
+            }
+            else
+            {
+                throw new Exception("Cannot make this modify. This relation already defined!");
+            }
         }
 
         public void Delete(int id)
         {
-            db.Remove(Read(id));
-            db.SaveChanges();
+            if (Read(id) !=null)
+            {
+                db.Remove(Read(id));
+                db.SaveChanges();
+            }
+            else
+            {
+                throw new Exception("You cant delete this item, because it is not existing!");
+            }
+            
         }
 
         public Event_UserConnect Read(int id)
@@ -39,10 +54,31 @@ namespace NightWorks.Repository
 
         public void Update(Event_UserConnect obj)
         {
-            var old = Read(obj.Id);
-            old.UserId = obj.UserId;
-            old.EventId = obj.EventId;
-            db.SaveChanges();
+            if (NotExisting(obj.EventId, obj.UserId))
+            {
+                var old = Read(obj.Id);
+                old.UserId = obj.UserId;
+                old.EventId = obj.EventId;
+                db.SaveChanges();
+            }
+            else
+            {
+                throw new Exception("Cannot make this modify. This relation already defined!");
+            }
+            
+        }
+        public bool NotExisting(int eventid, int userid)
+        {
+            bool existing = true;
+            var list = ReadAll();
+            foreach (var item in list)
+            {
+                if (item.EventId == eventid && item.UserId == userid)
+                {
+                    existing = false;
+                }
+            }
+            return existing;
         }
     }
 }

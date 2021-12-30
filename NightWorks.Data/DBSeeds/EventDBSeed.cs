@@ -62,8 +62,8 @@ namespace NightWorks.Data
             types.Add(et2);
             types.Add(et3); 
 
-            Event_KeywordConnect etc1 = new Event_KeywordConnect() { Id = 1, EventId = 1, KeywordId = 2};
-            Event_KeywordConnect etc2 = new Event_KeywordConnect() { Id = 2, EventId = 1, KeywordId = 1 };
+            Event_KeywordConnect etc1 = new Event_KeywordConnect() {Id=1, EventId = 1, KeywordId = 2};
+            Event_KeywordConnect etc2 = new Event_KeywordConnect() {Id=2, EventId = 1, KeywordId = 1 };
             etcs.Add(etc1);
             etcs.Add(etc2);
 
