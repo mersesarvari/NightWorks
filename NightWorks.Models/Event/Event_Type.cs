@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace NightWorks.Models
 {
-    public class Type
+    public class Event_Type
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

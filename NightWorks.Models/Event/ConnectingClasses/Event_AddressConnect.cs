@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace NightWorks.Models
 {
-    public class Event_TypeConnect
+    public class Event_AddressConnect
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -16,7 +16,9 @@ namespace NightWorks.Models
 
         public int EventId { get; set; }
         public virtual Event Event { get; set; }
-        public int EventTypeId { get; set; }
-        public virtual Type EventType { get; set; }
+        public int AddressId { get; set; }
+        public virtual Address EventAddress { get; set; }
+
+        
     }
 }

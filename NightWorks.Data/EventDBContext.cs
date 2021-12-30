@@ -8,61 +8,60 @@ using System.Threading.Tasks;
 
 namespace NightWorks.Data
 {
-    public class EventDBContext:DbContext
+    public class EventDBContext : DbContext
     {
+        public virtual DbSet<Address> Addresses { get; set; }
+        public virtual DbSet<Event_Type> Types { get; set; }
+        public virtual DbSet<Event> Events { get; set; }
+        public virtual DbSet<Event_AddressConnect> Event_AddressConnects { get; set; }
+        public virtual DbSet<Event_TypeConnect> Event_TypeConnects { get; set; }
+        public virtual DbSet<Event_UserConnect> Event_UserConnects { get; set; }
 
+        public EventDBContext()
+        {
+            Database.EnsureCreated();
+        }
 
-            //Újak
-            public virtual DbSet<Event> Events { get; set; }
-            public virtual DbSet<Models.Type> EventTypes { get; set; }
-
-
-            public EventDBContext(): base("EventDB-DataAnnotations")
+        protected override void OnConfiguring(DbContextOptionsBuilder builder)
+        {
+            if (!builder.IsConfigured)
             {
-
-            }
-
-            protected override void OnConfiguring(DbContextOptionsBuilder builder)
-            {
-                if (!builder.IsConfigured)
-                {
-                    string conn =
-                        @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\NWData.mdf;Integrated Security=True";
-                    builder
-                        .UseLazyLoadingProxies()
-                        .UseSqlServer(conn);
-                }
-            }
-
-            protected override void OnModelCreating(ModelBuilder mb)
-            {
-                //User -> Role
-                mb.Entity<User>(entity =>
-                {
-                    entity.HasOne(x => x.Role)
-                        .WithMany(y => y.Users)
-                        .HasForeignKey(x => x.Roleid)
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-                //User -> Posts
-                mb.Entity<Post>(entity =>
-                {
-                    entity.HasOne(x => x.User)
-                        .WithMany(y => y.Posts)
-                        .HasForeignKey(x => x.Postuserid)
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-                //Events <--> Eventtypes
-                mb.Entity<Event>()
-                    .HasMany<Models.Type>(x => x.EventTypes)
-                    .WithMany(y => y.Events)
-                    .Map((object cs) =>
-                    {
-                        cs.MapLeftKey("StudentRefId");
-                        cs.MapRightKey("CourseRefId");
-                        cs.ToTable("StudentCourse");
-                    });
+                string conn =
+                    @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\NWData.mdf;Integrated Security=True";
+                builder
+                    .UseLazyLoadingProxies()
+                    .UseSqlServer(conn);
             }
         }
-    
+
+        protected override void OnModelCreating(ModelBuilder mb)
+        {
+            //Event <--> User
+            mb.Entity<Event_UserConnect>().HasKey(pt => new { pt.UserId, pt.EventId });
+            mb.Entity<Event_UserConnect>().HasOne(y => y.User).WithMany(y => y.EUserConns).HasForeignKey(y => y.UserId);
+            mb.Entity<Event_UserConnect>().HasOne(x => x.Event).WithMany(x => x.EUserConns).HasForeignKey(x => x.EventId);
+
+            //Event <--> EventType
+            mb.Entity<Event_TypeConnect>().HasKey(pt => new { pt.TypeId, pt.EventId });
+            mb.Entity<Event_TypeConnect>().HasOne(y => y.EventType).WithMany(y => y.ETConns).HasForeignKey(y => y.TypeId);
+            mb.Entity<Event_TypeConnect>().HasOne(x => x.Event).WithMany(x => x.ETypeConns).HasForeignKey(x => x.EventId);
+
+            //Event <--> EventAddress
+            mb.Entity<Event_AddressConnect>().HasKey(pt => new { pt.AddressId, pt.EventId });
+            mb.Entity<Event_AddressConnect>().HasOne(y => y.Event).WithMany(y => y.EAddressConns).HasForeignKey(y => y.EventId);
+            mb.Entity<Event_AddressConnect>().HasOne(x => x.EventAddress).WithMany(x => x.EAddressConns).HasForeignKey(x => x.AddressId);
+
+
+            List<Object> datalist = EventDBSeed.LoadData();
+            mb.Entity<Event>().HasData(datalist[0]);
+            mb.Entity<Address>().HasData(datalist[1]);
+            mb.Entity<Event_Type>().HasData(datalist[2]);
+            mb.Entity<Event_TypeConnect>().HasData(datalist[3]);
+            mb.Entity<Event_UserConnect>().HasData(datalist[4]);
+            mb.Entity<Event_AddressConnect>().HasData(datalist[5]);
+
+
+
+        }
+    }
 }

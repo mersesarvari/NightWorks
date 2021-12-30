@@ -14,7 +14,7 @@ namespace NightWorks.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int EventId { get; set; }
+        public int Id { get; set; }
 
         [MaxLength(50)]
         [Required]

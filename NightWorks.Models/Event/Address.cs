@@ -23,5 +23,7 @@ namespace NightWorks.Models
         public string Street { get; set; }
         [Required]
         public int BuildingNumber { get; set; }
+
+        public virtual List<Event_AddressConnect> EAddressConns { get; set; }
     }
 }

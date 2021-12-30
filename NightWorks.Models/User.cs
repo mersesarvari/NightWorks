@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NightWorks.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -44,6 +45,8 @@ namespace NigthWorks.Models
         {
             Posts = new HashSet<Post>();
         }
+
+        public virtual List<Event_UserConnect> EUserConns { get; set; }
 
 
     }

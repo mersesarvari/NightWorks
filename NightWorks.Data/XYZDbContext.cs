@@ -54,16 +54,6 @@ namespace NigthWorks.Data
                     .HasForeignKey(x => x.Postuserid)
                     .OnDelete(DeleteBehavior.Cascade);
             });
-            //Events <--> Eventtypes
-            mb.Entity<Event>()
-                .HasMany<Type>(x => x.EventTypes)
-                .WithMany(y => y.Events)
-                .Map(cs =>
-                {
-                    cs.MapLeftKey("StudentRefId");
-                    cs.MapRightKey("CourseRefId");
-                    cs.ToTable("StudentCourse");
-                });
 
             Role role1 = new Role() { Id = 1, Name = "root", Permission = 100 };
             Role role2 = new Role() { Id = 2, Name = "admin", Permission = 90 };
@@ -84,25 +74,6 @@ namespace NigthWorks.Data
                 new Post() { Id = 4, Data = "Loren Imsum4", Postuserid=b.Id},
                 new Post() { Id = 5, Data = "Loren Imsum5", Postuserid=a.Id}
 
-            };
-
-            var eventA = new Event()
-            {
-                Id = 1,
-                Ownerid = 1,
-                Startingdate = new System.DateTime(2021, 10, 28, 10, 0, 0),
-                Endingdate = new System.DateTime(2021, 10, 28, 17, 0, 0),
-                EventName = "Bebaszáska",
-                EventText = "Ez itt a bebaszáska event próba szövege",
-                Address = new Address()
-                {
-                    Id = 1,
-                    Country = "Hungary",
-                    PostalCode = 1029,
-                    City = "Budapest",
-                    BuildingNumber = 25,
-                    Street = "Broken St"
-                }
             };
 
 
