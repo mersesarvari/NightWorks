@@ -15,10 +15,10 @@ namespace NigthWorks.Data
 
         //Alap
         public virtual DbSet<Address> Addresses { get; set; }
-        public virtual DbSet<Keyword> Types { get; set; }
+        public virtual DbSet<Keyword> Keywords { get; set; }
         public virtual DbSet<Event> Events { get; set; }
         public virtual DbSet<Event_AddressConnect> Event_AddressConnects { get; set; }
-        public virtual DbSet<Event_KeywordConnect> Event_TypeConnects { get; set; }
+        public virtual DbSet<Event_KeywordConnect> Event_KeywordConnects { get; set; }
         public virtual DbSet<Event_UserConnect> Event_UserConnects { get; set; }
 
         public NWDbContext()
