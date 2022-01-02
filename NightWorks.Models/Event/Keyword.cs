@@ -14,6 +14,8 @@ namespace NightWorks.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string Name { get; set; }
         
         public virtual List<Event_KeywordConnect> EKeywordConns { get; set; }

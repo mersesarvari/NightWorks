@@ -12,7 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\NightWorks.EventLifetime\NightWorks.EventLifetime.csproj" />
     <ProjectReference Include="..\NightWorks.Models\NightWorks.Models.csproj" />
     <ProjectReference Include="..\NightWorks.Repository\NightWorks.Repository.csproj" />
   </ItemGroup>

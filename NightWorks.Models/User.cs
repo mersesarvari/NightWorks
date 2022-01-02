@@ -18,10 +18,12 @@ namespace NigthWorks.Models
 
         [MaxLength(15)]
         [Required]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string Username { get; set; }
 
         [MaxLength(30)]
         [Required]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string Email { get; set; }
 
         [MaxLength(30)]

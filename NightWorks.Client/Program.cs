@@ -41,12 +41,11 @@ namespace NigthWorks.Client
                 KeywordId = 1
             };
             
-            restService.Post<User>(u, "User");
-            
-           
 
-            
-            
+
+
+
+
 
 
 

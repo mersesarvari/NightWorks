@@ -5,7 +5,7 @@ using NigthWorks.Models;
 using System;
 using NightWorks.Logic;
 
-namespace RestService.Controllers
+namespace NightWorks.Endpoint.Controllers
 {
     [Route("[controller]")]
     [ApiController]

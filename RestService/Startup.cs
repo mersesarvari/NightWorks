@@ -15,7 +15,7 @@ using System.Linq;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace RestService
+namespace NightWorks.Endpoint
 {
     public class Startup
     {

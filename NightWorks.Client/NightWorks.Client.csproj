@@ -17,7 +17,7 @@
     <ProjectReference Include="..\NightWorks.Logic\NightWorks.Logic.csproj" />
     <ProjectReference Include="..\NightWorks.Models\NightWorks.Models.csproj" />
     <ProjectReference Include="..\NightWorks.Repository\NightWorks.Repository.csproj" />
-    <ProjectReference Include="..\RestService\RestService.csproj" />
+    <ProjectReference Include="..\RestService\NightWorks.Endpoint.csproj" />
   </ItemGroup>
 
 </Project>

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using NigthWorks.Logic;
 using NigthWorks.Models;
 
-namespace RestService.Controllers
+namespace NightWorks.Endpoint.Controllers
 {
     [Route("[controller]")]
     [ApiController]
