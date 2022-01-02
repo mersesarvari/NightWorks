@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace NigthWorks.Client
 {
-    class RestService
+    public class RestService
     {
         HttpClient client;
 

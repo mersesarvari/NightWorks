@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using NightWorks.Client;
 using NightWorks.Data;
 using NightWorks.Models;
 using NightWorks.Repository;
@@ -26,20 +27,7 @@ namespace NigthWorks.Client
             var keyword = restService.Get<Keyword>("keyword");
             var address = restService.Get<Address>("address");
 
-            User u = new User()
-            {
-                Username = "client",
-                Email = "client@c.com",
-                Password = "client",
-                Money = 0,
-                Validated = false,
-                Roleid = 1
-            };
-            Event_KeywordConnect ekc1 = new Event_KeywordConnect()
-            {
-                EventId = 1,
-                KeywordId = 1
-            };
+            EventManager.EventLifetimeChecker(restService);
             
 
 

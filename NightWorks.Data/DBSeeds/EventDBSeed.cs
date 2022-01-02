@@ -39,14 +39,26 @@ namespace NightWorks.Data
                 Id = 2,
                 EventName = "ProbaEvent2",
                 Startingdate = new DateTime(2021, 12, 15, 15, 30, 00),
-                Endingdate = new DateTime(2021, 12, 15, 18, 00, 00),
+                Endingdate = new DateTime(2022, 01, 03, 00, 00, 00),
                 EventText = "[Event2] This is our test events text. This text will fill de body od our posts",
                 AddressId=2,
                 OwnerId = 1,
 
             };
+            Event e3 = new Event()
+            {
+                Id = 3,
+                EventName = "ProbaEvent2",
+                Startingdate = new DateTime(2021, 12, 15, 15, 30, 00),
+                Endingdate = new DateTime(2022, 12, 15, 18, 00, 00),
+                EventText = "[Event3] This is our test events text. This text will fill de body od our posts",
+                AddressId = 2,
+                OwnerId = 2,
+
+            };
             events.Add(e1);
             events.Add(e2);
+            events.Add(e3);
 
             Address a1 = new Address() { Id = 1, City = "Budapest", Country = "Hungary", Street="budapest utca", BuildingNumber = 12, PostalCode = 1029 };
             Address a2 = new Address() { Id = 2, City = "Szeged", Country = "Hungary", Street = "szeged utca", BuildingNumber = 5, PostalCode = 1035 };
