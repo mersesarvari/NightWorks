@@ -26,9 +26,22 @@ namespace NigthWorks.Client
             var keyword = restService.Get<Keyword>("keyword");
             var address = restService.Get<Address>("address");
 
-            var eventmainimage = restService.Get<Address>("EventMainImage");
+            var image = restService.Get<Address>("EventMainImage");
 
-            EventManager.EventLifetimeChecker(restService);
+            //EventManager.EventLifetimeChecker(restService);
+
+            EventMainImage_Repository imagerepo = new EventMainImage_Repository();
+            ImageHandler ih = new ImageHandler()
+            {
+                Name = "adminlogo.jpg",
+                Dataroot = @"D:\NWRoot\Images",
+                Extension="jpg",
+                Type=(ImageType)1,
+                
+                
+            };
+
+            imagerepo.Create(ih);
             
 
 

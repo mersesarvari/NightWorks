@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using NigthWorks.Models;
 using NightWorks.Data;
+using System.Linq;
+using System;
 
 namespace NigthWorks.Data
 {
@@ -44,8 +46,6 @@ namespace NigthWorks.Data
             mb.Entity<User>().HasIndex(X => X.Email).IsUnique();
             mb.Entity<Role>().HasIndex(X => X.Name).IsUnique();
 
-
-           
 
             mb.Entity<User>(entity =>
             {

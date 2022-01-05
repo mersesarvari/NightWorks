@@ -32,6 +32,7 @@ namespace NightWorks.Data
                 EventText = "[Event1] This is our test events text. This text will fill de body od our posts",
                 Address_Id = 1,
                 Owner_Id = 1,
+                //EventMainImage_Id=1
 
             };
             NWEvent e2 = new NWEvent()

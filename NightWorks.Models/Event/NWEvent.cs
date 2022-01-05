@@ -35,13 +35,10 @@ namespace NigthWorks.Models
         [MaxLength(2000)][Required]
         public string EventText { get; set; }
 
-        //[NotMapped]
-        //[JsonIgnore] //nem volt itt
+
+        
         public virtual ImageHandler EventMainImage { get; set; }
-        /*
-        [ForeignKey(nameof(EventMainImage))]
-        public int EventMainImage_Id { get; set; }
-        */
+
         [NotMapped]
         [JsonIgnore] //nem volt itt
         public virtual User User { get; set; }
