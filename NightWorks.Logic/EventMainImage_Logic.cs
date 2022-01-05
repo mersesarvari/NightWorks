@@ -20,7 +20,7 @@ namespace NightWorks.Logic
 
         public void Create(EventMainImage obj)
         {
-            if (obj.Title == "" || obj.Data == null)
+            if (obj.Name == "" || obj.Data == null)
             {
                 throw new Exception("Not all data have been verified. Something is missing");
             }
@@ -59,7 +59,7 @@ namespace NightWorks.Logic
 
         public void Update(EventMainImage obj)
         {
-            if (obj.Title == "" || obj.Data == null)
+            if (obj.Name == "" || obj.Data == null)
             {
                 repo.Update(obj);
             }
