@@ -19,7 +19,7 @@ namespace NightWorks.Repository
         {
             if (NotExisting(obj.EventId, obj.KeywordId))
             {
-                db.Event_KeywordConnects.Add(obj);
+                db.Event_Keyword_Connects.Add(obj);
                 db.SaveChanges();
             }
             else
@@ -44,12 +44,12 @@ namespace NightWorks.Repository
 
         public Event_Keyword_Connect Read(int id)
         {
-            return db.Event_KeywordConnects.FirstOrDefault(o => o.Id == id);
+            return db.Event_Keyword_Connects.FirstOrDefault(o => o.Id == id);
         }
 
         public List<Event_Keyword_Connect> ReadAll()
         {
-            return db.Event_KeywordConnects.ToList();
+            return db.Event_Keyword_Connects.ToList();
         }
 
         public void Update(Event_Keyword_Connect obj)

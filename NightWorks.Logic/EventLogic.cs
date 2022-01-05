@@ -86,9 +86,9 @@ namespace NightWorks.Logic
                     "Event not found"
                 );
             }
-            s.AddressId = item.AddressId;
+            s.Address_Id = item.Address_Id;
             s.EventName = item.EventName;
-            s.OwnerId = item.OwnerId;
+            s.Owner_Id = item.Owner_Id;
             s.Startingdate = item.Startingdate;
             s.Endingdate = item.Endingdate;
             s.EventText = item.EventText;

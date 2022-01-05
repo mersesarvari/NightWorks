@@ -8,17 +8,18 @@ namespace NigthWorks.Data
 {
     public partial class NWDbContext : DbContext
     {
-        //Hozzáadott
+
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<Post> Posts { get; set; }
+        public virtual DbSet<EventMainImage> EventMainImages { get; set; }
 
         //Alap
         public virtual DbSet<Address> Addresses { get; set; }
         public virtual DbSet<Keyword> Keywords { get; set; }
         public virtual DbSet<NWEvent> Events { get; set; }
-        public virtual DbSet<Event_Keyword_Connect> Event_KeywordConnects { get; set; }
-        public virtual DbSet<Event_User_Connect> Event_UserConnects { get; set; }
+        public virtual DbSet<Event_Keyword_Connect> Event_Keyword_Connects { get; set; }
+        public virtual DbSet<Event_User_Connect> Event_User_Connects { get; set; }
 
         public NWDbContext()
         {
@@ -39,9 +40,16 @@ namespace NigthWorks.Data
 
         protected override void OnModelCreating(ModelBuilder mb)
         {
+
             //Identitás checkek:
             mb.Entity<User>().HasIndex(X => X.Email).IsUnique();
             mb.Entity<Role>().HasIndex(X => X.Name).IsUnique();
+
+
+            mb.Entity<NWEvent>()
+                .HasOne(a => a.)
+                .WithOne(b => b.Author)
+                .HasForeignKey<AuthorBiography>(b => b.AuthorRef);
 
             mb.Entity<User>(entity =>
             {
@@ -55,14 +63,14 @@ namespace NigthWorks.Data
             {
                 entity.HasOne(x => x.User)
                     .WithMany(y => y.Posts)
-                    .HasForeignKey(x => x.Postuserid)
+                    .HasForeignKey(x => x.Post_UserId)
                     .OnDelete(DeleteBehavior.Cascade);
             });
             mb.Entity<NWEvent>(entity =>
             {
                 entity.HasOne(x => x.Address)
                     .WithMany(y => y.Events)
-                    .HasForeignKey(x => x.AddressId)
+                    .HasForeignKey(x => x.Address_Id)
                     .OnDelete(DeleteBehavior.Cascade);
             });
 

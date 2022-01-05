@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace NightWorks.Models
 {
     [Table("Eventmainimage")]
-    public class _EventMainImage
+    public class EventMainImage
     {
         [Key][DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }

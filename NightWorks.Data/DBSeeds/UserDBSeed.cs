@@ -30,11 +30,11 @@ namespace NightWorks.Data
 
             var posts = new List<Post>()
             {
-                new Post() { Id = 1, Data = "Loren Imsum1", Postuserid= a.Id},
-                new Post() { Id = 2, Data = "Loren Imsum2", Postuserid=b.Id},
-                new Post() { Id = 3, Data = "Loren Imsum3", Postuserid=a.Id},
-                new Post() { Id = 4, Data = "Loren Imsum4", Postuserid=b.Id},
-                new Post() { Id = 5, Data = "Loren Imsum5", Postuserid=a.Id}
+                new Post() { Id = 1, Data = "Loren Imsum1", Post_UserId= a.Id},
+                new Post() { Id = 2, Data = "Loren Imsum2", Post_UserId=b.Id},
+                new Post() { Id = 3, Data = "Loren Imsum3", Post_UserId=a.Id},
+                new Post() { Id = 4, Data = "Loren Imsum4", Post_UserId=b.Id},
+                new Post() { Id = 5, Data = "Loren Imsum5", Post_UserId=a.Id}
 
             };
 

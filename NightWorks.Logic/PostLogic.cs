@@ -70,7 +70,7 @@ namespace NigthWorks.Logic
 
         public IEnumerable<Post> GetAllPostByUserId(int id)
         {
-            var result = repo.ReadAll().Where(x => x.Postuserid == id);
+            var result = repo.ReadAll().Where(x => x.Post_UserId == id);
             return result;
         }
     }

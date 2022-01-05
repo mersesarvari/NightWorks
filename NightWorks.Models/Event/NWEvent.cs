@@ -35,20 +35,24 @@ namespace NightWorks.Models
         [MaxLength(2000)][Required]
         public string EventText { get; set; }
 
-        [ForeignKey(nameof(_EventMainImage))]
-        public int Eventmainimageid { get; set; }
+        [NotMapped]
+        [JsonIgnore] //nem volt itt
+        public virtual EventMainImage EventMainImage { get; set; }
+
+        [ForeignKey(nameof(EventMainImage))]
+        public int EventMainImage_Id { get; set; }
 
         [NotMapped]
         [JsonIgnore] //nem volt itt
         public virtual User User { get; set; }
 
         [ForeignKey(nameof(User))]
-        public int OwnerId { get; set; }
+        public int Owner_Id { get; set; }
 
         public virtual Address Address { get; set; }
 
         [ForeignKey(nameof(Address))]
-        public int AddressId { get; set; }
+        public int Address_Id { get; set; }
 
         [NotMapped]
         [JsonIgnore] //nem volt itt

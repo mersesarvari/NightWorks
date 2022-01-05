@@ -19,7 +19,7 @@ namespace NigthWorks.Models
         public virtual User User { get; set; }
 
         [ForeignKey(nameof(User))]
-        public int Postuserid { get; set; }
+        public int Post_UserId { get; set; }
 
     }
 }
