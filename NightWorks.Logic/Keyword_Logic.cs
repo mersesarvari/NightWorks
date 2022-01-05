@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace NightWorksLogic
 {
-    public class KeywordLogic : IKeywordLogic
+    public class Keyword_Logic : IKeyword_Logic
     {
         NWDbContext db;
-        public KeywordLogic(NWDbContext db)
+        public Keyword_Logic(NWDbContext db)
         {
             this.db = db;
         }

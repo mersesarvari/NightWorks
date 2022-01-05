@@ -9,11 +9,11 @@ using NigthWorks.Models;
 
 namespace NigthWorks.Repository
 {
-    public class UserRepository : IUserRepository
+    public class User_Repository : IUserRepository
     {
 
         NWDbContext db;
-        public UserRepository(NWDbContext db)
+        public User_Repository(NWDbContext db)
         {
             this.db = db;  
         }

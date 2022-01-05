@@ -10,10 +10,10 @@ using NigthWorks.Data;
 namespace NigthWorks.Repository
 {
     //Crud: Create, Read, ReadAll, Update, Delete
-    public class RoleRepository : IRoleRepository
+    public class Role_Repository : IRoleRepository
     {
         NWDbContext db;
-        public RoleRepository(NWDbContext db)
+        public Role_Repository(NWDbContext db)
         {
             this.db = db;
         }

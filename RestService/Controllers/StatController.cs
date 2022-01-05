@@ -10,15 +10,15 @@ using NigthWorks.Models;
 
 namespace NightWorks.Endpoint.Controllers
 {
-    [Route("[controller]/[action]")]
+    [Route("/action")]
     [ApiController]
     public class StatController : ControllerBase
     {
-        IUserLogic ul;
-        IPostLogic pl;
-        IRoleLogic rl;
+        IUser_Logic ul;
+        IPost_Logic pl;
+        IRole_Logic rl;
 
-        public StatController(IUserLogic ul, IRoleLogic rl, IPostLogic pl)
+        public StatController(IUser_Logic ul, IRole_Logic rl, IPost_Logic pl)
         {
             this.ul = ul;
             this.rl = rl;

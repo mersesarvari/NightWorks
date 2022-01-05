@@ -8,13 +8,13 @@ using NigthWorks.Models;
 
 namespace NightWorks.Endpoint.Controllers
 {
-    [Route("[controller]")]
+    [Route("/role")]
     [ApiController]
     public class RoleController : ControllerBase
     {
-        IRoleLogic logic;
+        IRole_Logic logic;
 
-        public RoleController(IRoleLogic brandLogic)
+        public RoleController(IRole_Logic brandLogic)
         {
             logic = brandLogic;
         }

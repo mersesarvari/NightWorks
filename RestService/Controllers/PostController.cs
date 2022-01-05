@@ -5,13 +5,13 @@ using NigthWorks.Models;
 
 namespace NightWorks.Endpoint.Controllers
 {
-    [Route("[controller]")]
+    [Route("/post")]
     [ApiController]
     public class PostController : ControllerBase
     {
-        IPostLogic logic;
+        IPost_Logic logic;
 
-        public PostController(IPostLogic brandLogic)
+        public PostController(IPost_Logic brandLogic)
         {
             logic = brandLogic;
         }

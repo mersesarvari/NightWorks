@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace NightWorks.Repository
 {
-    public class Event_UserConnectRepository:IEvent_UserConnectRepository
+    public class Event_User_Connect_Repository:IEvent_User_ConnectRepository
     {
         NWDbContext db;
-        public Event_UserConnectRepository(NWDbContext db)
+        public Event_User_Connect_Repository(NWDbContext db)
         {
             this.db = db;
         }

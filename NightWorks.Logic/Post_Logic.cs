@@ -8,11 +8,11 @@ using NigthWorks.Repository;
 
 namespace NigthWorks.Logic
 {
-    public class PostLogic : IPostLogic
+    public class Post_Logic : IPost_Logic
     {
         IPostRepository repo;
 
-        public PostLogic(IPostRepository weaponRepository)
+        public Post_Logic(IPostRepository weaponRepository)
         {
             this.repo = weaponRepository;
         }

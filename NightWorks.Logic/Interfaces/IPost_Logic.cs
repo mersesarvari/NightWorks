@@ -7,7 +7,7 @@ using NigthWorks.Models;
 
 namespace NigthWorks.Logic
 {
-    public interface IPostLogic
+    public interface IPost_Logic
     {
         Post Read(int id);
         IEnumerable<Post> ReadAll();

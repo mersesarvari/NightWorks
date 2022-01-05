@@ -8,11 +8,11 @@ using NigthWorks.Repository;
 
 namespace NigthWorks.Logic
 {
-    public class RoleLogic : IRoleLogic
+    public class Role_Logic : IRole_Logic
     {
         IRoleRepository brandRepository;
 
-        public RoleLogic(IRoleRepository brandRepository)
+        public Role_Logic(IRoleRepository brandRepository)
         {
             this.brandRepository = brandRepository;
         }

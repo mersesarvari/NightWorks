@@ -7,13 +7,13 @@ using NightWorks.Logic;
 
 namespace NightWorks.Endpoint.Controllers
 {
-    [Route("[controller]")]
+    [Route("/user")]
     [ApiController]
     public class UserController : ControllerBase
     {
-        IUserLogic cl;
+        IUser_Logic cl;
 
-        public UserController(IUserLogic cl)
+        public UserController(IUser_Logic cl)
         {
             this.cl = cl;
         }

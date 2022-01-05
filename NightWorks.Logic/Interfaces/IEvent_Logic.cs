@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace NightWorks.Logic
 {
-    public interface IEventLogic
+    public interface IEvent_Logic
     {
         NWEvent Read(int id);
         IQueryable<NWEvent> ReadAll();

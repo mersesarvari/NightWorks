@@ -8,16 +8,12 @@ using System.Threading.Tasks;
 
 namespace NigthWorks.Logic
 {
-    public interface IEventMainImageLogic
+    public interface IEventMainImage_Logic
     {
         EventMainImage Read(int id);
         IEnumerable<EventMainImage> ReadAll();
         void Create(EventMainImage obj);
         void Update(EventMainImage obj);
         void Delete(int id);
-
-        Post MostUsedWeapon();
-
-        public IEnumerable<EventMainImage> GetAllPostByUserId(int id);
     }
 }

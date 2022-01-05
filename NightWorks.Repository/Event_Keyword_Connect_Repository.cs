@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace NightWorks.Repository
 {
-    public class Event_KeywordConnectRepository : IEvent_KeywordConnectRepository
+    public class Event_Keyword_ConnectRepository : IEvent_Keyword_ConnectRepository
     {
         NWDbContext db;
-        public Event_KeywordConnectRepository(NWDbContext db)
+        public Event_Keyword_ConnectRepository(NWDbContext db)
         {
             this.db = db;
         }

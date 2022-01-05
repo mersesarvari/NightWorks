@@ -7,11 +7,11 @@ using NigthWorks.Repository;
 
 namespace NigthWorks.Logic
 {
-    public class UserLogic : IUserLogic
+    public class User_Logic : IUser_Logic
     {
         IUserRepository repo;
 
-        public UserLogic(IUserRepository repo)
+        public User_Logic(IUserRepository repo)
         {
             this.repo = repo;
         }

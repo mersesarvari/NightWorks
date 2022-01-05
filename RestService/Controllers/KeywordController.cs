@@ -6,13 +6,13 @@ using NightWorks.Logic;
 
 namespace NightWorks.Endpoint.Controllers
 {
-    [Route("[controller]")]
+    [Route("/keyword")]
     [ApiController]
     public class KeywordController : ControllerBase
     {
-        readonly IKeywordLogic o;
+        readonly IKeyword_Logic o;
 
-        public KeywordController(IKeywordLogic o)
+        public KeywordController(IKeyword_Logic o)
         {
             this.o = o;
         }

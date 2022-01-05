@@ -9,10 +9,10 @@ using NigthWorks.Models;
 
 namespace NigthWorks.Repository
 {
-    public class PostRepository : IPostRepository
+    public class Post_Repository : IPostRepository
     {
         NWDbContext db;
-        public PostRepository(NWDbContext db)
+        public Post_Repository(NWDbContext db)
         {
             this.db = db;
         }

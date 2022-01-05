@@ -1,5 +1,5 @@
-﻿using NightWorks.Models;
-using NigthWorks.Client;
+﻿using NigthWorks.Client;
+using NigthWorks.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

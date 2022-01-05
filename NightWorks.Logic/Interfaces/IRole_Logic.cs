@@ -7,7 +7,7 @@ using NigthWorks.Models;
 
 namespace NigthWorks.Logic
 {
-    public interface IRoleLogic
+    public interface IRole_Logic
     {
 
         Role Read(int id);

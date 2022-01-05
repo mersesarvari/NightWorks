@@ -7,15 +7,15 @@ using NightWorks.Logic;
 
 namespace NightWorks.Endpoint.Controllers
 {
-    [Route("[controller]")]
+    [Route("/event")]
     [ApiController]
     public class EventController : ControllerBase
     {
-        readonly IEventLogic o;
-        readonly IKeywordLogic k;
-        readonly IAddressLogic a;
+        readonly IEvent_Logic o;
+        readonly IKeyword_Logic k;
+        readonly IAddress_Logic a;
 
-        public EventController(IEventLogic o, IAddressLogic a, IKeywordLogic k)
+        public EventController(IEvent_Logic o, IAddress_Logic a, IKeyword_Logic k)
         {
             this.k = k;
             this.a = a;

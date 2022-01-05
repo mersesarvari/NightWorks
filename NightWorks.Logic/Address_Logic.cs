@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace NightWorks.Logic
 {
-    public class AddressLogic : IAddressLogic
+    public class Address_Logic : IAddress_Logic
     {
         NWDbContext db;
-        public AddressLogic(NWDbContext db)
+        public Address_Logic(NWDbContext db)
         {
             this.db = db;
         }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace NightWorks.Logic
 {
-    public interface IAddressLogic
+    public interface IAddress_Logic
     {
         Address Read(int id);
         IQueryable<Address> ReadAll();

@@ -5,7 +5,7 @@ using NigthWorks.Models;
 
 namespace NigthWorks.Logic
 {
-    public interface IUserLogic
+    public interface IUser_Logic
     {
         User Read(int id);
         IEnumerable<User> ReadAll();

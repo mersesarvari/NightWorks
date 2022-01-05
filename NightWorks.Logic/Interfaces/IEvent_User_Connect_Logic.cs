@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace NightWorks.Logic
 {
-    public interface IEvent_UserConnectLogic
+    public interface IEvent_User_Connect_Logic
     {
         public Event_User_Connect Read(int id);
         public void Create(Event_User_Connect obj);

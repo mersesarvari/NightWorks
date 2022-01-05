@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace NightWorks.Logic
 {
-    public interface IKeywordLogic
+    public interface IKeyword_Logic
     {
         Keyword Read(int id);
         IQueryable<Keyword> ReadAll();

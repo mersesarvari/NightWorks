@@ -25,29 +25,34 @@ namespace NightWorks.Endpoint
         {
             services.AddControllers();
 
-            services.AddTransient<IUserLogic, UserLogic>();
-            services.AddTransient<IRoleLogic, RoleLogic>();
-            services.AddTransient<IPostLogic, PostLogic>();
-            //services.AddTransient<IEvent_KeywordConnectLogic, Event_KeywordConnectLogic>();
-            services.AddTransient<IUserRepository, UserRepository>();
-            services.AddTransient<IRoleRepository, RoleRepository>();
-            services.AddTransient<IPostRepository, PostRepository>();
-            services.AddTransient<NWDbContext, NWDbContext>();
+            services.AddTransient<IUser_Logic, User_Logic>();
+            services.AddTransient<IRole_Logic, Role_Logic>();
+            services.AddTransient<IPost_Logic, Post_Logic>();
+            services.AddTransient<IEvent_Logic, Event_Logic>();
+            services.AddTransient<IKeyword_Logic, Keyword_Logic>();
+            services.AddTransient<IAddress_Logic, Address_Logic>();
+            //services.AddTransient<IEventMainImageLogic, EventMainImageLogic>();
+            //services.AddTransient<IEvent_KeywordConnectLogic, Event_KeywordConnectLogic>(); //Még nincsen készen
 
             
-            services.AddTransient<IEventLogic, EventLogic>();
-            services.AddTransient<IKeywordLogic, KeywordLogic>();
-            services.AddTransient<IAddressLogic, AddressLogic>();
-            services.AddTransient<IEventRepository, EventRepository>();
+            services.AddTransient<IUserRepository, User_Repository>();
+            services.AddTransient<IRoleRepository, Role_Repository>();
+            services.AddTransient<IPostRepository, Post_Repository>();         
+            services.AddTransient<IEventRepository, Event_Repository>();
+            services.AddTransient<IKeywordRepository, Keyword_Repository>();
             services.AddTransient<IAddressRepository, AddressRepository>();
-            services.AddTransient<IKeywordRepository, KeywordRepository>();
-            services.AddTransient<IEvent_KeywordConnectRepository, Event_KeywordConnectRepository>();
-            services.AddTransient<IEvent_UserConnectRepository, Event_UserConnectRepository>();
-            
+            services.AddTransient<IEvent_Keyword_ConnectRepository, Event_Keyword_ConnectRepository>();
+            services.AddTransient<IEvent_User_ConnectRepository, Event_User_Connect_Repository>();
+            //services.AddTransient<IEventMainImageRepository, EventMainImageRepository>();
+
+
+            services.AddTransient<NWDbContext, NWDbContext>();
+
 
             //Ez általa, hozzáadott rész
             services.AddControllers().AddJsonOptions(x =>
                 x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+            
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

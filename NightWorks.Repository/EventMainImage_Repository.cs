@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace NightWorks.Repository
 {
-    public class EventMainImageRepository : IEventMainImageRepository
+    public class EventMainImage_Repository : IEventMainImageRepository
     {
         NWDbContext db;
         public void Create(EventMainImage item)

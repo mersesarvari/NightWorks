@@ -1,4 +1,6 @@
-﻿using NigthWorks.Data;
+﻿using NightWorks.Logic;
+using NightWorks.Repository;
+using NigthWorks.Data;
 using NigthWorks.Models;
 using System;
 using System.Collections.Generic;
@@ -6,21 +8,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NightWorks.Repository
+namespace NightWorks.Logic
 {
-    public class EventRepository:IEventRepository 
+    public class Event_Logic:IEvent_Logic 
     {
-        NWDbContext db;
-        public EventRepository(NWDbContext db)
+        IEventRepository repo;
+        IEvent_Keyword_ConnectRepository EKrepo;
+        IEvent_User_ConnectRepository EUrepo;
+        public Event_Logic(IEventRepository repo, IEvent_Keyword_ConnectRepository EKrepo, IEvent_User_ConnectRepository EUrepo)
         {
-            this.db = db;
+            this.repo = repo;
+            this.EKrepo = EKrepo;
+            this.EUrepo = EUrepo;
         }        
 
         public void Create(NWEvent item)
         {
-            var context = new NWDbContext();
-            context.Add(item);
-            context.SaveChanges();
+            repo.Create(item);
         }
 
         public void Delete(int id)
@@ -32,8 +36,7 @@ namespace NightWorks.Repository
                     "Event not found"
                 );
             }
-            db.Remove(x);
-            db.SaveChanges();
+            repo.Delete(id);
         }
 
         public List<Address> GetEventAddresses(int id)
@@ -65,12 +68,12 @@ namespace NightWorks.Repository
 
         public NWEvent Read(int id)
         {
-            return db.Events.FirstOrDefault(t => t.Id == id);
+            return repo.Read(id);
         }
 
         public IQueryable<NWEvent> ReadAll()
         {
-            return db.Events;
+            return repo.ReadAll();
         }        
 
         public void Update(NWEvent item)
@@ -88,7 +91,29 @@ namespace NightWorks.Repository
             s.Startingdate = item.Startingdate;
             s.Endingdate = item.Endingdate;
             s.EventText = item.EventText;
-            db.SaveChanges();
+            repo.Update(s);
+        }
+
+
+        //TODO Have to write LOGIC
+        public void AddKeywordToEvent(int eventid, int keywordid)
+        {
+            EKrepo.Create(new Event_Keyword_Connect() { EventId = eventid, KeywordId = keywordid });
+        }
+
+        public void AddUserToEvent(int eventid, int userid)
+        {
+            EUrepo.Create(new Event_User_Connect() { EventId = eventid, UserId = userid });
+        }
+
+        public void RemoveUserFromEvent(int id)
+        {
+            EUrepo.Delete(id);
+        }
+
+        public void RemoveKeywordFromEvent(int id)
+        {
+            EKrepo.Delete(id);
         }
     }
 }

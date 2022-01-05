@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace NightWorks.Repository
 {
-    public interface IEvent_UserConnectRepository
+    public interface IEvent_User_ConnectRepository
     {
         public Event_User_Connect Read(int id);
         public void Create(Event_User_Connect obj);

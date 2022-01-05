@@ -6,13 +6,13 @@ using NightWorks.Logic;
 
 namespace NightWorks.Endpoint.Controllers
 {
-    [Route("[controller]")]
+    [Route("/address")]
     [ApiController]
     public class AddressController : ControllerBase
     {
-        readonly IAddressLogic o;
+        readonly IAddress_Logic o;
 
-        public AddressController(IAddressLogic o)
+        public AddressController(IAddress_Logic o)
         {
             this.o = o;
         }

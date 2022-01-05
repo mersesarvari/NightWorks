@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace NightWorks.Logic
 {
-    public interface IEvent_KeywordConnectLogic
+    public interface IEvent_Keyword_Connect_Logic
     {
         public Event_Keyword_Connect Read(int id);
         public void Create(Event_Keyword_Connect obj);
