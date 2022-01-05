@@ -47,9 +47,9 @@ namespace NigthWorks.Data
 
 
             mb.Entity<NWEvent>()
-                .HasOne(a => a.)
-                .WithOne(b => b.Author)
-                .HasForeignKey<AuthorBiography>(b => b.AuthorRef);
+                .HasOne(a => a.EventMainImage)
+                .WithOne(b => b.Event)
+                .HasForeignKey<EventMainImage>(b => b.NWEventid);
 
             mb.Entity<User>(entity =>
             {

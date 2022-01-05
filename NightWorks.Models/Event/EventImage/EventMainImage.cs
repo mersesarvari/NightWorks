@@ -25,6 +25,6 @@ namespace NightWorks.Models
         public virtual NWEvent Event { get; set; }
 
         [ForeignKey(nameof(Event))]
-        public int Eventid { get; set; }
+        public int NWEventid { get; set; }
     }
 }
