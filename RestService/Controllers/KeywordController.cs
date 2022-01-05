@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using NigthWorks.Logic;
 using NigthWorks.Models;
 using NightWorks.Logic;
-using NightWorks.Models;
 
 namespace NightWorks.Endpoint.Controllers
 {

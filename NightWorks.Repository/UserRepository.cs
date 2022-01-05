@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using NigthWorks.Data;
 using NigthWorks.Models;
-using NightWorks.Models;
 
 namespace NigthWorks.Repository
 {

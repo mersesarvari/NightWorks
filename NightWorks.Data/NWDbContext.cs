@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using NigthWorks.Models;
-using NightWorks.Models;
 using NightWorks.Data;
 
 namespace NigthWorks.Data

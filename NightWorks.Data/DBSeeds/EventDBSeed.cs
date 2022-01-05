@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using NightWorks.Models;
+using NigthWorks.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

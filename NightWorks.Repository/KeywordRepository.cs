@@ -1,5 +1,4 @@
-﻿using NightWorks.Models;
-using NigthWorks.Data;
+﻿using NigthWorks.Data;
 using NigthWorks.Models;
 using System;
 using System.Collections.Generic;

@@ -8,7 +8,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace NightWorks.Models
+namespace NigthWorks.Models
 {
     [Table("Event")]
     public class NWEvent

@@ -5,7 +5,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using NightWorks.Client;
 using NightWorks.Data;
-using NightWorks.Models;
 using NightWorks.Repository;
 using NigthWorks.Data;
 using NigthWorks.Models;
@@ -26,6 +25,8 @@ namespace NigthWorks.Client
             var events = restService.Get<NWEvent>("event");
             var keyword = restService.Get<Keyword>("keyword");
             var address = restService.Get<Address>("address");
+
+            var eventmainimage = restService.Get<Address>("EventMainImage");
 
             EventManager.EventLifetimeChecker(restService);
             

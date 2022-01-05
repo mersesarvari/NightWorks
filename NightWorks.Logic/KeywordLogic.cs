@@ -1,5 +1,4 @@
 ﻿using NightWorks.Logic;
-using NightWorks.Models;
 using NigthWorks.Data;
 using NigthWorks.Models;
 using System;

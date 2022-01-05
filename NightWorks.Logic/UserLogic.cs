@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using NightWorks.Logic;
-using NightWorks.Models;
 using NigthWorks.Models;
 using NigthWorks.Repository;
 

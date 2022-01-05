@@ -4,7 +4,6 @@ using NigthWorks.Logic;
 using NigthWorks.Models;
 using System;
 using NightWorks.Logic;
-using NightWorks.Models;
 
 namespace NightWorks.Endpoint.Controllers
 {
