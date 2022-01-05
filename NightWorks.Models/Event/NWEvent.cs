@@ -10,18 +10,18 @@ using System.Threading.Tasks;
 
 namespace NightWorks.Models
 {
-    public class Event
+    [Table("Event")]
+    public class NWEvent
     {
-        public Event()
+        public NWEvent()
         {
             Creationtime = DateTime.Now;
         }
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+
+        [Key][DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        [MaxLength(50)]
-        [Required]
+        [MaxLength(50)][Required]
         public string EventName { get; set; }
 
         public DateTime Creationtime { get; set; }
@@ -32,12 +32,14 @@ namespace NightWorks.Models
         [Required]
         public DateTime Endingdate { get; set; }
 
-
-        [MaxLength(2000)]
-        [Required]
+        [MaxLength(2000)][Required]
         public string EventText { get; set; }
 
+        [ForeignKey(nameof(_EventMainImage))]
+        public int Eventmainimageid { get; set; }
 
+        [NotMapped]
+        [JsonIgnore] //nem volt itt
         public virtual User User { get; set; }
 
         [ForeignKey(nameof(User))]
@@ -48,11 +50,13 @@ namespace NightWorks.Models
         [ForeignKey(nameof(Address))]
         public int AddressId { get; set; }
 
+        [NotMapped]
+        [JsonIgnore] //nem volt itt
+        public virtual List<Event_Keyword_Connect> EKeywordConns { get; set; }
 
-        public virtual List<Event_KeywordConnect> EKeywordConns { get; set; }
-
-
-        public virtual List<Event_UserConnect> EUserConns { get; set; }
+        [NotMapped]
+        [JsonIgnore] //nem volt itt
+        public virtual List<Event_User_Connect> EUserConns { get; set; }
 
     }
 }

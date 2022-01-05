@@ -10,10 +10,10 @@ namespace NightWorks.Repository
 {
     public interface IEventRepository
     {
-        Event Read(int id);
-        IQueryable<Event> ReadAll();
-        void Create(Event item);    
-        void Update(Event item);
+        NWEvent Read(int id);
+        IQueryable<NWEvent> ReadAll();
+        void Create(NWEvent item);    
+        void Update(NWEvent item);
         void Delete(int id);
 
         List<User> GetEventUsers(int id);

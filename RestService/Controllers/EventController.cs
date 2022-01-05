@@ -24,20 +24,20 @@ namespace NightWorks.Endpoint.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Event> GetAll()
+        public IEnumerable<NWEvent> GetAll()
         {
             return o.ReadAll();
         }
 
         [HttpGet("{id}")]
-        public Event Get(int id)
+        public NWEvent Get(int id)
         {
             return o.Read(id);
         }
 
 
         [HttpPost]
-        public void Post([FromBody] Event value)
+        public void Post([FromBody] NWEvent value)
         {
             o.Create(value);
         }
@@ -48,7 +48,7 @@ namespace NightWorks.Endpoint.Controllers
         }
 
         [HttpPut]
-        public void Put([FromBody] Event value)
+        public void Put([FromBody] NWEvent value)
         {
             o.Update(value);
         }

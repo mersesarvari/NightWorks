@@ -9,13 +9,13 @@ namespace NightWorks.Logic
 {
     public interface IEvent_UserConnectLogic
     {
-        public Event_UserConnect Read(int id);
-        public void Create(Event_UserConnect obj);
+        public Event_User_Connect Read(int id);
+        public void Create(Event_User_Connect obj);
 
-        public void Update(Event_UserConnect obj);
+        public void Update(Event_User_Connect obj);
 
         public void Delete(int id);
 
-        public List<Event_UserConnect> ReadAll();
+        public List<Event_User_Connect> ReadAll();
     }
 }

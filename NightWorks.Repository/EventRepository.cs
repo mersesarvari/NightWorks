@@ -17,7 +17,7 @@ namespace NightWorks.Repository
             this.db = db;
         }        
 
-        public void Create(Event item)
+        public void Create(NWEvent item)
         {
             var context = new NWDbContext();
             context.Add(item);
@@ -44,7 +44,7 @@ namespace NightWorks.Repository
 
         public List<Keyword> GetEventTypes(int id)
         {
-            Event x = Read(id);
+            NWEvent x = Read(id);
             List<Keyword> types = new List<Keyword>();
             foreach (var item in x.EKeywordConns)
             {
@@ -55,7 +55,7 @@ namespace NightWorks.Repository
 
         public List<User> GetEventUsers(int id)
         {
-            Event x = Read(id);
+            NWEvent x = Read(id);
             List<User> u = new List<User>();
             foreach (var item in x.EUserConns)
             {
@@ -64,17 +64,17 @@ namespace NightWorks.Repository
             return u;
         }
 
-        public Event Read(int id)
+        public NWEvent Read(int id)
         {
             return db.Events.FirstOrDefault(t => t.Id == id);
         }
 
-        public IQueryable<Event> ReadAll()
+        public IQueryable<NWEvent> ReadAll()
         {
             return db.Events;
         }        
 
-        public void Update(Event item)
+        public void Update(NWEvent item)
         {
             var s = Read(item.Id);
             if (s == null)

@@ -15,7 +15,7 @@ namespace NightWorks.Repository
         {
             this.db = db;
         }
-        public void Create(Event_UserConnect obj)
+        public void Create(Event_User_Connect obj)
         {
             if (NotExisting(obj.EventId, obj.UserId))
             {
@@ -42,17 +42,17 @@ namespace NightWorks.Repository
             
         }
 
-        public Event_UserConnect Read(int id)
+        public Event_User_Connect Read(int id)
         {
             return db.Event_UserConnects.FirstOrDefault(o => o.Id == id);
         }
 
-        public List<Event_UserConnect> ReadAll()
+        public List<Event_User_Connect> ReadAll()
         {
             return db.Event_UserConnects.ToList();
         }
 
-        public void Update(Event_UserConnect obj)
+        public void Update(Event_User_Connect obj)
         {
             if (NotExisting(obj.EventId, obj.UserId))
             {
@@ -81,9 +81,9 @@ namespace NightWorks.Repository
             return existing;
         }
 
-        public Event_UserConnect ReadByData(int eventid, int userid)
+        public Event_User_Connect ReadByData(int eventid, int userid)
         {
-            Event_UserConnect a = new Event_UserConnect();
+            Event_User_Connect a = new Event_User_Connect();
             var list = ReadAll();
             foreach (var item in list)
             {

@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace NigthWorks.Models
 {
+    [Table("User")]
     public class User
     {
         [Key]
@@ -50,7 +51,7 @@ namespace NigthWorks.Models
         }
         [NotMapped]
         [JsonIgnore]
-        public virtual List<Event_UserConnect> EUserConns { get; set; }
+        public virtual List<Event_User_Connect> EUserConns { get; set; }
 
 
     }

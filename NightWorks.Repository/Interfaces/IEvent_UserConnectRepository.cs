@@ -9,17 +9,17 @@ namespace NightWorks.Repository
 {
     public interface IEvent_UserConnectRepository
     {
-        public Event_UserConnect Read(int id);
-        public void Create(Event_UserConnect obj);
+        public Event_User_Connect Read(int id);
+        public void Create(Event_User_Connect obj);
 
-        public void Update(Event_UserConnect obj);
+        public void Update(Event_User_Connect obj);
 
         public void Delete(int id);
 
-        public List<Event_UserConnect> ReadAll();
+        public List<Event_User_Connect> ReadAll();
 
         public bool NotExisting(int id, int id2);
 
-        public Event_UserConnect ReadByData(int evenid, int userid);
+        public Event_User_Connect ReadByData(int evenid, int userid);
     }
 }

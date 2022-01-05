@@ -9,17 +9,17 @@ namespace NightWorks.Repository
 {
     public interface IEvent_KeywordConnectRepository
     {
-        public Event_KeywordConnect Read(int id);
-        public void Create(Event_KeywordConnect obj);
+        public Event_Keyword_Connect Read(int id);
+        public void Create(Event_Keyword_Connect obj);
 
-        public void Update(Event_KeywordConnect obj);
+        public void Update(Event_Keyword_Connect obj);
 
         public void Delete(int id);
 
-        public List<Event_KeywordConnect> ReadAll();
+        public List<Event_Keyword_Connect> ReadAll();
 
         public bool NotExisting(int id, int id2);
 
-        public Event_KeywordConnect ReadByData(int evenid, int keywordid);
+        public Event_Keyword_Connect ReadByData(int evenid, int keywordid);
     }
 }

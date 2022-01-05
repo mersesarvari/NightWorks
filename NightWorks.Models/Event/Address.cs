@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace NightWorks.Models
 {
+    [Table("Address")]
     public class Address
     {
         [Key]
@@ -25,12 +26,13 @@ namespace NightWorks.Models
         [Required]
         public int BuildingNumber { get; set; }
 
-
-        public virtual ICollection<Event> Events { get; set; }
+        [NotMapped]
+        [JsonIgnore] //nem volt itt
+        public virtual ICollection<NWEvent> Events { get; set; }
 
         public Address()
         {
-            Events = new HashSet<Event>();
+            Events = new HashSet<NWEvent>();
         }
     }
 }

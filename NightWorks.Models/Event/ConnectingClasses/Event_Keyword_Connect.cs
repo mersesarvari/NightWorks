@@ -1,5 +1,4 @@
-﻿using NigthWorks.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -10,21 +9,21 @@ using System.Threading.Tasks;
 
 namespace NightWorks.Models
 {
-    public class Event_UserConnect
+    [Table("Event_Keyword_Connect")]
+    public class Event_Keyword_Connect
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-
-        [Required]
-        public  EventUserRelation Relation { get; set; }
-        public int UserId { get; set; }
-        [NotMapped]
-        [JsonIgnore]
-        public virtual User User { get; set; }
         public int EventId { get; set; }
+
         [NotMapped]
         [JsonIgnore]
-        public virtual Event Event { get; set; }
+        public virtual NWEvent Event { get; set; }
+        public int KeywordId { get; set; }
+
+        [NotMapped]
+        [JsonIgnore]
+        public virtual Keyword Keyword { get; set; }
     }
 }

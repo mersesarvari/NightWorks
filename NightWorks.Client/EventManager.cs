@@ -18,8 +18,8 @@ namespace NightWorks.Client
         
         public static void EventLifetimeChecker(RestService r)
         {
-            List<Event> events = r.Get<Event>("event");
-            foreach (Event e in events)
+            List<NWEvent> events = r.Get<NWEvent>("event");
+            foreach (NWEvent e in events)
             {
                 if (DateTime.Compare(e.Endingdate, DateTime.Now) <0)
                 {

@@ -15,7 +15,7 @@ namespace NightWorks.Logic
         void Create(Keyword item);    
         void Update(Keyword item);
         void Delete(int id);
-        List<Event> GetTypeEvents(int id);
+        List<NWEvent> GetTypeEvents(int id);
         
         
         

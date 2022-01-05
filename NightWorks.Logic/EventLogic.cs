@@ -23,7 +23,7 @@ namespace NightWorks.Logic
             this.EUrepo = EUrepo;
         }        
 
-        public void Create(Event item)
+        public void Create(NWEvent item)
         {
             repo.Create(item);
         }
@@ -47,7 +47,7 @@ namespace NightWorks.Logic
 
         public List<Keyword> GetEventTypes(int id)
         {
-            Event x = Read(id);
+            NWEvent x = Read(id);
             List<Keyword> types = new List<Keyword>();
             foreach (var item in x.EKeywordConns)
             {
@@ -58,7 +58,7 @@ namespace NightWorks.Logic
 
         public List<User> GetEventUsers(int id)
         {
-            Event x = Read(id);
+            NWEvent x = Read(id);
             List<User> u = new List<User>();
             foreach (var item in x.EUserConns)
             {
@@ -67,17 +67,17 @@ namespace NightWorks.Logic
             return u;
         }
 
-        public Event Read(int id)
+        public NWEvent Read(int id)
         {
             return repo.Read(id);
         }
 
-        public IQueryable<Event> ReadAll()
+        public IQueryable<NWEvent> ReadAll()
         {
             return repo.ReadAll();
         }        
 
-        public void Update(Event item)
+        public void Update(NWEvent item)
         {
             var s = Read(item.Id);
             if (s == null)
@@ -99,12 +99,12 @@ namespace NightWorks.Logic
         //TODO Have to write LOGIC
         public void AddKeywordToEvent(int eventid, int keywordid)
         {
-            EKrepo.Create(new Event_KeywordConnect() { EventId = eventid, KeywordId = keywordid });
+            EKrepo.Create(new Event_Keyword_Connect() { EventId = eventid, KeywordId = keywordid });
         }
 
         public void AddUserToEvent(int eventid, int userid)
         {
-            EUrepo.Create(new Event_UserConnect() { EventId = eventid, UserId = userid });
+            EUrepo.Create(new Event_User_Connect() { EventId = eventid, UserId = userid });
         }
 
         public void RemoveUserFromEvent(int id)

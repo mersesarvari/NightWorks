@@ -15,7 +15,7 @@ namespace NightWorks.Repository
         {
             this.db = db;
         }
-        public void Create(Event_KeywordConnect obj)
+        public void Create(Event_Keyword_Connect obj)
         {
             if (NotExisting(obj.EventId, obj.KeywordId))
             {
@@ -42,17 +42,17 @@ namespace NightWorks.Repository
             
         }
 
-        public Event_KeywordConnect Read(int id)
+        public Event_Keyword_Connect Read(int id)
         {
             return db.Event_KeywordConnects.FirstOrDefault(o => o.Id == id);
         }
 
-        public List<Event_KeywordConnect> ReadAll()
+        public List<Event_Keyword_Connect> ReadAll()
         {
             return db.Event_KeywordConnects.ToList();
         }
 
-        public void Update(Event_KeywordConnect obj)
+        public void Update(Event_Keyword_Connect obj)
         {
             if (NotExisting(obj.EventId, obj.KeywordId))
             {
@@ -81,9 +81,9 @@ namespace NightWorks.Repository
             return existing;
         }
 
-        public Event_KeywordConnect ReadByData(int eventid, int keywordid)
+        public Event_Keyword_Connect ReadByData(int eventid, int keywordid)
         {
-            Event_KeywordConnect a=new Event_KeywordConnect();
+            Event_Keyword_Connect a=new Event_Keyword_Connect();
             var list = ReadAll();
             foreach (var item in list)
             {

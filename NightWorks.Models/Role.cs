@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace NigthWorks.Models
 {
+    [Table("Role")]
     public class Role
     {
         [Key]

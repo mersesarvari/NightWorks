@@ -35,10 +35,10 @@ namespace NightWorks.Logic
             db.SaveChanges();
         }
 
-        public List<Event> GetAllEventByAddress(int id)
+        public List<NWEvent> GetAllEventByAddress(int id)
         {
             Address x = Read(id);
-            List<Event> list = new List<Event>();
+            List<NWEvent> list = new List<NWEvent>();
             foreach (var item in x.Events)
             {
                 list.Add(item);

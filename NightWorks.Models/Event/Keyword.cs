@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace NightWorks.Models
 {
+    [Table("Keyword")]
     public class Keyword
     {
         [Key]
@@ -18,6 +19,6 @@ namespace NightWorks.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string Name { get; set; }
         
-        public virtual List<Event_KeywordConnect> EKeywordConns { get; set; }
+        public virtual List<Event_Keyword_Connect> EKeywordConns { get; set; }
     }
 }

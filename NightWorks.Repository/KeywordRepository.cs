@@ -36,10 +36,10 @@ namespace NightWorks.Repository
             db.SaveChanges();
         }
 
-        public List<Event> GetTypeEvents(int id)
+        public List<NWEvent> GetTypeEvents(int id)
         {
             Keyword x = Read(id);
-            List<Event> list = new List<Event>();
+            List<NWEvent> list = new List<NWEvent>();
             foreach (var item in x.EKeywordConns)
             {
                 list.Add(item.Event);

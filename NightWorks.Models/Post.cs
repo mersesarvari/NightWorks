@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 
 namespace NigthWorks.Models
 {
-
+    [Table("Post")]
     public class Post
     {
         [Key]
