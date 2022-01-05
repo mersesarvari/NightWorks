@@ -17,7 +17,7 @@ namespace NightWorks.Endpoint.Controllers
         }
 
         [HttpGet]
-        public object Get()
+        public object GetAll()
         {
             try
             {
@@ -46,7 +46,6 @@ namespace NightWorks.Endpoint.Controllers
             
         }
         
-
         [HttpPost]
         public void Post([FromBody] EventMainImage value)
         {

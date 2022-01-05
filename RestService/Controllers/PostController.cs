@@ -17,17 +17,35 @@ namespace NightWorks.Endpoint.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Post> Get()
+        public object GetAll()
         {
-            return logic.ReadAll();
+            try
+            {
+                return logic.ReadAll();
+            }
+            catch (System.Exception ex)
+            {
+
+                return ex.Message;
+            }
+
         }
 
         [HttpGet("{id}")]
-        public Post Get(int id)
+        public object Get(int id)
         {
-            return logic.Read(id);
+            try
+            {
+                return logic.Read(id);
+            }
+            catch (System.Exception ex)
+            {
+
+                return ex.Message;
+            }
+
         }
-        
+
 
         [HttpPost]
         public void Post([FromBody] Post value)

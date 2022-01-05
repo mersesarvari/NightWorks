@@ -18,17 +18,35 @@ namespace NightWorks.Endpoint.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Keyword> Get()
+        public object GetAll()
         {
-            return o.ReadAll();
+            try
+            {
+                return o.ReadAll();
+            }
+            catch (System.Exception ex)
+            {
+
+                return ex.Message;
+            }
+
         }
 
         [HttpGet("{id}")]
-        public Keyword Get(int id)
+        public object Get(int id)
         {
-            return o.Read(id);
+            try
+            {
+                return o.Read(id);
+            }
+            catch (System.Exception ex)
+            {
+
+                return ex.Message;
+            }
+
         }
-        
+
 
         [HttpPost]
         public void Post([FromBody] Keyword value)

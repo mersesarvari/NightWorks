@@ -11,36 +11,53 @@ namespace NightWorks.Endpoint.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        IUser_Logic cl;
+        IUser_Logic logic;
 
         public UserController(IUser_Logic cl)
         {
-            this.cl = cl;
+            this.logic = cl;
         }
-        // GET: /car
         [HttpGet]
-        public IEnumerable<User> GetAll()
+        public object GetAll()
         {
-            return cl.ReadAll();
+            try
+            {
+                return logic.ReadAll();
+            }
+            catch (System.Exception ex)
+            {
+
+                return ex.Message;
+            }
+
         }
 
         [HttpGet("{id}")]
-        public User Get(int id)
+        public object Get(int id)
         {
-            return cl.Read(id);
+            try
+            {
+                return logic.Read(id);
+            }
+            catch (System.Exception ex)
+            {
+
+                return ex.Message;
+            }
+
         }
 
 
         [HttpPost]
         public void Post([FromBody] User value)
         {
-            cl.Create(value);
+            logic.Create(value);
         }
 
         [HttpPut]
         public void Put([FromBody] User value)
         {
-            cl.Update(value);
+            logic.Update(value);
         }
 
         [HttpDelete("{id}")]
@@ -48,7 +65,7 @@ namespace NightWorks.Endpoint.Controllers
         {
             try
             {
-                cl.Delete(id);
+                logic.Delete(id);
                 return new CommunicationMessage("Deleting was succesfull: " + id);
             }
             catch (Exception ex)
@@ -61,8 +78,8 @@ namespace NightWorks.Endpoint.Controllers
         {
             try
             {
-                cl.Delete(cl.GetUserByEmail(email).Id);
-                return new CommunicationMessage("Deleting was succesfull: "+cl.GetUserByEmail(email).Email);
+                logic.Delete(logic.GetUserByEmail(email).Id);
+                return new CommunicationMessage("Deleting was succesfull: "+ logic.GetUserByEmail(email).Email);
             }
             catch (Exception ex)
             {
@@ -78,7 +95,7 @@ namespace NightWorks.Endpoint.Controllers
         {
             try
             {
-                return cl.Login(email, password);
+                return logic.Login(email, password);
             }
             catch (Exception ex)
             {
@@ -88,7 +105,7 @@ namespace NightWorks.Endpoint.Controllers
         [HttpPost("manage")]
         public void RegisterUser([FromBody] User value)
         {
-            cl.Create(value);
+            logic.Create(value);
         }
     }
 }
