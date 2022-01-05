@@ -11,7 +11,7 @@ namespace NigthWorks.Data
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<Post> Posts { get; set; }
-        public virtual DbSet<EventMainImage> EventMainImages { get; set; }
+        public virtual DbSet<ImageHandler> EventMainImages { get; set; }
 
         //Alap
         public virtual DbSet<Address> Addresses { get; set; }
@@ -45,10 +45,7 @@ namespace NigthWorks.Data
             mb.Entity<Role>().HasIndex(X => X.Name).IsUnique();
 
 
-            mb.Entity<NWEvent>()
-                .HasOne(a => a.EventMainImage)
-                .WithOne(b => b.Event)
-                .HasForeignKey<EventMainImage>(b => b.NWEventid);
+           
 
             mb.Entity<User>(entity =>
             {

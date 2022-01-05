@@ -8,8 +8,16 @@ namespace NigthWorks.Models
 {
     public enum EventUserRelation
     {        
-        Interest,
-        Going,
-        Manager,
+        Interest=0,
+        Going=1,
+        Manager=2
+    }
+    public enum ImageType
+    { 
+        ProfilePicture=0,
+        EventCoverImage=1,
+        EventImage=2
+
+
     }
 }

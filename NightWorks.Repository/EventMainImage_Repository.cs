@@ -12,7 +12,7 @@ namespace NightWorks.Repository
     public class EventMainImage_Repository : IEventMainImage_Repository
     {
         NWDbContext db;
-        public void Create(EventMainImage item)
+        public void Create(ImageHandler item)
         {
             db.EventMainImages.Add(item);
             db.SaveChanges();
@@ -24,7 +24,7 @@ namespace NightWorks.Repository
             db.SaveChanges();
         }
 
-        public EventMainImage Read(int id)
+        public ImageHandler Read(int id)
         {
             if (db == null)
             {
@@ -36,7 +36,7 @@ namespace NightWorks.Repository
             }
         }
 
-        public IQueryable<EventMainImage> ReadAll()
+        public IQueryable<ImageHandler> ReadAll()
         {
             if (db == null)
             {
@@ -49,10 +49,9 @@ namespace NightWorks.Repository
             
         }
 
-        public void Update(EventMainImage item)
+        public void Update(ImageHandler item)
         {
             var oldbrand = Read(item.Id);
-            oldbrand.Data = item.Data;
             db.SaveChanges();
         }
     }

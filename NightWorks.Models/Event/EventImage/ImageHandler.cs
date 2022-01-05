@@ -9,22 +9,25 @@ using System.Threading.Tasks;
 
 namespace NigthWorks.Models
 {
-    [Table("EventMainImage")]
-    public class EventMainImage
+    [Table("ImageHandler")]
+    public class ImageHandler
     {
         [Key][DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [Required]
-        public string Name { get; set; }
+        public string Dataroot { get; set; }
+        
+        [Required]
+        public string Extension { get; set; }
 
         [Required]
-        public byte[] Data { get; set; }
+        public int SizeX { get; set; }
 
-        [NotMapped][JsonIgnore]
-        public virtual NWEvent Event { get; set; }
+        [Required]
+        public int SizeY { get; set; }
 
-        [ForeignKey(nameof(Event))]
-        public int NWEventid { get; set; }
+        [Required]
+        public ImageType Type { get; set; }
     }
 }

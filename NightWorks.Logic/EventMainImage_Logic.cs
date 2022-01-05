@@ -18,12 +18,8 @@ namespace NightWorks.Logic
             this.repo = repo;
         }
 
-        public void Create(EventMainImage obj)
+        public void Create(ImageHandler obj)
         {
-            if (obj.Name == "" || obj.Data == null)
-            {
-                throw new Exception("Not all data have been verified. Something is missing");
-            }
             repo.Create(obj);
         }
 
@@ -39,12 +35,12 @@ namespace NightWorks.Logic
             }
         }
 
-        public EventMainImage Read(int id)
+        public ImageHandler Read(int id)
         {
             return repo.Read(id);
         }
 
-        public IEnumerable<EventMainImage> ReadAll()
+        public IEnumerable<ImageHandler> ReadAll()
         {
             if (repo.ReadAll()==null)
             {
@@ -57,16 +53,11 @@ namespace NightWorks.Logic
             
         }
 
-        public void Update(EventMainImage obj)
+        public void Update(ImageHandler obj)
         {
-            if (obj.Name == "" || obj.Data == null)
-            {
+
                 repo.Update(obj);
-            }
-            else
-            {
-                throw new Exception("Some Data is not valid");
-            }
+
         }
     }
 }

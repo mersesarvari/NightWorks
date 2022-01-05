@@ -10,10 +10,10 @@ namespace NigthWorks.Repository
 {
     public interface IEventMainImage_Repository
     {
-        void Create(EventMainImage item);
+        void Create(ImageHandler item);
         void Delete(int id);
-        EventMainImage Read(int id);
-        IQueryable<EventMainImage> ReadAll();
-        void Update(EventMainImage item);
+        ImageHandler Read(int id);
+        IQueryable<ImageHandler> ReadAll();
+        void Update(ImageHandler item);
     }
 }

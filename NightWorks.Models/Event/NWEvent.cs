@@ -37,7 +37,7 @@ namespace NigthWorks.Models
 
         //[NotMapped]
         //[JsonIgnore] //nem volt itt
-        public virtual EventMainImage EventMainImage { get; set; }
+        public virtual ImageHandler EventMainImage { get; set; }
         /*
         [ForeignKey(nameof(EventMainImage))]
         public int EventMainImage_Id { get; set; }

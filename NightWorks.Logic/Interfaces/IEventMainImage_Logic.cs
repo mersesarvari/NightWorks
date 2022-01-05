@@ -10,10 +10,10 @@ namespace NigthWorks.Logic
 {
     public interface IEventMainImage_Logic
     {
-        EventMainImage Read(int id);
-        IEnumerable<EventMainImage> ReadAll();
-        void Create(EventMainImage obj);
-        void Update(EventMainImage obj);
+        ImageHandler Read(int id);
+        IEnumerable<ImageHandler> ReadAll();
+        void Create(ImageHandler obj);
+        void Update(ImageHandler obj);
         void Delete(int id);
     }
 }

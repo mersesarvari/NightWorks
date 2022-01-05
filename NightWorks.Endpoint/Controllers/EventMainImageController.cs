@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using NigthWorks.Logic;
 using NigthWorks.Models;
+using System.IO;
 
 namespace NightWorks.Endpoint.Controllers
 {
@@ -47,13 +48,13 @@ namespace NightWorks.Endpoint.Controllers
         }
         
         [HttpPost]
-        public void Post([FromBody] EventMainImage value)
+        public void Post([FromBody] ImageHandler value)
         {
             logic.Create(value);
         }
 
         [HttpPut]
-        public void Put([FromBody] EventMainImage value)
+        public void Put([FromBody] ImageHandler value)
         {
             logic.Update(value);
         }
@@ -63,5 +64,7 @@ namespace NightWorks.Endpoint.Controllers
         {
             logic.Delete(id);
         }
+
+        
     }
 }
