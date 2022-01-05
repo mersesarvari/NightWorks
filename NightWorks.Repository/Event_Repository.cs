@@ -65,12 +65,26 @@ namespace NightWorks.Repository
 
         public NWEvent Read(int id)
         {
-            return db.Events.FirstOrDefault(t => t.Id == id);
+            if (db == null)
+            {
+                throw new Exception("There is no data in database");
+            }
+            else
+            {
+                return db.Events.FirstOrDefault(t => t.Id == id);
+            }
         }
 
         public IQueryable<NWEvent> ReadAll()
         {
-            return db.Events;
+            if (db == null)
+            {
+                throw new Exception("There is no data in database");
+            }
+            else
+            {
+                return db.Events;
+            }
         }        
 
         public void Update(NWEvent item)

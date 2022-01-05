@@ -20,7 +20,14 @@ namespace NigthWorks.Repository
 
         public User Read(int id)
         {
-            return db.Users.FirstOrDefault(t => t.Id == id);
+            if (db==null)
+            {
+                throw new Exception("There is no data in database");
+            }
+            else
+            {
+                return db.Users.FirstOrDefault(t => t.Id == id);
+            }            
         }
 
         public void Create(User obj)
@@ -59,19 +66,34 @@ namespace NigthWorks.Repository
 
         public IQueryable<User> ReadAll()
         {
-            return db.Users;
+            if (db == null)
+            {
+                throw new Exception("There is no data in database");
+            }
+            else
+            {
+                return db.Users;
+            }
         }
 
         public User GetUserbyEmail(string email)
         {
-            if (db.Users.FirstOrDefault(t => t.Email == email) != null)
+            if (db == null)
             {
-                return db.Users.FirstOrDefault(t => t.Email == email);
+                throw new Exception("There is no data in database");
             }
             else
             {
-                throw new Exception("Email address doesnt exists!");
+                if (db.Users.FirstOrDefault(t => t.Email == email) != null)
+                {
+                    return db.Users.FirstOrDefault(t => t.Email == email);
+                }
+                else
+                {
+                    throw new Exception("Email address doesnt exists!");
+                }
             }
+            
         }
 
     }

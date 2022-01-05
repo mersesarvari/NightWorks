@@ -5,7 +5,7 @@ using NigthWorks.Models;
 
 namespace NightWorks.Endpoint.Controllers
 {
-    [Route("/eventmainimage")]
+    [Route("/eventimage")]
     [ApiController]
     public class EventMainImageController : ControllerBase
     {
@@ -17,23 +17,33 @@ namespace NightWorks.Endpoint.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<EventMainImage> Get()
+        public object Get()
         {
-            if (logic.ReadAll()==null)
-            {
-                throw new System.Exception("There is no EventmainImage in our system!");
-            }
-            else
+            try
             {
                 return logic.ReadAll();
+            }
+            catch (System.Exception ex)
+            {
+
+                return ex.Message;
             }
             
         }
 
         [HttpGet("{id}")]
-        public EventMainImage Get(int id)
+        public object Get(int id)
         {
-            return logic.Read(id);
+            try
+            {
+                return logic.Read(id);
+            }
+            catch (System.Exception ex)
+            {
+
+                return ex.Message;
+            }
+            
         }
         
 

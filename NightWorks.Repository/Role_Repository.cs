@@ -20,7 +20,14 @@ namespace NigthWorks.Repository
 
         public Role Read(int id)
         {
-            return db.Roles.FirstOrDefault(t => t.Id == id);
+            if (db == null)
+            {
+                throw new Exception("There is no data in database");
+            }
+            else
+            {
+                return db.Roles.FirstOrDefault(t => t.Id == id);
+            }
         }
         public void Create(Role obj)
         {
@@ -44,7 +51,14 @@ namespace NigthWorks.Repository
 
         public IQueryable<Role> ReadAll()
         {
-            return db.Roles;
+            if (db == null)
+            {
+                throw new Exception("There is no data in database");
+            }
+            else
+            {
+                return db.Roles;
+            }
         }
     }
 }

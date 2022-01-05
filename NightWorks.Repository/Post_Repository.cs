@@ -19,7 +19,14 @@ namespace NigthWorks.Repository
 
         public Post Read(int id)
         {
-            return db.Posts.FirstOrDefault(t => t.Id == id);
+            if (db == null)
+            {
+                throw new Exception("There is no data in database");
+            }
+            else
+            {
+                return db.Posts.FirstOrDefault(t => t.Id == id);
+            }
         }
         public void Create(Post obj)
         {
@@ -42,7 +49,14 @@ namespace NigthWorks.Repository
 
         public IQueryable<Post> ReadAll()
         {
-            return db.Posts;
+            if (db == null)
+            {
+                throw new Exception("There is no data in database");
+            }
+            else
+            {
+                return db.Posts;
+            }
         }
 
 

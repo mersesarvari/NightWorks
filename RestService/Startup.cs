@@ -31,7 +31,7 @@ namespace NightWorks.Endpoint
             services.AddTransient<IEvent_Logic, Event_Logic>();
             services.AddTransient<IKeyword_Logic, Keyword_Logic>();
             services.AddTransient<IAddress_Logic, Address_Logic>();
-            //services.AddTransient<IEventMainImageLogic, EventMainImageLogic>();
+            services.AddTransient<IEventMainImage_Logic, EventMainImage_Logic>();
             //services.AddTransient<IEvent_KeywordConnectLogic, Event_KeywordConnectLogic>(); //Még nincsen készen
 
             
@@ -43,7 +43,7 @@ namespace NightWorks.Endpoint
             services.AddTransient<IAddressRepository, AddressRepository>();
             services.AddTransient<IEvent_Keyword_ConnectRepository, Event_Keyword_ConnectRepository>();
             services.AddTransient<IEvent_User_ConnectRepository, Event_User_Connect_Repository>();
-            //services.AddTransient<IEventMainImageRepository, EventMainImageRepository>();
+            services.AddTransient<IEventMainImage_Repository, EventMainImage_Repository>();
 
 
             services.AddTransient<NWDbContext, NWDbContext>();

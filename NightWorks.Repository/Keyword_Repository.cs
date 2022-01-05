@@ -48,12 +48,26 @@ namespace NightWorks.Repository
 
         public Keyword Read(int id)
         {
-            return db.Keywords.FirstOrDefault(t => t.Id == id);
+            if (db == null)
+            {
+                throw new Exception("There is no data in database");
+            }
+            else
+            {
+                return db.Keywords.FirstOrDefault(t => t.Id == id);
+            }
         }
 
         public IQueryable<Keyword> ReadAll()
         {
-            return db.Keywords;
+            if (db == null)
+            {
+                throw new Exception("There is no data in database");
+            }
+            else
+            {
+                return db.Keywords;
+            }
         }
 
         public void Update(Keyword item)

@@ -1,5 +1,6 @@
 ﻿using NigthWorks.Logic;
 using NigthWorks.Models;
+using NigthWorks.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +11,9 @@ namespace NightWorks.Logic
 {
     public class EventMainImage_Logic : IEventMainImage_Logic
     {
-        IEventMainImage_Logic repo;
+        IEventMainImage_Repository repo;
 
-        public EventMainImage_Logic(IEventMainImage_Logic repo)
+        public EventMainImage_Logic(IEventMainImage_Repository repo)
         {
             this.repo = repo;
         }
@@ -45,7 +46,15 @@ namespace NightWorks.Logic
 
         public IEnumerable<EventMainImage> ReadAll()
         {
-            return repo.ReadAll().ToList();
+            if (repo.ReadAll()==null)
+            {
+                throw new Exception("cant load data because there is no data");
+            }
+            else
+            {
+                return repo.ReadAll();
+            }
+            
         }
 
         public void Update(EventMainImage obj)

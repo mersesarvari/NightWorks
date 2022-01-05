@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace NightWorks.Repository
 {
-    public class EventMainImage_Repository : IEventMainImageRepository
+    public class EventMainImage_Repository : IEventMainImage_Repository
     {
         NWDbContext db;
         public void Create(EventMainImage item)
@@ -26,12 +26,27 @@ namespace NightWorks.Repository
 
         public EventMainImage Read(int id)
         {
-            return db.EventMainImages.FirstOrDefault(t => t.Id == id);
+            if (db == null)
+            {
+                throw new Exception("There is no data in database");
+            }
+            else
+            {
+                return db.EventMainImages.FirstOrDefault(t => t.Id == id);
+            }
         }
 
         public IQueryable<EventMainImage> ReadAll()
         {
-            return db.EventMainImages;
+            if (db == null)
+            {
+                throw new Exception("There is no data in that table");
+            }
+            else
+            {
+                return db.EventMainImages;
+            }
+            
         }
 
         public void Update(EventMainImage item)

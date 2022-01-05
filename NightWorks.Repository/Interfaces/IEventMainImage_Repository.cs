@@ -8,7 +8,7 @@ using NigthWorks.Models;
 
 namespace NigthWorks.Repository
 {
-    public interface IEventMainImageRepository
+    public interface IEventMainImage_Repository
     {
         void Create(EventMainImage item);
         void Delete(int id);

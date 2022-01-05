@@ -45,12 +45,26 @@ namespace NightWorks.Repository
 
         public Event_Keyword_Connect Read(int id)
         {
-            return db.Event_Keyword_Connects.FirstOrDefault(o => o.Id == id);
+            if (db == null)
+            {
+                throw new Exception("There is no data in database");
+            }
+            else
+            {
+                return db.Event_Keyword_Connects.FirstOrDefault(t => t.Id == id);
+            }
         }
 
         public List<Event_Keyword_Connect> ReadAll()
         {
-            return db.Event_Keyword_Connects.ToList();
+            if (db == null)
+            {
+                throw new Exception("There is no data in database");
+            }
+            else
+            {
+                return db.Event_Keyword_Connects.ToList();
+            }
         }
 
         public void Update(Event_Keyword_Connect obj)

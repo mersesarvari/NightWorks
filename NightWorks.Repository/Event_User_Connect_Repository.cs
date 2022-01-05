@@ -44,12 +44,26 @@ namespace NightWorks.Repository
 
         public Event_User_Connect Read(int id)
         {
-            return db.Event_User_Connects.FirstOrDefault(o => o.Id == id);
+            if (db == null)
+            {
+                throw new Exception("There is no data in database");
+            }
+            else
+            {
+                return db.Event_User_Connects.FirstOrDefault(t => t.Id == id);
+            }
         }
 
         public List<Event_User_Connect> ReadAll()
         {
-            return db.Event_User_Connects.ToList();
+            if (db == null)
+            {
+                throw new Exception("There is no data in database");
+            }
+            else
+            {
+                return db.Event_User_Connects.ToList();
+            }
         }
 
         public void Update(Event_User_Connect obj)

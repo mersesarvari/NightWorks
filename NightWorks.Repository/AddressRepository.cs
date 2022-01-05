@@ -48,12 +48,26 @@ namespace NightWorks.Repository
 
         public Address Read(int id)
         {
-            return db.Addresses.FirstOrDefault(t => t.Id == id);
+            if (db == null)
+            {
+                throw new Exception("There is no data in database");
+            }
+            else
+            {
+                return db.Addresses.FirstOrDefault(t => t.Id == id);
+            }
         }
 
         public IQueryable<Address> ReadAll()
         {
-            return db.Addresses;
+            if (db == null)
+            {
+                throw new Exception("There is no data in database");
+            }
+            else
+            {
+                return db.Addresses;
+            }
         }
 
         public void Update(Address item)
