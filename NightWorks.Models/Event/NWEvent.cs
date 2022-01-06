@@ -57,12 +57,7 @@ namespace NigthWorks.Models
         public virtual List<Event_User_Connect> EUserConns { get; set; }
 
 
-        [NotMapped]
-        [JsonIgnore]
-        public virtual ImageHandler ImageHandler { get; set; }
-
-        [ForeignKey(nameof(ImageHandler))]
-        public int ImageHandlerId { get; set; }
+       
 
     }
 }

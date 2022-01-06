@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace NightWorks.Repository
 {
-    public class Event_Repository:IEventRepository 
+    public class Event_Repository:IEvent_Repository 
     {
         NWDbContext db;
         public Event_Repository(NWDbContext db)

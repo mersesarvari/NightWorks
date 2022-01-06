@@ -35,15 +35,15 @@ namespace NightWorks.Endpoint
             //services.AddTransient<IEvent_KeywordConnectLogic, Event_KeywordConnectLogic>(); //Még nincsen készen
 
             
-            services.AddTransient<IUserRepository, User_Repository>();
-            services.AddTransient<IRoleRepository, Role_Repository>();
-            services.AddTransient<IPostRepository, Post_Repository>();         
-            services.AddTransient<IEventRepository, Event_Repository>();
-            services.AddTransient<IKeywordRepository, Keyword_Repository>();
-            services.AddTransient<IAddressRepository, AddressRepository>();
+            services.AddTransient<IUser_Repository, User_Repository>();
+            services.AddTransient<IRole_Repository, Role_Repository>();
+            services.AddTransient<IPost_Repository, Post_Repository>();         
+            services.AddTransient<IEvent_Repository, Event_Repository>();
+            services.AddTransient<IKeyword_Repository, Keyword_Repository>();
+            services.AddTransient<IAddress_Repository, Address_Repository>();
             services.AddTransient<IEvent_Keyword_ConnectRepository, Event_Keyword_ConnectRepository>();
-            services.AddTransient<IEvent_User_ConnectRepository, Event_User_Connect_Repository>();
-            services.AddTransient<IEventMainImage_Repository, EventMainImage_Repository>();
+            services.AddTransient<IEvent_User_Connect_Repository, Event_User_Connect_Repository>();
+            services.AddTransient<IFilemanager_Repository, EventMainImage_Repository>();
 
 
             services.AddTransient<NWDbContext, NWDbContext>();

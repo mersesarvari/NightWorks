@@ -12,10 +12,10 @@ namespace NightWorks.Logic
 {
     public class Event_Logic:IEvent_Logic 
     {
-        IEventRepository repo;
+        IEvent_Repository repo;
         IEvent_Keyword_ConnectRepository EKrepo;
-        IEvent_User_ConnectRepository EUrepo;
-        public Event_Logic(IEventRepository repo, IEvent_Keyword_ConnectRepository EKrepo, IEvent_User_ConnectRepository EUrepo)
+        IEvent_User_Connect_Repository EUrepo;
+        public Event_Logic(IEvent_Repository repo, IEvent_Keyword_ConnectRepository EKrepo, IEvent_User_Connect_Repository EUrepo)
         {
             this.repo = repo;
             this.EKrepo = EKrepo;

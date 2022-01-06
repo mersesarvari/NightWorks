@@ -9,9 +9,9 @@ namespace NigthWorks.Logic
 {
     public class User_Logic : IUser_Logic
     {
-        IUserRepository repo;
+        IUser_Repository repo;
 
-        public User_Logic(IUserRepository repo)
+        public User_Logic(IUser_Repository repo)
         {
             this.repo = repo;
         }

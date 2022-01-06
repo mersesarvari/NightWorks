@@ -11,14 +11,14 @@ namespace NightWorks.Logic
 {
     public class EventMainImage_Logic : IEventMainImage_Logic
     {
-        IEventMainImage_Repository repo;
+        IFilemanager_Repository repo;
 
-        public EventMainImage_Logic(IEventMainImage_Repository repo)
+        public EventMainImage_Logic(IFilemanager_Repository repo)
         {
             this.repo = repo;
         }
 
-        public void Create(ImageHandler obj)
+        public void Create(_File obj)
         {
             repo.Create(obj);
         }
@@ -35,12 +35,12 @@ namespace NightWorks.Logic
             }
         }
 
-        public ImageHandler Read(int id)
+        public _File Read(int id)
         {
             return repo.Read(id);
         }
 
-        public IEnumerable<ImageHandler> ReadAll()
+        public IEnumerable<_File> ReadAll()
         {
             if (repo.ReadAll()==null)
             {
@@ -53,7 +53,7 @@ namespace NightWorks.Logic
             
         }
 
-        public void Update(ImageHandler obj)
+        public void Update(_File obj)
         {
 
                 repo.Update(obj);

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace NightWorks.Repository
 {
-    public class Keyword_Repository : IKeywordRepository
+    public class Keyword_Repository : IKeyword_Repository
     {
         NWDbContext db;
         public Keyword_Repository(NWDbContext db)

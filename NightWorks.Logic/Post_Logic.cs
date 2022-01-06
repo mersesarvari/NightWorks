@@ -10,9 +10,9 @@ namespace NigthWorks.Logic
 {
     public class Post_Logic : IPost_Logic
     {
-        IPostRepository repo;
+        IPost_Repository repo;
 
-        public Post_Logic(IPostRepository weaponRepository)
+        public Post_Logic(IPost_Repository weaponRepository)
         {
             this.repo = weaponRepository;
         }

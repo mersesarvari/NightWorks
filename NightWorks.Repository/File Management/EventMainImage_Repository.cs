@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace NightWorks.Repository
 {
-    public class EventMainImage_Repository : IEventMainImage_Repository
+    public class EventMainImage_Repository : IFilemanager_Repository
     {
         NWDbContext db;
-        public void Create(ImageHandler item)
+        public void Create(_File item)
         {
             db.EventMainImages.Add(item);
             db.SaveChanges();
@@ -24,7 +24,7 @@ namespace NightWorks.Repository
             db.SaveChanges();
         }
 
-        public ImageHandler Read(int id)
+        public _File Read(int id)
         {
             if (db == null)
             {
@@ -36,7 +36,7 @@ namespace NightWorks.Repository
             }
         }
 
-        public IQueryable<ImageHandler> ReadAll()
+        public IQueryable<_File> ReadAll()
         {
             if (db == null)
             {
@@ -49,7 +49,7 @@ namespace NightWorks.Repository
             
         }
 
-        public void Update(ImageHandler item)
+        public void Update(_File item)
         {
             var oldbrand = Read(item.Id);
             db.SaveChanges();

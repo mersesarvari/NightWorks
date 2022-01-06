@@ -10,9 +10,9 @@ namespace NigthWorks.Logic
 {
     public class Role_Logic : IRole_Logic
     {
-        IRoleRepository brandRepository;
+        IRole_Repository brandRepository;
 
-        public Role_Logic(IRoleRepository brandRepository)
+        public Role_Logic(IRole_Repository brandRepository)
         {
             this.brandRepository = brandRepository;
         }

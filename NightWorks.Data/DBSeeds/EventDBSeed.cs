@@ -31,8 +31,7 @@ namespace NightWorks.Data
                 Endingdate = new DateTime(2021, 12, 15, 18, 00, 00),
                 EventText = "[Event1] This is our test events text. This text will fill de body od our posts",
                 Address_Id = 1,
-                Owner_Id = 1,
-                ImageHandlerId=1
+                Owner_Id = 1
 
             };
             NWEvent e2 = new NWEvent()
@@ -43,8 +42,7 @@ namespace NightWorks.Data
                 Endingdate = new DateTime(2022, 01, 03, 00, 00, 00),
                 EventText = "[Event2] This is our test events text. This text will fill de body od our posts",
                 Address_Id=2,
-                Owner_Id = 1,
-                ImageHandlerId = 1
+                Owner_Id = 1
 
             };
             NWEvent e3 = new NWEvent()
@@ -55,8 +53,7 @@ namespace NightWorks.Data
                 Endingdate = new DateTime(2022, 12, 15, 18, 00, 00),
                 EventText = "[Event3] This is our test events text. This text will fill de body od our posts",
                 Address_Id = 2,
-                Owner_Id = 2,
-                ImageHandlerId = 1
+                Owner_Id = 2
 
             };
             events.Add(e1);
