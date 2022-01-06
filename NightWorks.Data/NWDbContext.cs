@@ -80,11 +80,12 @@ namespace NigthWorks.Data
                     .WithMany(y => y.Events)
                     .HasForeignKey(x => x.Address_Id)
                     .OnDelete(DeleteBehavior.Cascade);
-
+                /*
                 entity.HasOne(x => x.ImageHandler)
                     .WithMany(y => y.Events)
                     .HasForeignKey(x => x.ImageHandlerId)
                     .OnDelete(DeleteBehavior.Cascade);
+                */
             });
 
             //Alap
