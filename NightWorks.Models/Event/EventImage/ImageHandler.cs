@@ -22,8 +22,20 @@ namespace NigthWorks.Models
         [Required]
         public string Extension { get; set; }
 
+        
         [Required]
         public ImageType Type { get; set; }
+        
+        
 
+        [NotMapped]
+        [JsonIgnore] //Ez eredetileg nem volt itt
+        public virtual ICollection<NWEvent> Events { get; set; }
+
+
+        public ImageHandler()
+        {
+            Events = new List<NWEvent>();
+        }
     }
 }

@@ -16,10 +16,7 @@ namespace NightWorks.Data.DBSeeds
         }
         public static void LoadData(ModelBuilder mb)
         {
-            ImageHandler image1 = new ImageHandler()
-            {
-                
-            };
+
         }
 
     }

@@ -45,8 +45,17 @@ namespace NigthWorks.Data
             //Identitás checkek:
             mb.Entity<User>().HasIndex(X => X.Email).IsUnique();
             mb.Entity<Role>().HasIndex(X => X.Name).IsUnique();
-
-            //mb.Entity<ImageHandler>().HasOne(x => x.Event).WithOne(y => y.EventMainImage).HasForeignKey<NWEvent>(b => b.EventMainImageId);
+            /*
+            mb.Entity<ImageHandler>()
+                .HasOne(a => a.NWEvent).WithOne(b => b.ImageHandler)
+                .HasForeignKey<NWEvent>(e => e.ImageHandlerId);
+            */
+            /*
+            mb.Entity<NWEvent>(entity =>
+            {
+                
+            });
+            */
 
 
             mb.Entity<User>(entity =>
@@ -70,6 +79,11 @@ namespace NigthWorks.Data
                 entity.HasOne(x => x.Address)
                     .WithMany(y => y.Events)
                     .HasForeignKey(x => x.Address_Id)
+                    .OnDelete(DeleteBehavior.Cascade);
+
+                entity.HasOne(x => x.ImageHandler)
+                    .WithMany(y => y.Events)
+                    .HasForeignKey(x => x.ImageHandlerId)
                     .OnDelete(DeleteBehavior.Cascade);
             });
 
