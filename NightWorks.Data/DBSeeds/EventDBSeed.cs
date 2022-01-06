@@ -32,7 +32,7 @@ namespace NightWorks.Data
                 EventText = "[Event1] This is our test events text. This text will fill de body od our posts",
                 Address_Id = 1,
                 Owner_Id = 1,
-                //EventMainImage_Id=1
+                //EventMainImageId=1
 
             };
             NWEvent e2 = new NWEvent()
@@ -44,6 +44,7 @@ namespace NightWorks.Data
                 EventText = "[Event2] This is our test events text. This text will fill de body od our posts",
                 Address_Id=2,
                 Owner_Id = 1,
+                //EventMainImageId = 1
 
             };
             NWEvent e3 = new NWEvent()
@@ -55,6 +56,7 @@ namespace NightWorks.Data
                 EventText = "[Event3] This is our test events text. This text will fill de body od our posts",
                 Address_Id = 2,
                 Owner_Id = 2,
+                //EventMainImageId = 1
 
             };
             events.Add(e1);

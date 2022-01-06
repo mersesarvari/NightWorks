@@ -46,6 +46,8 @@ namespace NigthWorks.Data
             mb.Entity<User>().HasIndex(X => X.Email).IsUnique();
             mb.Entity<Role>().HasIndex(X => X.Name).IsUnique();
 
+            //mb.Entity<ImageHandler>().HasOne(x => x.Event).WithOne(y => y.EventMainImage).HasForeignKey<NWEvent>(b => b.EventMainImageId);
+
 
             mb.Entity<User>(entity =>
             {
@@ -61,6 +63,7 @@ namespace NigthWorks.Data
                     .WithMany(y => y.Posts)
                     .HasForeignKey(x => x.Post_UserId)
                     .OnDelete(DeleteBehavior.Cascade);
+
             });
             mb.Entity<NWEvent>(entity =>
             {

@@ -25,10 +25,5 @@ namespace NigthWorks.Models
         [Required]
         public ImageType Type { get; set; }
 
-        [ForeignKey(nameof(NWEvent))]
-        public int EventId { get; set; }
-        
-
-        public virtual NWEvent Event { get; set; }
     }
 }

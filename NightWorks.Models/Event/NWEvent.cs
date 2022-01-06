@@ -36,9 +36,6 @@ namespace NigthWorks.Models
         public string EventText { get; set; }
 
 
-        
-        public virtual ImageHandler EventMainImage { get; set; }
-
         [NotMapped]
         [JsonIgnore] //nem volt itt
         public virtual User User { get; set; }
