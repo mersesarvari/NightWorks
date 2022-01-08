@@ -28,11 +28,6 @@ namespace NigthWorks.Models
 
         [NotMapped]
         [JsonIgnore] //nem volt itt
-        public virtual ICollection<NWEvent> Events { get; set; }
-
-        public Address()
-        {
-            Events = new HashSet<NWEvent>();
-        }
+        public virtual List<NWEvent> Events { get; set; }
     }
 }

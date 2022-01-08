@@ -13,22 +13,33 @@ namespace NigthWorks.Models
     public class _File
     {
         [Key][DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; private set;}
+        public int Id { get;  set;}
         [Required]
         public string Name { get; set; }
-        [Required]
-        public string Root { get; set; }
+        
 
+        //Root is equals to Directory+Name+Extension
         [Required]
-        public string Directory { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public string Path { get; set; }
+
         [Required]
         public string Extension { get; set; }
-
-        [Required]
-        public double Size { get; set; }   
-        
+          
         [Required]
         public ImageType Type { get; set; }
-        
+
+        [NotMapped]
+        [JsonIgnore]
+        public virtual NWEvent Event { get; set; }
+
+        [ForeignKey(nameof(NWEvent))]
+        public int EventId { get; set; }
+
+        public _File()
+        {
+            //Root = @"D:\NWRoot\";
+        }
+
     }
 }

@@ -13,7 +13,7 @@ namespace NigthWorks.Data
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<Post> Posts { get; set; }
-        public virtual DbSet<_File> EventMainImages { get; set; }
+        public virtual DbSet<_File> Files { get; set; }
 
         //Alap
         public virtual DbSet<Address> Addresses { get; set; }
@@ -45,6 +45,15 @@ namespace NigthWorks.Data
             //Identitás checkek:
             mb.Entity<User>().HasIndex(X => X.Email).IsUnique();
             mb.Entity<Role>().HasIndex(X => X.Name).IsUnique();
+
+            mb.Entity<_File>(entity =>
+            {
+                entity.HasOne(x => x.Event)
+                    .WithMany(y => y.Files)
+                    .HasForeignKey(x => x.EventId)
+                    .OnDelete(DeleteBehavior.Cascade);
+
+            });
 
             mb.Entity<User>(entity =>
             {

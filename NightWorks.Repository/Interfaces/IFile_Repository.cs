@@ -8,11 +8,13 @@ using NigthWorks.Models;
 
 namespace NigthWorks.Repository
 {
-    public interface IFilemanager_Repository
+    public interface IFile_Repository
     {
         void Create(_File item);
         void Delete(int id);
+        void Delete(string path);
         _File Read(int id);
+        _File Read(string path);
         IQueryable<_File> ReadAll();
         void Update(_File item);
     }

@@ -16,6 +16,7 @@ namespace NigthWorks.Models
         public NWEvent()
         {
             Creationtime = DateTime.Now;
+            //Files = new HashSet<_File>();
         }
 
         [Key][DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -57,7 +58,7 @@ namespace NigthWorks.Models
         public virtual List<Event_User_Connect> EUserConns { get; set; }
 
 
-       
+        public virtual List<_File> Files { get; set; }
 
     }
 }

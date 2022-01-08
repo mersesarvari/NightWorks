@@ -27,8 +27,15 @@ namespace NigthWorks.Client
             var address = restService.Get<Address>("address");
 
             var image = restService.Get<Address>("EventMainImage");
-
-            //EventManager.EventLifetimeChecker(restService);
+            /*
+            _File file = new _File()
+            {
+                Id = 1,
+                Directory = @"Images\",
+                Name = "testimage",
+                Extension = ".jpg"
+            };
+            */
 
             
         }

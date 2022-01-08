@@ -42,12 +42,8 @@ namespace NigthWorks.Models
         public int Roleid { get; set; }
         [NotMapped]
         [JsonIgnore]//nem volt itt
-        public virtual ICollection<Post> Posts { get; set; }
+        public virtual List<Post> Posts { get; set; }
 
-        public User()
-        {
-            Posts = new HashSet<Post>();
-        }
         [NotMapped]
         [JsonIgnore]
         public virtual List<Event_User_Connect> EUserConns { get; set; }

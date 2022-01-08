@@ -11,9 +11,9 @@ namespace NightWorks.Logic
 {
     public class EventMainImage_Logic : IEventMainImage_Logic
     {
-        IFilemanager_Repository repo;
+        IFile_Repository repo;
 
-        public EventMainImage_Logic(IFilemanager_Repository repo)
+        public EventMainImage_Logic(IFile_Repository repo)
         {
             this.repo = repo;
         }

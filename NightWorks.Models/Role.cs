@@ -24,12 +24,8 @@ namespace NigthWorks.Models
 
         [NotMapped]
         [JsonIgnore] //Ez eredetileg nem volt itt
-        public virtual ICollection<User> Users { get; set; }
+        public virtual List<User> Users { get; set; }
 
-        public Role()
-        {
-            Users = new HashSet<User>();
-        }
     }
 }
 
