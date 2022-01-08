@@ -18,7 +18,6 @@ namespace NightWorks.Repository
             db.Files.Add(item);
             db.SaveChanges();
         }
-
         public void Delete(int id)
         {
             db.Files.Remove(Read(id));
@@ -48,7 +47,7 @@ namespace NightWorks.Repository
             }
             else
             {
-                return db.Files.FirstOrDefault(t => t.Path == path);
+                return db.Files.FirstOrDefault(t => t.FilePath == path);
             }
         }
         public IQueryable<_File> ReadAll()

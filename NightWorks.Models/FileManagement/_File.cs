@@ -21,7 +21,7 @@ namespace NigthWorks.Models
         //Root is equals to Directory+Name+Extension
         [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public string Path { get; set; }
+        public string FilePath { get; set; }
 
         [Required]
         public string Extension { get; set; }

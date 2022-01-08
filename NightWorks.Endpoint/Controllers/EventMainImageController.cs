@@ -15,7 +15,7 @@ namespace NightWorks.Endpoint.Controllers
     public class EventMainImageController : ControllerBase
     {
         string Imagefolder = @"D:\Laptop\NightWorks\NightWorks.Data\Images\";
-        public IActionResult Get() 
+        public IActionResult Get()
         {
             return Ok("File Upload API running");
         }
@@ -26,18 +26,34 @@ namespace NightWorks.Endpoint.Controllers
         {
             return Ok();
         }*/
+        [Route("/alma")]
+        [HttpGet]
+        public _File Sendfiledata()
+        {
+            _File file = new _File();
+            file.Name = "fogadott";
+            return file;
+        }
 
         [HttpPost]
-        public IActionResult Upload(IFormFile file)
+        public IActionResult PostImage([FromBody] IFormFile file)
         {
             string filePath = Path.Combine(Imagefolder, file.FileName);
             using (Stream fileStream = new FileStream(filePath, FileMode.Create))
             {
                 file.CopyToAsync(fileStream);
-                
+
             }
+            
             return Ok();
         }
+        [Route("/alma")]
+        [HttpPost]
+        public void PostImageData([FromBody] _File filedata)
+        {
+            Console.WriteLine(filedata.Name + " is succesfully arrived");
+        }
+
 
     }
 
