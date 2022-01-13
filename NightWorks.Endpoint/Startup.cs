@@ -52,7 +52,19 @@ namespace NightWorks.Endpoint
             //Ez általa, hozzáadott rész
             services.AddControllers().AddJsonOptions(x =>
                 x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
-            
+
+            services.AddCors(options =>
+            {
+
+                options.AddPolicy("Policy1",
+                    builder =>
+                    {
+                        builder.WithOrigins("http://www.contoso.com")
+                                            .AllowAnyHeader()
+                                            .AllowAnyMethod();
+                    });
+            });
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -68,6 +80,8 @@ namespace NightWorks.Endpoint
             {
                 endpoints.MapControllers();
             });
+            //Cors enable
+            app.UseCors();
         }
     }
 }
