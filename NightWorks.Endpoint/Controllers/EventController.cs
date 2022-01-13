@@ -23,7 +23,6 @@ namespace NightWorks.Endpoint.Controllers
             this.o = o;
         }
 
-        [EnableCors("Policy1")]//Engedélyezi az elérést böngészőn keresztül. később majd lehet ki kell szedni
         [HttpGet]
         public object GetAll()
         {
@@ -38,7 +37,6 @@ namespace NightWorks.Endpoint.Controllers
             }
 
         }
-        [EnableCors("Policy1")]
         [HttpGet("{id}")]
         public object Get(int id)
         {

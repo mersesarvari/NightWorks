@@ -53,17 +53,12 @@ namespace NightWorks.Endpoint
             services.AddControllers().AddJsonOptions(x =>
                 x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
-            services.AddCors(options =>
-            {
+            services.AddCors(options => options.AddDefaultPolicy
+            (
+                builder => builder.AllowAnyOrigin())
+            );
+            
 
-                options.AddPolicy("Policy1",
-                    builder =>
-                    {
-                        builder.WithOrigins("http://www.contoso.com")
-                                            .AllowAnyHeader()
-                                            .AllowAnyMethod();
-                    });
-            });
 
         }
 
@@ -76,12 +71,16 @@ namespace NightWorks.Endpoint
 
             app.UseRouting();
 
+            app.UseCors();
+             
+            //Ez eddig nem volt itt, szóval lehet kérdéses
+            app.UseAuthorization();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
-            //Cors enable
-            app.UseCors();
+            
         }
     }
 }
