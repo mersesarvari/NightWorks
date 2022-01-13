@@ -4,6 +4,7 @@ using NigthWorks.Logic;
 using NigthWorks.Models;
 using System;
 using NightWorks.Logic;
+using Microsoft.AspNetCore.Cors;
 
 namespace NightWorks.Endpoint.Controllers
 {
@@ -22,6 +23,7 @@ namespace NightWorks.Endpoint.Controllers
             this.o = o;
         }
 
+        [EnableCors]//Engedélyezi az elérést böngészőn keresztül. később majd lehet ki kell szedni
         [HttpGet]
         public object GetAll()
         {
