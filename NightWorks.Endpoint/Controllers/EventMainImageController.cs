@@ -36,7 +36,7 @@ namespace NightWorks.Endpoint.Controllers
         }
 
         [HttpPost]
-        public IActionResult PostImage([FromBody] IFormFile file)
+        public IActionResult PostImage(IFormFile file)
         {
             string filePath = Path.Combine(Imagefolder, file.FileName);
             using (Stream fileStream = new FileStream(filePath, FileMode.Create))
@@ -44,15 +44,16 @@ namespace NightWorks.Endpoint.Controllers
                 file.CopyToAsync(fileStream);
 
             }
-            
             return Ok();
         }
+        
         [Route("/alma")]
         [HttpPost]
         public void PostImageData([FromBody] _File filedata)
         {
             Console.WriteLine(filedata.Name + " is succesfully arrived");
         }
+        
 
 
     }

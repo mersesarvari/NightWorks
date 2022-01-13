@@ -103,14 +103,19 @@ namespace NigthWorks.Logic
         public bool Login(string email, string password)
         {
             User temp = repo.GetUserbyEmail(email);
-            if (temp.Email == email && temp.Password == Secure.Encrypt(password))
+            if (email.Trim() != "" && password.Trim() != "")
             {
-                return true;
+                if (temp.Email == email && temp.Password == Secure.Encrypt(password))
+                {
+                    return true;
+                }
+                else
+                {
+                    throw new Exception("Email address and password combination is not valid");
+                }
             }
-            else
-            {
-                return false;
-            }
+            else throw new Exception("Email or password cant be empty");
+            
         }
 
         public User GetUserByEmail(string email)
