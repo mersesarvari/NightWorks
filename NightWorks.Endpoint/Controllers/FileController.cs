@@ -12,10 +12,10 @@ namespace NightWorks.Endpoint.Controllers
 {
     [Route("/image")]
     [ApiController]
-    public class EventMainImageController : ControllerBase
+    public class FileController : ControllerBase
     {
         readonly IFile_Logic o;
-        public EventMainImageController(IFile_Logic o)
+        public FileController(IFile_Logic o)
         {
             this.o = o;
         }
