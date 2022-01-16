@@ -18,33 +18,35 @@ namespace NigthWorks.Logic
             this.repo = repo;
         }
 
-        public void Create(FileStream obj)
+        public void Create(_File obj)
         {
-            repo.Create(
-                new _File()
-                {
-                    
-                }
-            );
+            repo.Create(obj);
+        }
+        public void Delete(int id)
+        {
+            repo.Delete(id);
         }
 
-        public void Delete(string path)
+        public void DeleteByPath(string path)
         {
-            File.Delete(path);
-            repo.Delete(path);
+            repo.DeleteByPath(path);
         }
 
-        public FileStream Read(string path)
+        public _File Read(int id)
+        {
+            return repo.Read(id);
+        }
+        public IEnumerable<_File> ReadAll()
+        {
+            return repo.ReadAll();
+        }
+
+        public _File ReadByPath(int id)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<FileStream> ReadAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(FileStream obj)
+        public void Update(_File obj)
         {
             throw new NotImplementedException();
         }

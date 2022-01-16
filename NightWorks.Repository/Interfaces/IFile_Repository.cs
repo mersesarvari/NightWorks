@@ -12,9 +12,9 @@ namespace NigthWorks.Repository
     {
         void Create(_File item);
         void Delete(int id);
-        void Delete(string path);
         _File Read(int id);
-        _File Read(string path);
+        _File ReadByPath(string path);
+        void DeleteByPath(string path);
         IQueryable<_File> ReadAll();
         void Update(_File item);
     }
