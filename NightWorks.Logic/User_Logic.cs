@@ -85,36 +85,21 @@ namespace NigthWorks.Logic
             }
             
         }
-        //Login
-        /*
         public User Login(string email, string password)
-        {
-            User temp = repo.GetUserbyEmail(email);
-            if (temp.Email == email && temp.Password == Secure.Encrypt(password))
-            {
-                return repo.GetUserbyEmail(email);
-            }
-            else
-            {
-                throw new Exception("Email address or password not matching");
-            }
-        }
-        */
-        public bool Login(string email, string password)
         {
             User temp = repo.GetUserbyEmail(email);
             if (email.Trim() != "" && password.Trim() != "")
             {
                 if (temp.Email == email && temp.Password == Secure.Encrypt(password))
                 {
-                    return true;
+                    return temp;
                 }
                 else
                 {
                     throw new Exception("Email address and password combination is not valid");
                 }
             }
-            else throw new Exception("Email or password cant be empty");
+            else throw new Exception("Email and password cant be empty");
             
         }
 

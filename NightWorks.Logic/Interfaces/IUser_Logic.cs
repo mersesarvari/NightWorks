@@ -18,7 +18,7 @@ namespace NigthWorks.Logic
         User MostMoneyUser();
         User LessMoneyUser();
         //User Login(string email, string password);
-        bool Login(string email, string password);
+        User Login(string email, string password);
         User GetUserByEmail(string email);
 
 
