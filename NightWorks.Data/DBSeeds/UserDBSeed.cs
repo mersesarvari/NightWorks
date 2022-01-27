@@ -22,21 +22,32 @@ namespace NightWorks.Data
             Role role4 = new Role() { Id = 4, Name = "user", Permission = 20 };
             Role role5 = new Role() { Id = 5, Name = "guest", Permission = 10 };
 
+            User admin = new User()
+            {
+                Id = 1,
+                Username = "admin",
+                Email = "admin@admin.com",
+                Password = Secure.Encrypt("admin"),
+                Roleid = role1.Id,
+                Money = 500,
+                Validated = false,
+                ProfilePictureRoot = @"test1.png"
+            };
             User a = new User() { 
-                Id = 1, Username = "test1", 
+                Id = 2, Username = "test1", 
                 Email = "test1@test.com", 
                 Password = Secure.Encrypt("test"), 
                 Roleid = role1.Id, Money = 500, 
                 Validated = false,
-                ProfilePictureRoot = @"D:\NW Project\Images\Test.png"
+                ProfilePictureRoot = @"test1.png"
             };
             User b = new User() {
-                Id = 2, Username = "test2",
+                Id = 3, Username = "test2",
                 Email = "test2@test.com",
                 Password = Secure.Encrypt("test"),
                 Roleid = role3.Id, Money = 200,
                 Validated = false,
-                ProfilePictureRoot = @"D:\NW Project\Images\Test.png"
+                ProfilePictureRoot = @"test2.jpg"
             };
 
 
@@ -52,7 +63,7 @@ namespace NightWorks.Data
             };
 
 
-            mb.Entity<User>().HasData(a, b);
+            mb.Entity<User>().HasData(a, b, admin);
             mb.Entity<Role>().HasData(role1, role2, role3, role4, role5);
             mb.Entity<Post>().HasData(posts);
         }

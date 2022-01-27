@@ -20,29 +20,46 @@ namespace NightWorks.Endpoint.Controllers
             this.o = o;
         }
         string Imagefolder = @"D:\Laptop\NightWorks\NightWorks.Data\Images\";
-        public IActionResult Get()
+        public IActionResult GetOK()
         {
             return Ok("File Upload API running");
         }
+        [HttpGet("{route}")]
+        public Object Get(string route)
+        {
+            try
+            {
+                Byte[] b = System.IO.File.ReadAllBytes(@"D:\\NW_Project\\Images\\" + route);   // You can use your own method over here.         
+                return File(b, "image/jpeg");
+            }
+            catch (Exception)
+            {
 
+                return "Error";
+            }
+            
+        }
         /*
         [HttpPost]
         public IActionResult Upload(IFormFile file)
         {
             return Ok();
         }*/
+        /*
         [Route("/alma")]
         [HttpGet]
         public IEnumerable<_File> GetAll()
         {
             return o.ReadAll();
         }
-
+        */
+        /*
         [HttpGet("{id}")]
         public _File Get(int id)
         {
             return o.Read(id);
         }
+        */
 
         [HttpPost]
         public IActionResult PostImage(IFormFile file)
