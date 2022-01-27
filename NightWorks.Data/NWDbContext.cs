@@ -82,7 +82,7 @@ namespace NigthWorks.Data
             //Alap
             //Event <--> User
             mb.Entity<Event_User_Connect>().HasKey(pt => new { pt.UserId, pt.EventId });
-            mb.Entity<Event_User_Connect>().HasOne(y => y.User).WithMany(y => y.EUserConns).HasForeignKey(y => y.UserId).OnDelete(DeleteBehavior.NoAction);
+            mb.Entity<Event_User_Connect>().HasOne(y => y.User).WithMany(y => y.Event_User_Conns).HasForeignKey(y => y.UserId).OnDelete(DeleteBehavior.NoAction);
             mb.Entity<Event_User_Connect>().HasOne(x => x.Event).WithMany(x => x.EUserConns).HasForeignKey(x => x.EventId).OnDelete(DeleteBehavior.NoAction);
 
             //Event <--> EventType

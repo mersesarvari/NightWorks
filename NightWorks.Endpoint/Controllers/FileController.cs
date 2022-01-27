@@ -32,10 +32,10 @@ namespace NightWorks.Endpoint.Controllers
                 Byte[] b = System.IO.File.ReadAllBytes(@"D:\\NW_Project\\Images\\" + route);   // You can use your own method over here.         
                 return File(b, "image/jpeg");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                return "Error";
+                return ex.Message;
             }
             
         }

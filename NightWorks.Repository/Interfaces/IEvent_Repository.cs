@@ -15,6 +15,9 @@ namespace NightWorks.Repository
         void Update(NWEvent item);
         void Delete(int id);
 
+        IQueryable<NWEvent> SearchEventByCity();
+        IQueryable<NWEvent> SearchEventByCountry();
+
         List<User> GetEventUsers(int id);
         List<Keyword> GetEventTypes(int id);
         List<Address> GetEventAddresses(int id);
