@@ -23,9 +23,9 @@ namespace NightWorks.Repository
             db.Files.Remove(Read(id));
             db.SaveChanges();
         }
-        public void Delete(string path)
+        public void DeleteByPath(string path)
         {
-            db.Files.Remove(Read(path));
+            db.Files.Remove(ReadByPath(path));
             db.SaveChanges();
         }
         public _File Read(int id)
@@ -39,7 +39,7 @@ namespace NightWorks.Repository
                 return db.Files.FirstOrDefault(t => t.Id == id);
             }
         }
-        public _File Read(string path)
+        public _File ReadByPath(string path)
         {
             if (db == null)
             {
@@ -62,9 +62,9 @@ namespace NightWorks.Repository
             }
             
         }
-        public void Update(_File item)
+        public void Update(_File obj)
         {
-            var oldbrand = Read(item.Id);
+            var oldbrand = Read(obj.Id);
             db.SaveChanges();
         }
     }

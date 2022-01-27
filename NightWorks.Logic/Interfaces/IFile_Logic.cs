@@ -10,10 +10,13 @@ namespace NigthWorks.Logic
 {
     public interface IFile_Logic
     {
-        FileStream Read(string path);
-        IEnumerable<FileStream> ReadAll();
-        void Create(FileStream obj);
-        void Update(FileStream obj);
-        void Delete(string path);
+        _File Read(int id);
+        _File ReadByPath(int id);
+        IEnumerable<_File> ReadAll();
+        void Create(_File obj);
+        void Update(_File obj);
+        void Delete(int id);
+
+        void DeleteByPath(string path);
     }
 }

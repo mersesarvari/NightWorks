@@ -12,8 +12,13 @@ namespace NightWorks.Endpoint.Controllers
 {
     [Route("/image")]
     [ApiController]
-    public class EventMainImageController : ControllerBase
+    public class FileController : ControllerBase
     {
+        readonly IFile_Logic o;
+        public FileController(IFile_Logic o)
+        {
+            this.o = o;
+        }
         string Imagefolder = @"D:\Laptop\NightWorks\NightWorks.Data\Images\";
         public IActionResult Get()
         {
@@ -28,11 +33,15 @@ namespace NightWorks.Endpoint.Controllers
         }*/
         [Route("/alma")]
         [HttpGet]
-        public _File Sendfiledata()
+        public IEnumerable<_File> GetAll()
         {
-            _File file = new _File();
-            file.Name = "fogadott";
-            return file;
+            return o.ReadAll();
+        }
+
+        [HttpGet("{id}")]
+        public _File Get(int id)
+        {
+            return o.Read(id);
         }
 
         [HttpPost]
@@ -45,8 +54,7 @@ namespace NightWorks.Endpoint.Controllers
 
             }
             return Ok();
-        }
-        
+        }        
         [Route("/alma")]
         [HttpPost]
         public void PostImageData([FromBody] _File filedata)

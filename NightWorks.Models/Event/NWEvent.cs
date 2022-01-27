@@ -57,7 +57,6 @@ namespace NigthWorks.Models
         [JsonIgnore] //nem volt itt
         public virtual List<Event_User_Connect> EUserConns { get; set; }
 
-
         public virtual List<_File> Files { get; set; }
 
     }

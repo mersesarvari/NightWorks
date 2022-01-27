@@ -31,7 +31,7 @@ namespace NightWorks.Endpoint
             services.AddTransient<IEvent_Logic, Event_Logic>();
             services.AddTransient<IKeyword_Logic, Keyword_Logic>();
             services.AddTransient<IAddress_Logic, Address_Logic>();
-            services.AddTransient<IEventMainImage_Logic, EventMainImage_Logic>();
+            services.AddTransient<IFile_Logic, File_Logic>();
             //services.AddTransient<IEvent_KeywordConnectLogic, Event_KeywordConnectLogic>(); //Még nincsen készen
 
             

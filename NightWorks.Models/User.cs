@@ -33,7 +33,9 @@ namespace NigthWorks.Models
         public int? Money { get; set; }
 
         public bool Validated { get; set; }
-        
+
+        public string ProfilePictureRoot { get; set; }
+
         [NotMapped]
         [JsonIgnore] //nem volt itt
         public virtual Role Role { get; set; }
