@@ -16,6 +16,7 @@ namespace NightWorks.Repository
         void Delete(int id);
 
 
+
         IQueryable<NWEvent> SearchEventByCity();
         IQueryable<NWEvent> SearchEventByCountry();
 
