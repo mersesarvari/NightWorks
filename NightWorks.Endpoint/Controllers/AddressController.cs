@@ -65,5 +65,6 @@ namespace NightWorks.Endpoint.Controllers
         {
             o.Delete(id);
         }
+
     }
 }

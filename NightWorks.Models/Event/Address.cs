@@ -15,8 +15,15 @@ namespace NigthWorks.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+
+        [Required]//Y Coordinate
+        public double Longitude { get; set; }
+        [Required]//x Coordinate
+        public double Latitude { get; set; }
+
         [Required]
         public string Country { get; set; }
+        
         [Required]
         public string City { get; set; }
         [Required]
@@ -26,8 +33,6 @@ namespace NigthWorks.Models
         [Required]
         public int BuildingNumber { get; set; }
 
-        [NotMapped]
-        [JsonIgnore] //nem volt itt
         public virtual List<NWEvent> Events { get; set; }
     }
 }

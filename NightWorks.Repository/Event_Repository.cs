@@ -85,7 +85,17 @@ namespace NightWorks.Repository
             {
                 return db.Events;
             }
-        }        
+        }
+
+        public IQueryable<NWEvent> SearchEventByCity()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IQueryable<NWEvent> SearchEventByCountry()
+        {
+            throw new NotImplementedException();
+        }
 
         public void Update(NWEvent item)
         {

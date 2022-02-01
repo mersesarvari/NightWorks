@@ -60,9 +60,32 @@ namespace NightWorks.Data
             events.Add(e2);
             events.Add(e3);
 
-            Address a1 = new Address() { Id = 1, City = "Budapest", Country = "Hungary", Street="budapest utca", BuildingNumber = 12, PostalCode = 1029 };
-            Address a2 = new Address() { Id = 2, City = "Szeged", Country = "Hungary", Street = "szeged utca", BuildingNumber = 5, PostalCode = 1035 };
-            Address a3 = new Address() { Id = 3, City = "Pécs", Country = "Hungary", Street = "pécs utca", BuildingNumber = 68, PostalCode = 1040 };
+            Address a1 = new Address() { 
+                Id = 1,Longitude= 19.0891178,
+                Latitude = 47.5818847,
+                City = "Budapest", 
+                Country = "Hungary", 
+                Street="Ady Endre u.", 
+                BuildingNumber = 3, 
+                PostalCode = 1044 };
+            Address a2 = new Address() { 
+                Id = 2,
+                Longitude= 20.1436765, 
+                Latitude= 46.25701189999999, 
+                City = "Szeged", 
+                Country = "Hungary", 
+                Street = "Mérey utca", 
+                BuildingNumber = 13, 
+                PostalCode = 6722 };
+            Address a3 = new Address() { 
+                Id = 3,
+                Longitude= 18.229786, 
+                Latitude= 46.072483, 
+                City = "Pécs", 
+                Country = "Hungary", 
+                Street = "Bajcsy-Zsilinszky utca", 
+                BuildingNumber = 5, 
+                PostalCode = 7622 };
             addresses.Add(a1);
             addresses.Add(a2);
             addresses.Add(a3);
