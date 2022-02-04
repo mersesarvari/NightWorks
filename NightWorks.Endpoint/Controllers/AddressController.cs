@@ -6,7 +6,7 @@ using NightWorks.Logic;
 
 namespace NightWorks.Endpoint.Controllers
 {
-    [Route("/address")]
+    [Route("/address/")]
     [ApiController]
     public class AddressController : ControllerBase
     {
@@ -27,6 +27,19 @@ namespace NightWorks.Endpoint.Controllers
             catch (System.Exception ex)
             {
 
+                return ex.Message;
+            }
+
+        }
+        [HttpGet("filter")]
+        public object GetByParameter(string parameter)
+        {
+            try
+            {
+                return o.ReadAllByParameter(parameter);
+            }
+            catch (System.Exception ex)
+            {
                 return ex.Message;
             }
 

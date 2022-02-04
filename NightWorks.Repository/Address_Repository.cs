@@ -58,6 +58,39 @@ namespace NightWorks.Repository
             }
         }
 
+        public IList<Address> ReadByParameter(string parameter)
+        {
+            if (db == null)
+            {
+                throw new Exception("There is no data in database");
+            }
+            else
+            {
+                if (parameter == null)
+                {
+                    return db.Addresses.ToList();
+                }
+                else {
+                    var returndata = db.Addresses;
+                    IList<Address> list = new List<Address>();
+                    if (returndata.Where(x => x.Country == parameter).ToList().Count() > 0)
+                    {
+                        list = returndata.Where(x => x.Country == parameter).ToList();
+                    }
+                    else if (returndata.Where(x => x.City == parameter).ToList().Count() > 0)
+                    {
+                        list = returndata.Where(x => x.City == parameter).ToList();
+                    }
+                    else
+                    {
+                        throw new Exception("We dont find any elements");
+                    }
+                    return list;
+                }
+                
+            }
+        }
+
         public IQueryable<Address> ReadAll()
         {
             if (db == null)

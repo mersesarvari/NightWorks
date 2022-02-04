@@ -15,5 +15,7 @@ namespace NightWorks.Logic
         void Update(Address item);
         void Delete(int id);
         List<NWEvent> GetAllEventByAddress(int id);
+
+        IList<Address> ReadAllByParameter(string parameter);
     }
 }
