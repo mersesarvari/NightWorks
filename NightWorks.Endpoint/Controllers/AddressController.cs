@@ -31,12 +31,12 @@ namespace NightWorks.Endpoint.Controllers
             }
 
         }
-        [HttpGet("filter")]
-        public object GetByParameter(string parameter)
+        [HttpGet("parameter")]
+        public object GetByParameter(string location)
         {
             try
             {
-                return o.ReadAllByParameter(parameter);
+                return o.ReadAllByParameter(location);
             }
             catch (System.Exception ex)
             {
