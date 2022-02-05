@@ -14,10 +14,10 @@ namespace NightWorks.Logic
         void Create(NWEvent item);    
         void Update(NWEvent item);
         void Delete(int id);
-
         List<User> GetEventUsers(int id);
         List<Keyword> GetEventTypes(int id);
-        List<Address> GetEventAddresses(int id);
+
+        IList<NWEvent> ReadAllByParameter(string parameter);
 
         //Connection setups
         void AddUserToEvent(int eventid, int userid);

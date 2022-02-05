@@ -17,13 +17,13 @@ namespace NightWorks.Repository
 
 
 
-        IQueryable<NWEvent> SearchEventByCity();
-        IQueryable<NWEvent> SearchEventByCountry();
+        IQueryable<NWEvent> SearchEventByCity(string parameter);
+        IQueryable<NWEvent> SearchEventByCountry(string parameter);
 
         List<User> GetEventUsers(int id);
         List<Keyword> GetEventTypes(int id);
-        List<Address> GetEventAddresses(int id);
 
+        IList<NWEvent> ReadAllByParameter(string parameter);
         //Connection setups
         /*
         void AddUserToEvent(User item);

@@ -51,12 +51,23 @@ namespace NightWorks.Endpoint.Controllers
             }
 
         }
-
-
         [HttpPost]
         public void Post([FromBody] NWEvent value)
         {
             o.Create(value);
+        }
+        [HttpGet("parameter")]
+        public object GetByParameter(string location)
+        {
+            try
+            {
+                return o.ReadAllByParameter(location);
+            }
+            catch (System.Exception ex)
+            {
+                return ex.Message;
+            }
+
         }
         [HttpPost("/keyword")]
         public void AddKeyword([FromBody] Keyword value)

@@ -39,31 +39,14 @@ namespace NightWorks.Logic
             repo.Delete(id);
         }
 
-        public List<Address> GetEventAddresses(int id)
-        {
-            throw new NotImplementedException();
-        }
-
         public List<Keyword> GetEventTypes(int id)
         {
-            NWEvent x = Read(id);
-            List<Keyword> types = new List<Keyword>();
-            foreach (var item in x.Event_Keyword_Conns)
-            {
-                types.Add(item.Keyword);
-            }
-            return types;
+            return repo.GetEventTypes(id);
         }
 
         public List<User> GetEventUsers(int id)
         {
-            NWEvent x = Read(id);
-            List<User> u = new List<User>();
-            foreach (var item in x.Event_User_Conns)
-            {
-                u.Add(item.User);
-            }
-            return u;
+            return repo.GetEventUsers(id);
         }
 
         public NWEvent Read(int id)
@@ -114,6 +97,11 @@ namespace NightWorks.Logic
         public void RemoveKeywordFromEvent(int id)
         {
             EKrepo.Delete(id);
+        }
+
+        public IList<NWEvent> ReadAllByParameter(string parameter)
+        {
+            return repo.ReadAllByParameter(parameter);
         }
     }
 }

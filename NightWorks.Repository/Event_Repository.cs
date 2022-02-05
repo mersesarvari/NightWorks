@@ -36,11 +36,6 @@ namespace NightWorks.Repository
             db.SaveChanges();
         }
 
-        public List<Address> GetEventAddresses(int id)
-        {
-            throw new NotImplementedException();
-        }
-
         public List<Keyword> GetEventTypes(int id)
         {
             NWEvent x = Read(id);
@@ -87,15 +82,39 @@ namespace NightWorks.Repository
             }
         }
 
-        public IQueryable<NWEvent> SearchEventByCity()
+        public IList<NWEvent> ReadAllByParameter(string parameter)
         {
-            throw new NotImplementedException();
-        }
+            if (db == null)
+            {
+                throw new Exception("There is no data in database");
+            }
+            else
+            {
+                if (parameter == null)
+                {
+                    return db.Events.ToList();
+                }
+                else
+                {
+                    var returndata = db.Events;
+                    IList<NWEvent> list = new List<NWEvent>();
+                    if (returndata.Where(x => x.Address.Country == parameter).ToList().Count() > 0)
+                    {
+                        list = returndata.Where(x => x.Address.Country == parameter).ToList();
+                    }
+                    else if (returndata.Where(x => x.Address.City == parameter).ToList().Count() > 0)
+                    {
+                        list = returndata.Where(x => x.Address.City == parameter).ToList();
+                    }
+                    else
+                    {
+                        throw new Exception("We dont find any elements");
+                    }
+                    return list;
+                }
 
-        public IQueryable<NWEvent> SearchEventByCountry()
-        {
-            throw new NotImplementedException();
-        }
+            }
+        }        
 
         public void Update(NWEvent item)
         {
@@ -114,5 +133,15 @@ namespace NightWorks.Repository
             s.EventText = item.EventText;
             db.SaveChanges();
         }
+        public IQueryable<NWEvent> SearchEventByCity(string parameter)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IQueryable<NWEvent> SearchEventByCountry(string parameter)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }
