@@ -41,16 +41,7 @@ namespace NigthWorks.Data
 
         protected override void OnModelCreating(ModelBuilder mb)
         {
-            mb.Entity<Event_Keyword_Connect>()
-                .HasKey(pt => new { pt.FK_KeywordId, pt.FK_EventId });
-            mb.Entity<Event_Keyword_Connect>()
-                .HasOne(y => y.Keyword).WithMany(y => y.Event_Keyword_Conns)
-                .HasForeignKey(y => y.FK_KeywordId)
-                .OnDelete(DeleteBehavior.NoAction);
-            mb.Entity<Event_Keyword_Connect>()
-                .HasOne(x => x.Event).WithMany(x => x.Event_Keyword_Conns)
-                .HasForeignKey(x => x.FK_EventId)
-                .OnDelete(DeleteBehavior.NoAction);
+            
             //Identitás checkek:
             mb.Entity<User>().HasIndex(X => X.Email).IsUnique();
             mb.Entity<Role>().HasIndex(X => X.Name).IsUnique();
@@ -80,19 +71,12 @@ namespace NigthWorks.Data
                     .OnDelete(DeleteBehavior.Cascade);
 
             });
-            /*
-             * If this code snippet stays the program is getting an error
-            mb.Entity<Address>(entity =>
-            {
-                entity.HasOne<NWEvent>(x => x.Event)
-                    .WithOne(y => y.Address)
-                    .HasForeignKey<NWEvent>(y => y.Address_Id)
-                    .OnDelete(DeleteBehavior.Cascade);
-            });
-            */
+
 
             //Event <--> Keyword
-            
+            mb.Entity<Event_Keyword_Connect>().HasKey(pt => new { pt.FK_KeywordId, pt.FK_EventId });
+            mb.Entity<Event_Keyword_Connect>().HasOne(y => y.Keyword).WithMany(y => y.Event_Keyword_Conns).HasForeignKey(y => y.FK_KeywordId).OnDelete(DeleteBehavior.NoAction);
+            mb.Entity<Event_Keyword_Connect>().HasOne(x => x.Event).WithMany(x => x.Event_Keyword_Conns).HasForeignKey(x => x.FK_EventId).OnDelete(DeleteBehavior.NoAction);
 
             //Alap
             //Event <--> User
