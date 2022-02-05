@@ -46,7 +46,7 @@ namespace NightWorks.Data
                 Startingdate = new DateTime(2021, 12, 15, 15, 30, 00),
                 Endingdate = new DateTime(2022, 12, 15, 18, 00, 00),
                 EventText = "[Event3] This is our test events text. This text will fill de body od our posts",
-                Address_Id = 2,
+                Address_Id = 3,
                 Owner_Id = 2
 
             };
