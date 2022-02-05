@@ -17,12 +17,6 @@ namespace NightWorks.Data
         public static void LoadData(ModelBuilder mb)
         {
             List<NWEvent> events = new List<NWEvent>();
-            List<Address> addresses= new List<Address> ();
-            List<Keyword> types = new List<Keyword>();
-            List<Event_Keyword_Connect> etcs = new List<Event_Keyword_Connect>();
-            List<Event_User_Connect> eucs = new List<Event_User_Connect>();
-
-
             NWEvent e1 = new NWEvent()
             {
                 Id = 1,
@@ -59,71 +53,7 @@ namespace NightWorks.Data
             events.Add(e1);
             events.Add(e2);
             events.Add(e3);
-
-            Address a1 = new Address() { 
-                Id = 1,Longitude= 19.0891178,
-                Latitude = 47.5818847,
-                City = "Budapest", 
-                Country = "Hungary", 
-                Street="Ady Endre u.", 
-                BuildingNumber = 3, 
-                PostalCode = 1044 };
-            Address a2 = new Address() { 
-                Id = 2,
-                Longitude= 20.1436765, 
-                Latitude= 46.25701189999999, 
-                City = "Szeged", 
-                Country = "Hungary", 
-                Street = "Mérey utca", 
-                BuildingNumber = 13, 
-                PostalCode = 6722 };
-            Address a3 = new Address() { 
-                Id = 3,
-                Longitude= 18.229786, 
-                Latitude= 46.072483, 
-                City = "Pécs", 
-                Country = "Hungary", 
-                Street = "Bajcsy-Zsilinszky utca", 
-                BuildingNumber = 5, 
-                PostalCode = 7622 };
-            addresses.Add(a1);
-            addresses.Add(a2);
-            addresses.Add(a3);
-
-            Keyword et1 = new Keyword() { Id = 1, Name = "Dance" };
-            Keyword et2 = new Keyword() { Id = 2, Name = "Party" };
-            Keyword et3 = new Keyword() { Id = 3, Name = "Biking" };
-            types.Add(et1);
-            types.Add(et2);
-            types.Add(et3); 
-
-            Event_Keyword_Connect etc1 = new Event_Keyword_Connect() {Id=1, EventId = 1, KeywordId = 1};
-            Event_Keyword_Connect etc2 = new Event_Keyword_Connect() {Id=2, EventId = 1, KeywordId = 2 };
-            Event_Keyword_Connect etc3 = new Event_Keyword_Connect() { Id = 3, EventId = 2, KeywordId = 1 };
-            Event_Keyword_Connect etc4 = new Event_Keyword_Connect() { Id = 4, EventId = 2, KeywordId = 2 };
-            etcs.Add(etc1);
-            etcs.Add(etc2);
-            etcs.Add(etc3);
-            etcs.Add(etc4);
-
-            Event_User_Connect euc1 = new Event_User_Connect() { Id = 1, EventId = 1, UserId = 1 };
-            Event_User_Connect euc2 = new Event_User_Connect() { Id = 2, EventId = 1, UserId = 2 };
-            Event_User_Connect euc3 = new Event_User_Connect() { Id = 3, EventId = 2, UserId = 1 };
-            Event_User_Connect euc4 = new Event_User_Connect() { Id = 4, EventId = 2, UserId = 2 };
-            eucs.Add(euc1);
-            eucs.Add(euc2);
-            eucs.Add(euc3);
-            eucs.Add(euc4);
-
             mb.Entity<NWEvent>().HasData(events);
-            mb.Entity<Address>().HasData(addresses);
-            mb.Entity<Keyword>().HasData(types);
-            mb.Entity<Event_Keyword_Connect>().HasData(etcs);
-            mb.Entity<Event_User_Connect>().HasData(eucs);
-
         }
-        
-        
-        
     }
 }

@@ -48,7 +48,7 @@ namespace NightWorks.Logic
         {
             NWEvent x = Read(id);
             List<Keyword> types = new List<Keyword>();
-            foreach (var item in x.EKeywordConns)
+            foreach (var item in x.Event_Keyword_Conns)
             {
                 types.Add(item.Keyword);
             }
@@ -59,7 +59,7 @@ namespace NightWorks.Logic
         {
             NWEvent x = Read(id);
             List<User> u = new List<User>();
-            foreach (var item in x.EUserConns)
+            foreach (var item in x.Event_User_Conns)
             {
                 u.Add(item.User);
             }
@@ -98,7 +98,7 @@ namespace NightWorks.Logic
         //TODO Have to write LOGIC
         public void AddKeywordToEvent(int eventid, int keywordid)
         {
-            EKrepo.Create(new Event_Keyword_Connect() { EventId = eventid, KeywordId = keywordid });
+            EKrepo.Create(new Event_Keyword_Connect() { FK_EventId = eventid, FK_KeywordId = keywordid });
         }
 
         public void AddUserToEvent(int eventid, int userid)

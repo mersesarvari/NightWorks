@@ -40,7 +40,7 @@ namespace NightWorksLogic
         {
             Keyword x = Read(id);
             List<NWEvent> list = new List<NWEvent>();
-            foreach (var item in x.EKeywordConns)
+            foreach (var item in x.Event_Keyword_Conns)
             {
                 list.Add(item.Event);
             }

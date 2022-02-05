@@ -45,7 +45,7 @@ namespace NightWorks.Repository
         {
             NWEvent x = Read(id);
             List<Keyword> types = new List<Keyword>();
-            foreach (var item in x.EKeywordConns)
+            foreach (var item in x.Event_Keyword_Conns)
             {
                 types.Add(item.Keyword);
             }
@@ -56,7 +56,7 @@ namespace NightWorks.Repository
         {
             NWEvent x = Read(id);
             List<User> u = new List<User>();
-            foreach (var item in x.EUserConns)
+            foreach (var item in x.Event_User_Conns)
             {
                 u.Add(item.User);
             }

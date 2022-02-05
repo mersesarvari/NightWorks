@@ -71,29 +71,43 @@ namespace NigthWorks.Data
                     .OnDelete(DeleteBehavior.Cascade);
 
             });
-            mb.Entity<NWEvent>(entity =>
+            mb.Entity<Address>(entity =>
             {
-                entity.HasOne(x => x.Address)
-                    .WithMany(y => y.Events)
-                    .HasForeignKey(x => x.Address_Id)
+                entity.HasOne<NWEvent>(x => x.Event)
+                    .WithOne(y => y.Address)
+                    .HasForeignKey<NWEvent>(y => y.Address_Id)
                     .OnDelete(DeleteBehavior.Cascade);
             });
+
+            //Event <--> Keyword
+            mb.Entity<Event_Keyword_Connect>()
+                .HasKey(pt => new { pt.FK_KeywordId, pt.FK_EventId });
+            mb.Entity<Event_Keyword_Connect>()
+                .HasOne(y => y.Keyword).WithMany(y => y.Event_Keyword_Conns)
+                .HasForeignKey(y => y.FK_KeywordId)
+                .OnDelete(DeleteBehavior.NoAction);
+            mb.Entity<Event_Keyword_Connect>()
+                .HasOne(x => x.Event).WithMany(x => x.Event_Keyword_Conns)
+                .HasForeignKey(x => x.FK_EventId)
+                .OnDelete(DeleteBehavior.NoAction);
 
             //Alap
             //Event <--> User
             mb.Entity<Event_User_Connect>().HasKey(pt => new { pt.UserId, pt.EventId });
             mb.Entity<Event_User_Connect>().HasOne(y => y.User).WithMany(y => y.Event_User_Conns).HasForeignKey(y => y.UserId).OnDelete(DeleteBehavior.NoAction);
-            mb.Entity<Event_User_Connect>().HasOne(x => x.Event).WithMany(x => x.EUserConns).HasForeignKey(x => x.EventId).OnDelete(DeleteBehavior.NoAction);
+            mb.Entity<Event_User_Connect>().HasOne(x => x.Event).WithMany(x => x.Event_User_Conns).HasForeignKey(x => x.EventId).OnDelete(DeleteBehavior.NoAction);
 
-            //Event <--> EventType
-            mb.Entity<Event_Keyword_Connect>().HasKey(pt => new { pt.KeywordId, pt.EventId });
-            mb.Entity<Event_Keyword_Connect>().HasOne(y => y.Keyword).WithMany(y => y.EKeywordConns).HasForeignKey(y => y.KeywordId).OnDelete(DeleteBehavior.NoAction);
-            mb.Entity<Event_Keyword_Connect>().HasOne(x => x.Event).WithMany(x => x.EKeywordConns).HasForeignKey(x => x.EventId).OnDelete(DeleteBehavior.NoAction);
 
-           
-
-            EventDBSeed.LoadData(mb);
+            RoleDBSeed.LoadData(mb);
             UserDBSeed.LoadData(mb);
+            PostDBSeed.LoadData(mb);
+            AddressDBSeed.LoadData(mb);
+            KeywordDBSeed.LoadData(mb);
+            EventDBSeed.LoadData(mb);
+            Event_User_ConnectDBSeed.LoadData(mb);
+            Event_Keyword_ConnectDBSeed.LoadData(mb);
+            
+            
 
         }
     }

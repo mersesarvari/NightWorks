@@ -35,16 +35,6 @@ namespace NightWorks.Repository
             db.SaveChanges();
         }
 
-        public List<NWEvent> GetAllEventByAddress(int id)
-        {
-            Address x = Read(id);
-            List<NWEvent> list = new List<NWEvent>();
-            foreach (var item in x.Events)
-            {
-                list.Add(item);
-            }
-            return list;
-        }
 
         public Address Read(int id)
         {

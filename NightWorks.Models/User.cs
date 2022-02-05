@@ -42,6 +42,8 @@ namespace NigthWorks.Models
 
         [ForeignKey(nameof(Role))]
         public int Roleid { get; set; }
+
+
         [NotMapped]
         [JsonIgnore]//nem volt itt
         public virtual List<Post> Posts { get; set; }

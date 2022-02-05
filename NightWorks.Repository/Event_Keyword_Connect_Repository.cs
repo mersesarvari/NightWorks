@@ -18,7 +18,7 @@ namespace NightWorks.Repository
         }
         public void Create(Event_Keyword_Connect obj)
         {
-            if (NotExisting(obj.EventId, obj.KeywordId))
+            if (NotExisting(obj.FK_EventId, obj.FK_KeywordId))
             {
                 db.Event_Keyword_Connects.Add(obj);
                 db.SaveChanges();
@@ -69,11 +69,11 @@ namespace NightWorks.Repository
 
         public void Update(Event_Keyword_Connect obj)
         {
-            if (NotExisting(obj.EventId, obj.KeywordId))
+            if (NotExisting(obj.FK_EventId, obj.FK_KeywordId))
             {
                 var old = Read(obj.Id);
-                old.KeywordId = obj.KeywordId;
-                old.EventId = obj.EventId;
+                old.FK_KeywordId = obj.FK_KeywordId;
+                old.FK_EventId = obj.FK_EventId;
                 db.SaveChanges();
             }
             else
@@ -88,7 +88,7 @@ namespace NightWorks.Repository
             var list = ReadAll();
             foreach (var item in list)
             {
-                if (item.EventId == eventid && item.KeywordId == keywordid)
+                if (item.FK_EventId == eventid && item.FK_KeywordId == keywordid)
                 {
                     existing = false;
                 }
@@ -102,11 +102,11 @@ namespace NightWorks.Repository
             var list = ReadAll();
             foreach (var item in list)
             {
-                if (item.EventId == eventid && item.KeywordId == keywordid)
+                if (item.FK_EventId == eventid && item.FK_KeywordId == keywordid)
                 {
                     a.Id=item.Id;
-                    a.EventId = item.EventId;
-                    a.KeywordId=keywordid;
+                    a.FK_EventId = item.FK_EventId;
+                    a.FK_KeywordId=keywordid;
                 }
             }
             if (a!=null)

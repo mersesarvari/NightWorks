@@ -15,15 +15,22 @@ namespace NigthWorks.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public int EventId { get; set; }
+        
 
         [NotMapped]
         [JsonIgnore]
         public virtual NWEvent Event { get; set; }
-        public int KeywordId { get; set; }
+
+        [ForeignKey(nameof(Event))]
+        public int FK_EventId { get; set; }
 
         [NotMapped]
         [JsonIgnore]
         public virtual Keyword Keyword { get; set; }
+
+        [ForeignKey(nameof(Keyword))]
+        public int FK_KeywordId { get; set; }
+
+        
     }
 }

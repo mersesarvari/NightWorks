@@ -33,6 +33,9 @@ namespace NigthWorks.Models
         [Required]
         public int BuildingNumber { get; set; }
 
-        public virtual List<NWEvent> Events { get; set; }
+        //public virtual List<NWEvent> Events { get; set; }
+        [NotMapped]
+        [JsonIgnore] //nem volt itt
+        public virtual NWEvent Event { get; set; }
     }
 }

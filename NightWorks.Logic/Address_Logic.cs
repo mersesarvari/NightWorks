@@ -26,11 +26,6 @@ namespace NightWorks.Logic
             repo.Delete(id);
         }
 
-        public List<NWEvent> GetAllEventByAddress(int addressid)
-        {
-            return repo.GetAllEventByAddress(addressid);
-        }
-
         public Address Read(int id)
         {
             return repo.Read(id);
