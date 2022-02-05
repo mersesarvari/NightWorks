@@ -73,6 +73,7 @@ namespace NigthWorks.Data
             });
             mb.Entity<Address>(entity =>
             {
+
                 entity.HasOne<NWEvent>(x => x.Event)
                     .WithOne(y => y.Address)
                     .HasForeignKey<NWEvent>(y => y.Address_Id)
