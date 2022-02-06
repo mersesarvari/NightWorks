@@ -24,8 +24,22 @@ namespace NightWorks.Data
                 Startingdate = new DateTime(2021, 12, 15, 15, 30, 00),
                 Endingdate = new DateTime(2021, 12, 15, 18, 00, 00),
                 EventText = "[Event1] This is our test events text. This text will fill de body od our posts",
+                //Address_Id = 1,
+                Owner_Id = 1,
+                /*
+                Address = new Address() { 
+                    Id=4,
+                    Longitude = -0.1552785170517795,
+                    Latitude = 51.51662863756262,
+                    Country = "United Kingdom",
+                    City = "London",
+                    PostalCode = "W1U 8ED",
+                    Street = "1 Baker St",
+                    BuildingNumber = 1
+                },
+                */
                 Address_Id = 1,
-                Owner_Id = 1
+                
 
             };
             NWEvent e2 = new NWEvent()

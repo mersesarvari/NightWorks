@@ -44,7 +44,7 @@ namespace NightWorks.Repository
             }
             else
             {
-                return db.Addresses.FirstOrDefault(t => t.Id == id);
+                return db.Addresses.FirstOrDefault(t => t.AddressId == id);
             }
         }
 
@@ -95,7 +95,7 @@ namespace NightWorks.Repository
 
         public void Update(Address item)
         {
-            var s = Read(item.Id);
+            var s = Read(item.AddressId);
             if (s == null)
             {
                 throw new InvalidOperationException(

@@ -24,6 +24,7 @@ namespace NightWorks.Logic
 
         public void Create(NWEvent item)
         {
+            item.Creationtime = DateTime.Now;
             repo.Create(item);
         }
 

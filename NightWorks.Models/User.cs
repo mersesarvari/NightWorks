@@ -37,7 +37,11 @@ namespace NigthWorks.Models
         public string ProfilePictureRoot { get; set; }
 
         [NotMapped]
-        [JsonIgnore] //nem volt itt
+        [JsonIgnore]
+        public virtual IList<NWEvent> Events { get; set; }
+
+        [NotMapped]
+        [JsonIgnore]
         public virtual Role Role { get; set; }
 
         [ForeignKey(nameof(Role))]

@@ -41,26 +41,18 @@ namespace NigthWorks.Data
 
         protected override void OnModelCreating(ModelBuilder mb)
         {
-            
+            /*   
             //Identitás checkek:
             mb.Entity<User>().HasIndex(X => X.Email).IsUnique();
             mb.Entity<Role>().HasIndex(X => X.Name).IsUnique();
-
-            mb.Entity<_File>(entity =>
-            {
-                entity.HasOne(x => x.Event)
-                    .WithMany(y => y.Files)
-                    .HasForeignKey(x => x.EventId)
-                    .OnDelete(DeleteBehavior.Cascade);
-
-            });
+            */
 
             mb.Entity<User>(entity =>
             {
                 entity.HasOne(x => x.Role)
                     .WithMany(y => y.Users)
                     .HasForeignKey(x => x.Roleid)
-                    .OnDelete(DeleteBehavior.Cascade);
+                    .OnDelete(DeleteBehavior.NoAction);
             });
             //User -> Posts
             mb.Entity<Post>(entity =>
@@ -68,9 +60,27 @@ namespace NigthWorks.Data
                 entity.HasOne(x => x.User)
                     .WithMany(y => y.Posts)
                     .HasForeignKey(x => x.Post_UserId)
-                    .OnDelete(DeleteBehavior.Cascade);
+                    .OnDelete(DeleteBehavior.NoAction);
 
             });
+            
+            mb.Entity<NWEvent>(entity =>
+            {
+                entity.HasOne(x => x.User)
+                    .WithMany(y => y.Events)
+                    .HasForeignKey(x => x.Owner_Id)
+                    .OnDelete(DeleteBehavior.NoAction);
+
+            });
+            mb.Entity<NWEvent>(entity =>
+            {
+                entity.HasOne(x => x.User)
+                    .WithMany(y => y.Events)
+                    .HasForeignKey(x => x.Owner_Id)
+                    .OnDelete(DeleteBehavior.NoAction);
+
+            });
+
 
 
             //Event <--> Keyword
@@ -80,17 +90,19 @@ namespace NigthWorks.Data
 
             //Alap
             //Event <--> User
+            /*
             mb.Entity<Event_User_Connect>().HasKey(pt => new { pt.UserId, pt.EventId });
             mb.Entity<Event_User_Connect>().HasOne(y => y.User).WithMany(y => y.Event_User_Conns).HasForeignKey(y => y.UserId).OnDelete(DeleteBehavior.NoAction);
             mb.Entity<Event_User_Connect>().HasOne(x => x.Event).WithMany(x => x.Event_User_Conns).HasForeignKey(x => x.EventId).OnDelete(DeleteBehavior.NoAction);
-
+            */
 
             RoleDBSeed.LoadData(mb);
             UserDBSeed.LoadData(mb);
-            PostDBSeed.LoadData(mb);
+            PostDBSeed.LoadData(mb);            
             AddressDBSeed.LoadData(mb);
-            KeywordDBSeed.LoadData(mb);
             EventDBSeed.LoadData(mb);
+            KeywordDBSeed.LoadData(mb);
+            
             Event_User_ConnectDBSeed.LoadData(mb);
             Event_Keyword_ConnectDBSeed.LoadData(mb);
             

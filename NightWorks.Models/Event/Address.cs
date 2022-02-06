@@ -14,7 +14,7 @@ namespace NigthWorks.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public int AddressId { get; set; }
 
         [Required]//Y Coordinate
         public double Longitude { get; set; }
@@ -27,15 +27,13 @@ namespace NigthWorks.Models
         [Required]
         public string City { get; set; }
         [Required]
-        public int PostalCode { get; set; }
+        public string PostalCode { get; set; }
         [Required]
         public string Street { get; set; }
         [Required]
         public int BuildingNumber { get; set; }
 
         //public virtual List<NWEvent> Events { get; set; }
-        [NotMapped]
-        [JsonIgnore] //nem volt itt
         public virtual NWEvent Event { get; set; }
     }
 }

@@ -49,6 +49,7 @@ namespace NightWorks.Repository
 
         public List<User> GetEventUsers(int id)
         {
+            /*
             NWEvent x = Read(id);
             List<User> u = new List<User>();
             foreach (var item in x.Event_User_Conns)
@@ -56,6 +57,8 @@ namespace NightWorks.Repository
                 u.Add(item.User);
             }
             return u;
+            */
+            return null;
         }
 
         public NWEvent Read(int id)

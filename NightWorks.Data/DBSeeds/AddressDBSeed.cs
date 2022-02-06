@@ -19,36 +19,36 @@ namespace NightWorks.Data
             List<Address> addresses = new List<Address>();
             Address a1 = new Address()
             {
-                Id = 1,
+                AddressId = 1,
                 Longitude = 19.0891178,
                 Latitude = 47.5818847,
                 City = "Budapest",
                 Country = "Hungary",
                 Street = "Ady Endre u.",
                 BuildingNumber = 3,
-                PostalCode = 1044
+                PostalCode = "1044"
             };
             Address a2 = new Address()
             {
-                Id = 2,
+                AddressId = 2,
                 Longitude = 20.1436765,
                 Latitude = 46.25701189999999,
                 City = "Szeged",
                 Country = "Hungary",
                 Street = "Mérey utca",
                 BuildingNumber = 13,
-                PostalCode = 6722
+                PostalCode = "6722"
             };
             Address a3 = new Address()
             {
-                Id = 3,
+                AddressId = 3,
                 Longitude = 18.229786,
                 Latitude = 46.072483,
                 City = "Pécs",
                 Country = "Hungary",
                 Street = "Bajcsy-Zsilinszky utca",
                 BuildingNumber = 5,
-                PostalCode = 7622
+                PostalCode = "7622"
             };
             addresses.Add(a1);
             addresses.Add(a2);
