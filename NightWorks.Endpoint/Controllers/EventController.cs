@@ -5,6 +5,7 @@ using NigthWorks.Models;
 using System;
 using NightWorks.Logic;
 using Microsoft.AspNetCore.Cors;
+using NightWorks.Models;
 
 namespace NightWorks.Endpoint.Controllers
 {
@@ -28,12 +29,12 @@ namespace NightWorks.Endpoint.Controllers
         {
             try
             {
-                return o.ReadAll();
+                //return o.ReadAll();
+                return new Response(o.ReadAll());
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
-
-                return ex.Message;
+                return new Response(null,ex.Message);
             }
 
         }
@@ -42,18 +43,18 @@ namespace NightWorks.Endpoint.Controllers
         {
             try
             {
-                return o.Read(id);
+                return new Response(o.Read(id));
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
-
-                return ex.Message;
+                return new Response(null, ex.Message);
             }
 
         }
         [HttpPost]
         public void Post([FromBody] NWEvent value)
         {
+
             o.Create(value);
         }
         [HttpGet("parameter")]
@@ -61,18 +62,27 @@ namespace NightWorks.Endpoint.Controllers
         {
             try
             {
-                return o.ReadAllByParameter(location);
+                return new Response(o.ReadAllByParameter(location));
             }
             catch (System.Exception ex)
             {
-                return ex.Message;
+                return new Response(null,ex.Message);
             }
 
         }
         [HttpPost("/keyword")]
-        public void AddKeyword([FromBody] Keyword value)
+        public Response AddKeyword([FromBody] Keyword value)
         {
             k.Create(value);
+            try
+            {
+                return new Response(null, "");
+            }
+            catch (Exception ex)
+            {
+
+                return new Response(null, ex.Message);
+            }
         }
 
         [HttpPut]

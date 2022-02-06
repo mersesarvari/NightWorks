@@ -69,7 +69,16 @@ namespace NightWorks.Repository
             }
             else
             {
-                return db.Events.FirstOrDefault(t => t.Id == id);
+                bool check = db.Events.Any(x => x.Id == id);
+                if ( check== false)
+                {
+                    throw new Exception("There is no data with that id");
+                }
+                else
+                {
+                    return db.Events.FirstOrDefault(t => t.Id == id);
+                }
+                ;
             }
         }
 

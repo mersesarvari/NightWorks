@@ -50,11 +50,11 @@ namespace NigthWorks.Models
 
         [NotMapped]
         [JsonIgnore]//nem volt itt
-        public virtual List<Post> Posts { get; set; }
+        public virtual IList<Post> Posts { get; set; }
 
         [NotMapped]
         [JsonIgnore]
-        public virtual List<Event_User_Connect> Event_User_Conns { get; set; }
+        public virtual IList<Event_User_Connect> Event_User_Conns { get; set; }
 
 
     }
