@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using NigthWorks.Logic;
 using NigthWorks.Models;
 using NightWorks.Logic;
+using NightWorks.Models;
+using System;
 
 namespace NightWorks.Endpoint.Controllers
 {
@@ -18,52 +20,72 @@ namespace NightWorks.Endpoint.Controllers
         }
 
         [HttpGet]
-        public object GetAll()
+        public Response GetAll()
         {
             try
             {
-                return o.ReadAll();
+                return new Response(o.ReadAll(), "");
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
-
-                return ex.Message;
+                return new Response(null, ex.Message);
             }
 
         }
 
         [HttpGet("{id}")]
-        public object Get(int id)
+        public Response Get(int id)
         {
             try
             {
-                return o.Read(id);
+                return new Response(o.Read(id), "");
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
-
-                return ex.Message;
+                return new Response(null, ex.Message);
             }
-
         }
 
 
         [HttpPost]
-        public void Post([FromBody] Keyword value)
+        public Response Post([FromBody] Keyword value)
         {
-            o.Create(value);
+            try
+            {
+                o.Create(value);
+                return new Response(value, "");
+            }
+            catch (Exception ex)
+            {
+                return new Response(null, ex.Message);
+            }
         }
 
         [HttpPut]
-        public void Put([FromBody] Keyword value)
+        public Response Put([FromBody] Keyword value)
         {
-            o.Update(value);
+            try
+            {
+                return new Response(value, "");
+            }
+            catch (Exception ex)
+            {
+                return new Response(null, ex.Message);
+            }
         }
 
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public Response Delete(int id)
         {
-            o.Delete(id);
+            try
+            {
+                o.Delete(id);
+                return new Response(id, "Success");
+            }
+            catch (Exception ex)
+            {
+                return new Response(null, ex.Message);
+            }
         }
     }
 }

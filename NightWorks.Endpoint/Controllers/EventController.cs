@@ -25,12 +25,12 @@ namespace NightWorks.Endpoint.Controllers
         }
 
         [HttpGet]
-        public object GetAll()
+        public Response GetAll()
         {
             try
             {
                 //return o.ReadAll();
-                return new Response(o.ReadAll());
+                return new Response(o.ReadAll(),"");
             }
             catch (Exception ex)
             {
@@ -39,30 +39,39 @@ namespace NightWorks.Endpoint.Controllers
 
         }
         [HttpGet("{id}")]
-        public object Get(int id)
+        public Response Get(int id)
         {
             try
             {
-                return new Response(o.Read(id));
+                return new Response(o.Read(id), "");
             }
             catch (Exception ex)
             {
                 return new Response(null, ex.Message);
             }
-
         }
         [HttpPost]
-        public void Post([FromBody] NWEvent value)
-        {
-
-            o.Create(value);
-        }
-        [HttpGet("parameter")]
-        public object GetByParameter(string location)
+        public Response Post([FromBody] NWEvent value)
         {
             try
             {
-                return new Response(o.ReadAllByParameter(location));
+                o.Create(value);
+                return new Response(value, "Posting was succesfull");
+            }
+            catch (Exception ex)
+            {
+                return new Response(null, ex.Message);
+                
+            }
+            
+        }
+        [HttpGet("parameter")]
+        public Response GetByParameter(string location)
+        {
+            try
+            {
+                o.ReadAllByParameter(location);
+                return new Response(o.ReadAllByParameter(location), "Getting the element was succesfull");
             }
             catch (System.Exception ex)
             {
@@ -76,7 +85,7 @@ namespace NightWorks.Endpoint.Controllers
             k.Create(value);
             try
             {
-                return new Response(null, "");
+                return new Response(value, "Success");
             }
             catch (Exception ex)
             {
@@ -86,22 +95,31 @@ namespace NightWorks.Endpoint.Controllers
         }
 
         [HttpPut]
-        public void Put([FromBody] NWEvent value)
+        public Response Put([FromBody] NWEvent value)
         {
-            o.Update(value);
+            try
+            {
+                o.Update(value);
+                return new Response(value, "Success");
+            }
+            catch (Exception ex)
+            {
+
+                return new Response(value, ex.Message);
+            }
         }
 
         [HttpDelete("{id}")]
-        public Object Delete(int id)
+        public Response Delete(int id)
         {
             try
             {
                 o.Delete(id);
-                return new CommunicationMessage("Deleting was succesfull: " + id);
+                return new Response(id, "Deleting was succesfull!");                                
             }
             catch (Exception ex)
             {
-                return new CommunicationMessage(ex.Message);
+                return new Response(null, ex.Message);
             }
         }
     }

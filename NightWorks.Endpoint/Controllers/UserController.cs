@@ -4,6 +4,7 @@ using NigthWorks.Logic;
 using NigthWorks.Models;
 using System;
 using NightWorks.Logic;
+using NightWorks.Models;
 
 namespace NightWorks.Endpoint.Controllers
 {
@@ -11,25 +12,24 @@ namespace NightWorks.Endpoint.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        IUser_Logic logic;
+        IUser_Logic o;
 
         public UserController(IUser_Logic cl)
         {
-            this.logic = cl;
+            this.o = cl;
         }
         [HttpGet]
         public object GetAll()
         {
             try
             {
-                return logic.ReadAll();
+                o.ReadAll();
+                return new Response(o.ReadAll(), "");
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
-
-                return ex.Message;
+                return new Response(null, ex.Message);
             }
-
         }
 
         [HttpGet("{id}")]
@@ -37,75 +37,84 @@ namespace NightWorks.Endpoint.Controllers
         {
             try
             {
-                return logic.Read(id);
+                o.Read(id);
+                return new Response(o.Read(id), "");
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
-
-                return ex.Message;
+                return new Response(null, ex.Message);
             }
 
         }
 
 
         [HttpPost]
-        public void Post([FromBody] User value)
+        public Response Post([FromBody] User value)
         {
-            logic.Create(value);
+            try
+            {
+                o.Create(value);
+                return new Response(value, "");
+            }
+            catch (Exception ex)
+            {
+                return new Response(null, ex.Message);
+            }
         }
 
         [HttpPut]
-        public void Put([FromBody] User value)
+        public Response Put([FromBody] User value)
         {
-            logic.Update(value);
+            try
+            {
+                o.Update(value);
+                return new Response(value, "");
+            }
+            catch (Exception ex)
+            {
+                return new Response(null, ex.Message);
+            }
         }
 
         [HttpDelete("{id}")]
-        public Object Delete(int id)
+        public Response Delete(int id)
         {
             try
             {
-                logic.Delete(id);
-                return new CommunicationMessage("Deleting was succesfull: " + id);
+                o.Delete(id);
+                return new Response(id, "");
             }
             catch (Exception ex)
             {
-                return new CommunicationMessage(ex.Message);
+                return new Response(null, ex.Message);
             }
         }
-        [HttpDelete]
-        public Object Delete([FromBody] string email)
-        {
-            try
-            {
-                logic.Delete(logic.GetUserByEmail(email).Id);
-                return new CommunicationMessage("Deleting was succesfull: "+ logic.GetUserByEmail(email).Email);
-            }
-            catch (Exception ex)
-            {
-                return new CommunicationMessage(ex.Message);
-            }
-            
-        }
-
-
         //Felhasználó Bejelentkeztetés
         [HttpGet("manage")]
-        public Object LoginUser(string email, string password)
+        public Response LoginUser(string email, string password)
         {
             try
             {
-                return logic.Login(email, password);
+                o.Login(email, password);
+                return new Response(o.Login(email,password), "");
             }
             catch (Exception ex)
             {
-                return new CommunicationMessage(ex.Message);
-            } 
+                return new Response(null, ex.Message);
+            }
         }
         [HttpPost("manage")]
-        public void RegisterUser([FromBody] User value)
+        public Response RegisterUser([FromBody] User value)
         {
-            logic.Create(value);
+            try
+            {
+                o.Create(value);
+                return new Response(value, "");
+            }
+            catch (Exception ex)
+            {
+                return new Response(null, ex.Message);
+            }
         }
 
 

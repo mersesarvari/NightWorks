@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using NigthWorks.Logic;
 using NigthWorks.Models;
+using NightWorks.Models;
+using System;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -12,11 +14,11 @@ namespace NightWorks.Endpoint.Controllers
     [ApiController]
     public class RoleController : ControllerBase
     {
-        IRole_Logic logic;
+        IRole_Logic o;
 
         public RoleController(IRole_Logic brandLogic)
         {
-            logic = brandLogic;
+            this.o = brandLogic;
         }
 
         [HttpGet]
@@ -24,46 +26,69 @@ namespace NightWorks.Endpoint.Controllers
         {
             try
             {
-                return logic.ReadAll();
+                return new Response(o.ReadAll(), "");
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
-
-                return ex.Message;
+                return new Response(null, ex.Message);
             }
 
         }
         [HttpGet("{id}")]
-        public object Get(int id)
+        public Response Get(int id)
         {
             try
             {
-                return logic.Read(id);
+                o.Read(id);
+                return new Response(o.Read(id), "");
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
-
-                return ex.Message;
+                return new Response(null, ex.Message);
             }
 
         }
 
         [HttpPost]
-        public void Post([FromBody] Role value)
+        public Response Post([FromBody] Role value)
         {
-            logic.Create(value);
+            try
+            {
+                o.Create(value);
+                return new Response(value, "");
+            }
+            catch (Exception ex)
+            {
+                return new Response(null, ex.Message);
+            }
         }
 
         [HttpPut]
-        public void Put([FromBody] Role value)
+        public Response Put([FromBody] Role value)
         {
-            logic.Update(value);
+            try
+            {
+                o.Update(value);
+                return new Response(value, "");
+            }
+            catch (Exception ex)
+            {
+                return new Response(null, ex.Message);
+            }
         }
 
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public Response Delete(int id)
         {
-            logic.Delete(id);
+            try
+            {
+                o.Delete(id);
+                return new Response(id, "");
+            }
+            catch (Exception ex)
+            {
+                return new Response(null, ex.Message);
+            }
         }
     }
 }

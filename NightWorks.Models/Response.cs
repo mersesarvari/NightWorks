@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace NightWorks.Models
 {
-    public class Response
+    public delegate void FunkcioKivalto(object obj);
+    public class Response 
     {
         string status;
         string message;
@@ -14,23 +15,23 @@ namespace NightWorks.Models
 
         public string Status { get => status; set => status = value; }        
         public string Message { get => message; set => message = value; }
-        public object Data { get => data; set => data = value; }
+        public Object Data { get => data; set => data = value; }
 
-        public Response(Object data)
+        public Response(Object data, string message)
         {
-            
+
             if (data != null)
             {
                 this.status = "OK";
-                this.message = null;
+                this.message = message;
                 this.data = data;
             }
-        }
-        public Response(Object data, string message)
-        {
-            this.data = data;
-            this.status = "ERROR";
-            this.message = message;
+            else
+            {
+                this.status = "Error";
+                this.message=message;
+                this.data = data;
+            }
         }
     }
 }

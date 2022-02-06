@@ -76,7 +76,9 @@ namespace NightWorks.Repository
                 }
                 else
                 {
+                    //IList<NWEvent> events = new List<NWEvent>();
                     return db.Events.FirstOrDefault(t => t.Id == id);
+                    //return events;
                 }
                 ;
             }

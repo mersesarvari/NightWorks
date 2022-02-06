@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using NigthWorks.Logic;
 using NigthWorks.Models;
+using NightWorks.Models;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -25,16 +26,33 @@ namespace NightWorks.Endpoint.Controllers
             this.pl = pl;
         }
         [HttpGet("{id}")]
-        public IEnumerable<Post> GetAllPostById(int id)
+        public Response GetAllPostById(int id)
         {
             //int id = userlogic.GetUserByEmail(email).Id;
-            return pl.GetAllPostByUserId(id);
+            try
+            {
+                pl.GetAllPostByUserId(id);
+                return new Response(pl.GetAllPostByUserId(id), "");
+            }
+            catch (Exception ex)
+            {
+                return new Response(null, ex.Message);
+            }
         }
         [HttpGet("{email}")]
-        public IEnumerable<Post> GetAllPostByEmail(string email)
+        public Response GetAllPostByEmail(string email)
         {
-            int id = ul.GetUserByEmail(email).Id;
-            return pl.GetAllPostByUserId(id);
+            
+            try
+            {
+                int id = ul.GetUserByEmail(email).Id;
+                pl.GetAllPostByUserId(id);
+                return new Response(pl.GetAllPostByUserId(id), "");
+            }
+            catch (Exception ex)
+            {
+                return new Response(null, ex.Message);
+            }
         }
 
 
