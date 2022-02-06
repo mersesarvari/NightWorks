@@ -16,7 +16,7 @@ namespace NightWorks.Models
         public string Message { get => message; set => message = value; }
         public object Data { get => data; set => data = value; }
 
-        public Response(IQueryable<Object> data)
+        public Response(Object data)
         {
             
             if (data != null)
@@ -26,7 +26,7 @@ namespace NightWorks.Models
                 this.data = data;
             }
         }
-        public Response(object data, string message)
+        public Response(Object data, string message)
         {
             this.data = data;
             this.status = "ERROR";

@@ -36,7 +36,7 @@ namespace NigthWorks.Logic
         {
             return repo.Read(id);
         }
-        public IEnumerable<_File> ReadAll()
+        public IList<_File> ReadAll()
         {
             return repo.ReadAll();
         }

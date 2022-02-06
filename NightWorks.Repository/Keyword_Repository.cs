@@ -35,7 +35,7 @@ namespace NightWorks.Repository
             db.SaveChanges();
         }
 
-        public List<NWEvent> GetTypeEvents(int id)
+        public IList<NWEvent> GetTypeEvents(int id)
         {
             Keyword x = Read(id);
             List<NWEvent> list = new List<NWEvent>();
@@ -58,7 +58,7 @@ namespace NightWorks.Repository
             }
         }
 
-        public IQueryable<Keyword> ReadAll()
+        public IList<Keyword> ReadAll()
         {
             if (db == null)
             {
@@ -66,7 +66,7 @@ namespace NightWorks.Repository
             }
             else
             {
-                return db.Keywords;
+                return db.Keywords.ToList();
             }
         }
 

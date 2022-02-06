@@ -40,12 +40,12 @@ namespace NightWorks.Logic
             repo.Delete(id);
         }
 
-        public List<Keyword> GetEventTypes(int id)
+        public IList<Keyword> GetEventTypes(int id)
         {
             return repo.GetEventTypes(id);
         }
 
-        public List<User> GetEventUsers(int id)
+        public IList<User> GetEventUsers(int id)
         {
             return repo.GetEventUsers(id);
         }
@@ -55,7 +55,7 @@ namespace NightWorks.Logic
             return repo.Read(id);
         }
 
-        public IQueryable<NWEvent> ReadAll()
+        public IList<NWEvent> ReadAll()
         {
             return repo.ReadAll();
         }        

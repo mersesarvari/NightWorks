@@ -13,7 +13,7 @@ namespace NigthWorks.Repository
         void Create(Post post);
         void Delete(int id);
         Post Read(int id);
-        IQueryable<Post> ReadAll();
+        IList<Post> ReadAll();
         void Update(Post post);
 
         

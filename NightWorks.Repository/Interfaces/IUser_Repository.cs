@@ -13,7 +13,7 @@ namespace NigthWorks.Repository
         void Create(User user);
         void Delete(int id);
         User Read(int id);
-        IQueryable<User> ReadAll();
+        IList<User> ReadAll();
         void Update(User user);
         User GetUserbyEmail(string email);
 

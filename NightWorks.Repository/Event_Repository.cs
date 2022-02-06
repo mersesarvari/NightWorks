@@ -36,7 +36,7 @@ namespace NightWorks.Repository
             db.SaveChanges();
         }
 
-        public List<Keyword> GetEventTypes(int id)
+        public IList<Keyword> GetEventTypes(int id)
         {
             NWEvent x = Read(id);
             List<Keyword> types = new List<Keyword>();
@@ -47,7 +47,7 @@ namespace NightWorks.Repository
             return types;
         }
 
-        public List<User> GetEventUsers(int id)
+        public IList<User> GetEventUsers(int id)
         {
             /*
             NWEvent x = Read(id);
@@ -82,7 +82,7 @@ namespace NightWorks.Repository
             }
         }
 
-        public IQueryable<NWEvent> ReadAll()
+        public IList<NWEvent> ReadAll()
         {
             if (db == null)
             {
@@ -90,7 +90,7 @@ namespace NightWorks.Repository
             }
             else
             {
-                return db.Events;
+                return db.Events.ToList();
             }
         }
 
@@ -145,12 +145,12 @@ namespace NightWorks.Repository
             s.EventText = item.EventText;
             db.SaveChanges();
         }
-        public IQueryable<NWEvent> SearchEventByCity(string parameter)
+        public IList<NWEvent> SearchEventByCity(string parameter)
         {
             throw new NotImplementedException();
         }
 
-        public IQueryable<NWEvent> SearchEventByCountry(string parameter)
+        public IList<NWEvent> SearchEventByCountry(string parameter)
         {
             throw new NotImplementedException();
         }

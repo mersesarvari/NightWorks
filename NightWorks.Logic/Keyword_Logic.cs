@@ -1,4 +1,5 @@
 ﻿using NightWorks.Logic;
+using NightWorks.Repository;
 using NigthWorks.Data;
 using NigthWorks.Models;
 using System;
@@ -11,64 +12,39 @@ namespace NightWorksLogic
 {
     public class Keyword_Logic : IKeyword_Logic
     {
-        NWDbContext db;
-        public Keyword_Logic(NWDbContext db)
+        IKeyword_Repository repo;
+        public Keyword_Logic(IKeyword_Repository repo)
         {
-            this.db = db;
+            this.repo = repo;
         }
         public void Create(Keyword item)
         {
-            var context = new NWDbContext();
-            context.Add(item);
-            context.SaveChanges();
+            repo.Create(item);
         }
 
         public void Delete(int id)
         {
-            var x = Read(id);
-            if (x == null)
-            {
-                throw new InvalidOperationException(
-                    "Keyword with that id not found"
-                );
-            }
-            db.Remove(x);
-            db.SaveChanges();
+            repo.Delete(id);
         }
 
-        public List<NWEvent> GetTypeEvents(int id)
+        public IList<NWEvent> GetTypeEvents(int id)
         {
-            Keyword x = Read(id);
-            List<NWEvent> list = new List<NWEvent>();
-            foreach (var item in x.Event_Keyword_Conns)
-            {
-                list.Add(item.Event);
-            }
-            return list;
+            return repo.GetTypeEvents(id);
         }
 
         public Keyword Read(int id)
         {
-            return db.Keywords.FirstOrDefault(t => t.Id == id);
+            return repo.Read(id);
         }
 
-        public IQueryable<Keyword> ReadAll()
+        public IList<Keyword> ReadAll()
         {
-            return db.Keywords;
+            return repo.ReadAll();
         }
 
         public void Update(Keyword item)
         {
-            var s = Read(item.Id);
-            if (s == null)
-            {
-                throw new InvalidOperationException(
-                    "Keyword not found"
-                );
-            }
-            s.Name = item.Name;
-            
-            db.SaveChanges();
+            repo.Update(item);
         }
     }
 }

@@ -13,7 +13,7 @@ namespace NigthWorks.Repository
         void Create(Role role);
         void Delete(int id);
         Role Read(int id);
-        IQueryable<Role> ReadAll();
+        IList<Role> ReadAll();
         void Update(Role role);
     }
 }

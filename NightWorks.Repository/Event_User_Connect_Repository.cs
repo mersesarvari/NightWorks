@@ -54,7 +54,7 @@ namespace NightWorks.Repository
             }
         }
 
-        public List<Event_User_Connect> ReadAll()
+        public IList<Event_User_Connect> ReadAll()
         {
             if (db == null)
             {

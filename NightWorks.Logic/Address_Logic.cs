@@ -31,7 +31,7 @@ namespace NightWorks.Logic
             return repo.Read(id);
         }
 
-        public IQueryable<Address> ReadAll()
+        public IList<Address> ReadAll()
         {
             return repo.ReadAll();
         }

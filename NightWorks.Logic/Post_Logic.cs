@@ -37,7 +37,7 @@ namespace NigthWorks.Logic
             }
         }
 
-        public IEnumerable<Post> ReadAll()
+        public IList<Post> ReadAll()
         {
             return repo.ReadAll().ToList();
         }
@@ -68,10 +68,10 @@ namespace NigthWorks.Logic
             }
         }
 
-        public IEnumerable<Post> GetAllPostByUserId(int id)
+        public IList<Post> GetAllPostByUserId(int id)
         {
             var result = repo.ReadAll().Where(x => x.Post_UserId == id);
-            return result;
+            return result.ToList();
         }
     }
 }

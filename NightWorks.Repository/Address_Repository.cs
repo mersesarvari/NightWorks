@@ -81,7 +81,7 @@ namespace NightWorks.Repository
             }
         }
 
-        public IQueryable<Address> ReadAll()
+        public IList<Address> ReadAll()
         {
             if (db == null)
             {
@@ -89,7 +89,7 @@ namespace NightWorks.Repository
             }
             else
             {
-                return db.Addresses;
+                return db.Addresses.ToList();
             }
         }
 

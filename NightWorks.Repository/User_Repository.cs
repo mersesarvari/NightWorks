@@ -64,7 +64,7 @@ namespace NigthWorks.Repository
             db.SaveChanges();
         }
 
-        public IQueryable<User> ReadAll()
+        public IList<User> ReadAll()
         {
             if (db == null)
             {
@@ -72,7 +72,7 @@ namespace NigthWorks.Repository
             }
             else
             {
-                return db.Users;
+                return db.Users.ToList();
             }
         }
 

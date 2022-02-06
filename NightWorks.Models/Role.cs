@@ -23,8 +23,8 @@ namespace NigthWorks.Models
         public int Permission { get; set; }
 
         [NotMapped]
-        [JsonIgnore] //Ez eredetileg nem volt itt
-        public virtual List<User> Users { get; set; }
+        [JsonIgnore]
+        public virtual IList<User> Users { get; set; }
 
     }
 }

@@ -50,7 +50,7 @@ namespace NightWorks.Repository
                 return db.Files.FirstOrDefault(t => t.FilePath == path);
             }
         }
-        public IQueryable<_File> ReadAll()
+        public IList<_File> ReadAll()
         {
             if (db == null)
             {
@@ -58,7 +58,7 @@ namespace NightWorks.Repository
             }
             else
             {
-                return db.Files;
+                return db.Files.ToList();
             }
             
         }

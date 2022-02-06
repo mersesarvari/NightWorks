@@ -10,7 +10,7 @@ namespace NightWorks.Logic
     public interface IAddress_Logic
     {
         Address Read(int id);
-        IQueryable<Address> ReadAll();
+        IList<Address> ReadAll();
         void Create(Address item);
         void Update(Address item);
         void Delete(int id);

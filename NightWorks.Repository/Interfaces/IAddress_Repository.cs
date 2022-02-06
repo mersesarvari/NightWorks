@@ -10,7 +10,7 @@ namespace NightWorks.Repository
     public interface IAddress_Repository
     {
         Address Read(int id);
-        IQueryable<Address> ReadAll();
+        IList<Address> ReadAll();
         void Create(Address item);
         void Update(Address item);
         void Delete(int id);

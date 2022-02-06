@@ -49,14 +49,14 @@ namespace NigthWorks.Models
         [ForeignKey(nameof(Address))]
         public int Address_Id { get; set; }
 
-        public virtual List<Event_Keyword_Connect> Event_Keyword_Conns { get; set; }
+        public virtual IList<Event_Keyword_Connect> Event_Keyword_Conns { get; set; }
 
         
         [NotMapped]
         [JsonIgnore] //nem volt itt
-        public virtual List<Event_User_Connect> Event_User_Conns { get; set; }
+        public virtual IList<Event_User_Connect> Event_User_Conns { get; set; }
         
-        public virtual List<_File> Files { get; set; }
+        public virtual IList<_File> Files { get; set; }
 
     }
 }

@@ -11,7 +11,7 @@ namespace NigthWorks.Logic
     {
 
         Role Read(int id);
-        IEnumerable<Role> ReadAll();
+        IList<Role> ReadAll();
         void Create(Role obj);
         void Update(Role obj);
         void Delete(int id);

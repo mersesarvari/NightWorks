@@ -12,7 +12,7 @@ namespace NigthWorks.Logic
     {
         _File Read(int id);
         _File ReadByPath(int id);
-        IEnumerable<_File> ReadAll();
+        IList<_File> ReadAll();
         void Create(_File obj);
         void Update(_File obj);
         void Delete(int id);

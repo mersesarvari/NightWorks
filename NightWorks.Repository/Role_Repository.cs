@@ -49,7 +49,7 @@ namespace NigthWorks.Repository
             db.SaveChanges();
         }
 
-        public IQueryable<Role> ReadAll()
+        public IList<Role> ReadAll()
         {
             if (db == null)
             {
@@ -57,7 +57,7 @@ namespace NigthWorks.Repository
             }
             else
             {
-                return db.Roles;
+                return db.Roles.ToList();
             }
         }
     }

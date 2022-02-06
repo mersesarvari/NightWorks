@@ -8,7 +8,7 @@ namespace NigthWorks.Logic
     public interface IUser_Logic
     {
         User Read(int id);
-        IEnumerable<User> ReadAll();
+        IList<User> ReadAll();
         void Create(User obj);
         void Update(User obj);
         void Delete(int id);

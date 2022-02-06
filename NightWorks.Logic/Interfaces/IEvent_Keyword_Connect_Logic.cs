@@ -16,6 +16,6 @@ namespace NightWorks.Logic
 
         public void Delete(int id);
 
-        public List<Event_Keyword_Connect> ReadAll();
+        public IList<Event_Keyword_Connect> ReadAll();
     }
 }

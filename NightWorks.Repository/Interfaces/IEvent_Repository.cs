@@ -10,18 +10,15 @@ namespace NightWorks.Repository
     public interface IEvent_Repository
     {
         NWEvent Read(int id);
-        IQueryable<NWEvent> ReadAll();
+        IList<NWEvent> ReadAll();
         void Create(NWEvent item);    
         void Update(NWEvent item);
         void Delete(int id);
+        IList<NWEvent> SearchEventByCity(string parameter);
+        IList<NWEvent> SearchEventByCountry(string parameter);
 
-
-
-        IQueryable<NWEvent> SearchEventByCity(string parameter);
-        IQueryable<NWEvent> SearchEventByCountry(string parameter);
-
-        List<User> GetEventUsers(int id);
-        List<Keyword> GetEventTypes(int id);
+        IList<User> GetEventUsers(int id);
+        IList<Keyword> GetEventTypes(int id);
 
         IList<NWEvent> ReadAllByParameter(string parameter);
         //Connection setups

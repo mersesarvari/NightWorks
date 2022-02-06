@@ -16,6 +16,6 @@ namespace NightWorks.Logic
 
         public void Delete(int id);
 
-        public List<Event_User_Connect> ReadAll();
+        public IList<Event_User_Connect> ReadAll();
     }
 }

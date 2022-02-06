@@ -15,7 +15,7 @@ namespace NigthWorks.Repository
         _File Read(int id);
         _File ReadByPath(string path);
         void DeleteByPath(string path);
-        IQueryable<_File> ReadAll();
+        IList<_File> ReadAll();
         void Update(_File item);
     }
 }

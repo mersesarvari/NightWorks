@@ -16,7 +16,7 @@ namespace NightWorks.Repository
 
         public void Delete(int id);
 
-        public List<Event_User_Connect> ReadAll();
+        public IList<Event_User_Connect> ReadAll();
 
         public bool NotExisting(int id, int id2);
 

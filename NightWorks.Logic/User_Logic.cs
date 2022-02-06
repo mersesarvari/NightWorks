@@ -21,7 +21,7 @@ namespace NigthWorks.Logic
         {
             return repo.Read(id);
         }
-        public IEnumerable<User> ReadAll()
+        public IList<User> ReadAll()
         {
             return repo.ReadAll();
         }

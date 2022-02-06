@@ -16,7 +16,7 @@ namespace NigthWorks.Logic
         {
             this.brandRepository = brandRepository;
         }
-        public IEnumerable<Role> ReadAll()
+        public IList<Role> ReadAll()
         {
             return brandRepository.ReadAll().ToList();
         }

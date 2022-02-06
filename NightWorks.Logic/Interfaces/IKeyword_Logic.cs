@@ -10,11 +10,11 @@ namespace NightWorks.Logic
     public interface IKeyword_Logic
     {
         Keyword Read(int id);
-        IQueryable<Keyword> ReadAll();
+        IList<Keyword> ReadAll();
         void Create(Keyword item);    
         void Update(Keyword item);
         void Delete(int id);
-        List<NWEvent> GetTypeEvents(int id);
+        IList<NWEvent> GetTypeEvents(int id);
         
         
         

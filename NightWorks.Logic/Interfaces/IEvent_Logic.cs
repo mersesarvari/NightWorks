@@ -10,12 +10,12 @@ namespace NightWorks.Logic
     public interface IEvent_Logic
     {
         NWEvent Read(int id);
-        IQueryable<NWEvent> ReadAll();
-        void Create(NWEvent item);    
+        IList<NWEvent> ReadAll();
+        void Create(NWEvent item);
         void Update(NWEvent item);
         void Delete(int id);
-        List<User> GetEventUsers(int id);
-        List<Keyword> GetEventTypes(int id);
+        IList<User> GetEventUsers(int id);
+        IList<Keyword> GetEventTypes(int id);
 
         IList<NWEvent> ReadAllByParameter(string parameter);
 

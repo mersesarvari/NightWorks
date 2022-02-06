@@ -19,6 +19,6 @@ namespace NigthWorks.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string Name { get; set; }
         
-        public virtual List<Event_Keyword_Connect> Event_Keyword_Conns { get; set; }
+        public virtual IList<Event_Keyword_Connect> Event_Keyword_Conns { get; set; }
     }
 }
