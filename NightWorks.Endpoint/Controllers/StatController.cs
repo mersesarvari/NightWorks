@@ -32,7 +32,7 @@ namespace NightWorks.Endpoint.Controllers
             try
             {
                 pl.GetAllPostByUserId(id);
-                return new Response(pl.GetAllPostByUserId(id), "");
+                return new Response(pl.GetAllPostByUserId(id), "Succesfull");
             }
             catch (Exception ex)
             {
@@ -47,7 +47,7 @@ namespace NightWorks.Endpoint.Controllers
             {
                 int id = ul.GetUserByEmail(email).Id;
                 pl.GetAllPostByUserId(id);
-                return new Response(pl.GetAllPostByUserId(id), "");
+                return new Response(pl.GetAllPostByUserId(id), "Succesfull");
             }
             catch (Exception ex)
             {

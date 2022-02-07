@@ -30,7 +30,7 @@ namespace NightWorks.Models
             {
                 this.status = "Error";
                 this.message=message;
-                this.data = data;
+                this.data = null;
             }
         }
     }

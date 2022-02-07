@@ -30,7 +30,7 @@ namespace NightWorks.Endpoint.Controllers
             try
             {
                 //return o.ReadAll();
-                return new Response(o.ReadAll(),"");
+                return new Response(o.ReadAll(),"Succesfull");
             }
             catch (Exception ex)
             {
@@ -43,7 +43,7 @@ namespace NightWorks.Endpoint.Controllers
         {
             try
             {
-                return new Response(o.Read(id), "");
+                return new Response(o.Read(id), "Succesfull");
             }
             catch (Exception ex)
             {
@@ -56,7 +56,7 @@ namespace NightWorks.Endpoint.Controllers
             try
             {
                 o.Create(value);
-                return new Response(value, "Posting was succesfull");
+                return new Response(value, "Succesfull");
             }
             catch (Exception ex)
             {
@@ -71,7 +71,7 @@ namespace NightWorks.Endpoint.Controllers
             try
             {
                 o.ReadAllByParameter(location);
-                return new Response(o.ReadAllByParameter(location), "Getting the element was succesfull");
+                return new Response(o.ReadAllByParameter(location), "Succesfull");
             }
             catch (System.Exception ex)
             {
@@ -85,7 +85,7 @@ namespace NightWorks.Endpoint.Controllers
             k.Create(value);
             try
             {
-                return new Response(value, "Success");
+                return new Response(value, "Succesfull");
             }
             catch (Exception ex)
             {
@@ -100,7 +100,7 @@ namespace NightWorks.Endpoint.Controllers
             try
             {
                 o.Update(value);
-                return new Response(value, "Success");
+                return new Response(value, "Succesfull");
             }
             catch (Exception ex)
             {
@@ -115,7 +115,7 @@ namespace NightWorks.Endpoint.Controllers
             try
             {
                 o.Delete(id);
-                return new Response(id, "Deleting was succesfull!");                                
+                return new Response(id, "Succesfull");                                
             }
             catch (Exception ex)
             {

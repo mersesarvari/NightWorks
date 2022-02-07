@@ -26,7 +26,7 @@ namespace NightWorks.Endpoint.Controllers
         {
             try
             {
-                return new Response(o.ReadAll(), "");
+                return new Response(o.ReadAll(), "Succesfull");
             }
             catch (Exception ex)
             {
@@ -40,7 +40,7 @@ namespace NightWorks.Endpoint.Controllers
             try
             {
                 o.Read(id);
-                return new Response(o.Read(id), "");
+                return new Response(o.Read(id), "Succesfull");
             }
             catch (Exception ex)
             {
@@ -55,7 +55,7 @@ namespace NightWorks.Endpoint.Controllers
             try
             {
                 o.Create(value);
-                return new Response(value, "");
+                return new Response(value, "Succesfull");
             }
             catch (Exception ex)
             {
@@ -69,7 +69,7 @@ namespace NightWorks.Endpoint.Controllers
             try
             {
                 o.Update(value);
-                return new Response(value, "");
+                return new Response(value, "Succesfull");
             }
             catch (Exception ex)
             {
@@ -83,7 +83,7 @@ namespace NightWorks.Endpoint.Controllers
             try
             {
                 o.Delete(id);
-                return new Response(id, "");
+                return new Response(id, "Succesfull");
             }
             catch (Exception ex)
             {
