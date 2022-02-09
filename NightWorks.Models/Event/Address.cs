@@ -16,22 +16,13 @@ namespace NigthWorks.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int AddressId { get; set; }
 
-        [Required]//Y Coordinate
-        public double Longitude { get; set; }
         [Required]//x Coordinate
         public double Latitude { get; set; }
+        [Required]//Y Coordinate
+        public double Longitude { get; set; }
 
         [Required]
-        public string Country { get; set; }
-        
-        [Required]
-        public string City { get; set; }
-        [Required]
-        public string PostalCode { get; set; }
-        [Required]
-        public string Street { get; set; }
-        [Required]
-        public int BuildingNumber { get; set; }
+        public string FormattedAddress { get; set; }
 
         //public virtual List<NWEvent> Events { get; set; }
         public virtual NWEvent Event { get; set; }

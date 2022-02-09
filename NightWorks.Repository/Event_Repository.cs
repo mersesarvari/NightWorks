@@ -112,14 +112,10 @@ namespace NightWorks.Repository
                 {
                     var returndata = db.Events;
                     IList<NWEvent> list = new List<NWEvent>();
-                    if (returndata.Where(x => x.Address.Country == parameter).ToList().Count() > 0)
+                    if (returndata.Where(x => x.Address.FormattedAddress.ToLower().Contains(parameter.ToLower())).ToList().Count() > 0)
                     {
-                        list = returndata.Where(x => x.Address.Country == parameter).ToList();
-                    }
-                    else if (returndata.Where(x => x.Address.City == parameter).ToList().Count() > 0)
-                    {
-                        list = returndata.Where(x => x.Address.City == parameter).ToList();
-                    }
+                        list = returndata.Where(x => x.Address.FormattedAddress.ToLower().Contains(parameter.ToLower())).ToList();
+                    }                   
                     else
                     {
                         throw new Exception("We dont find any elements");

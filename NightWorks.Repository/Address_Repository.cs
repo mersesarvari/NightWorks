@@ -63,13 +63,9 @@ namespace NightWorks.Repository
                 else {
                     var returndata = db.Addresses;
                     IList<Address> list = new List<Address>();
-                    if (returndata.Where(x => x.Country == parameter).ToList().Count() > 0)
+                    if (returndata.Where(x => x.Event.Address.FormattedAddress.ToLower().Contains(parameter.ToLower())).ToList().Count() > 0)
                     {
-                        list = returndata.Where(x => x.Country == parameter).ToList();
-                    }
-                    else if (returndata.Where(x => x.City == parameter).ToList().Count() > 0)
-                    {
-                        list = returndata.Where(x => x.City == parameter).ToList();
+                        list = returndata.Where(x => x.Event.Address.FormattedAddress.ToLower().Contains(parameter.ToLower())).ToList();
                     }
                     else
                     {
@@ -102,11 +98,7 @@ namespace NightWorks.Repository
                     "Address not found"
                 );
             }
-            s.Country = item.Country;
-            s.PostalCode = item.PostalCode;
-            s.City = item.City;
-            s.Street = item.Street;
-            s.BuildingNumber = item.BuildingNumber;
+            s.FormattedAddress = item.FormattedAddress;
             db.SaveChanges();
         }
     }
