@@ -44,6 +44,14 @@ namespace NigthWorks.Models
         [ForeignKey(nameof(User))]
         public int Owner_Id { get; set; }
 
+        public string CoverPhoto { get; set; }
+
+        public string IconPhoto { get; set; }
+
+
+
+
+
         public virtual Address Address { get; set; }
 
         [ForeignKey(nameof(Address))]
@@ -56,7 +64,7 @@ namespace NigthWorks.Models
         [JsonIgnore] //nem volt itt
         public virtual IList<Event_User_Connect> Event_User_Conns { get; set; }
         
-        public virtual IList<_File> Files { get; set; }
+        public virtual IList<_File> Images { get; set; }
 
     }
 }

@@ -135,12 +135,15 @@ namespace NightWorks.Repository
                     "Event not found"
                 );
             }
+
             s.Address_Id = item.Address_Id;
             s.EventName = item.EventName;
-            s.Owner_Id = item.Owner_Id;
             s.Startingdate = item.Startingdate;
+            s.CoverPhoto = item.CoverPhoto;
+            s.IconPhoto = item.IconPhoto;
             s.Endingdate = item.Endingdate;
             s.EventText = item.EventText;
+            
             db.SaveChanges();
         }
         public IList<NWEvent> SearchEventByCity(string parameter)
