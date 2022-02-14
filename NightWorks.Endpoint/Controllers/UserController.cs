@@ -89,6 +89,7 @@ namespace NightWorks.Endpoint.Controllers
                 return new Response(null, ex.Message);
             }
         }
+
         //Felhasználó Bejelentkeztetés
         [HttpGet("manage")]
         public Response LoginUser(string email, string password)
