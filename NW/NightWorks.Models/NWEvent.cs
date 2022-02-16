@@ -47,21 +47,16 @@ namespace NigthWorks.Models
         public string CoverPhoto { get; set; }
 
         public string IconPhoto { get; set; }
-
-
-
-
-
         public virtual Address Address { get; set; }
 
         [ForeignKey(nameof(Address))]
         public int Address_Id { get; set; }
 
-        public virtual IList<Event_Keyword_Connect> Event_Keyword_Conns { get; set; }
-
-        
         [NotMapped]
-        [JsonIgnore] //nem volt itt
+        [JsonIgnore]
+        public virtual IList<Event_Keyword_Connect> Event_Keyword_Conns { get; set; }
+        [NotMapped]
+        [JsonIgnore]
         public virtual IList<Event_User_Connect> Event_User_Conns { get; set; }
         
         public virtual IList<_File> Images { get; set; }

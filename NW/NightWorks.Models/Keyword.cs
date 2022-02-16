@@ -18,7 +18,13 @@ namespace NigthWorks.Models
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string Name { get; set; }
-        
+
+        [NotMapped]
+        [JsonIgnore]
         public virtual IList<Event_Keyword_Connect> Event_Keyword_Conns { get; set; }
+
+        [NotMapped]
+        [JsonIgnore]
+        public virtual IList<UserSettings_Keyword_Connect> UserSettings_Keyword_Conns { get; set; }
     }
 }
