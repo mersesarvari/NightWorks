@@ -130,7 +130,11 @@ namespace NightWorks.Endpoint.Controllers
         {
             try
             {
-                o.Delete(id);
+                
+                int addressid = o.Read(id).Address_Id;
+                a.Delete(addressid);
+                //deleting the address will delete the event automatically
+                //o.Delete(id);
                 return new Response(id, "Succesfull");                                
             }
             catch (Exception ex)
