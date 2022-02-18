@@ -93,6 +93,22 @@ namespace NightWorks.Endpoint.Controllers
                 return new Response(null, ex.Message);
             }
         }
+        [HttpGet("get")]
+        public Response GetEventsByUser(int ownerid)
+        {
+            o.GetEventsByUser(ownerid);
+            try
+            {
+                return new Response(o.GetEventsByUser(ownerid), "Succesfull");
+            }
+            catch (Exception ex)
+            {
+
+                return new Response(null, ex.Message);
+            }
+
+        }
+
 
         [HttpPut]
         public Response Put([FromBody] NWEvent value)

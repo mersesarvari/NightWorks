@@ -104,5 +104,10 @@ namespace NightWorks.Logic
         {
             return repo.ReadAllByParameter(parameter);
         }
+
+        public IList<NWEvent> GetEventsByUser(int id)
+        {
+            return repo.GetEventsByUser(id);
+        }
     }
 }

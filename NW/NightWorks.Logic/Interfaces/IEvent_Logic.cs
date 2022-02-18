@@ -19,6 +19,8 @@ namespace NightWorks.Logic
 
         IList<NWEvent> ReadAllByParameter(string parameter);
 
+        IList<NWEvent> GetEventsByUser(int id);
+
         //Connection setups
         void AddUserToEvent(int eventid, int userid);
         void AddKeywordToEvent(int eventid, int keywordid);

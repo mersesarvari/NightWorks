@@ -42,11 +42,11 @@ namespace NigthWorks.Data
 
         protected override void OnModelCreating(ModelBuilder mb)
         {
-            /*   
+            
             //Identitás checkek:
             mb.Entity<User>().HasIndex(X => X.Email).IsUnique();
             mb.Entity<Role>().HasIndex(X => X.Name).IsUnique();
-            */
+            
 
             mb.Entity<User>(entity =>
             {

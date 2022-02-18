@@ -14,11 +14,10 @@ namespace NightWorks.Repository
         void Create(NWEvent item);    
         void Update(NWEvent item);
         void Delete(int id);
-        IList<NWEvent> SearchEventByCity(string parameter);
-        IList<NWEvent> SearchEventByCountry(string parameter);
-
         IList<User> GetEventUsers(int id);
         IList<Keyword> GetEventTypes(int id);
+
+        IList<NWEvent> GetEventsByUser(int id);
 
         IList<NWEvent> ReadAllByParameter(string parameter);
         //Connection setups

@@ -36,6 +36,19 @@ namespace NightWorks.Repository
             db.SaveChanges();
         }
 
+        public IList<NWEvent> GetEventsByUser(int id)
+        {
+            List<NWEvent> returndata= new List<NWEvent>();
+            foreach (var item in db.Events)
+            {
+                if (item.Owner_Id == id)
+                {
+                    returndata.Add(item);
+                }
+            }
+            return returndata;
+        }
+
         public IList<Keyword> GetEventTypes(int id)
         {
             NWEvent x = Read(id);
@@ -52,7 +65,7 @@ namespace NightWorks.Repository
             /*
             NWEvent x = Read(id);
             List<User> u = new List<User>();
-            foreach (var item in x.Event_User_Conns)
+            foreach (var item in x.Owner_Id)
             {
                 u.Add(item.User);
             }
@@ -145,15 +158,6 @@ namespace NightWorks.Repository
             s.EventText = item.EventText;
             
             db.SaveChanges();
-        }
-        public IList<NWEvent> SearchEventByCity(string parameter)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IList<NWEvent> SearchEventByCountry(string parameter)
-        {
-            throw new NotImplementedException();
         }
 
     }
