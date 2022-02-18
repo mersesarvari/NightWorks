@@ -5,6 +5,7 @@ using NigthWorks.Models;
 using NightWorks.Logic;
 using NightWorks.Models;
 using System;
+using Microsoft.AspNetCore.Cors;
 
 namespace NightWorks.Endpoint.Controllers
 {
@@ -94,7 +95,8 @@ namespace NightWorks.Endpoint.Controllers
             
         }
 
-        [HttpDelete("{id}")]
+        [EnableCors]
+        [HttpDelete("{id}")]        
         public Response Delete(int id)
         {
             try

@@ -125,6 +125,7 @@ namespace NightWorks.Endpoint.Controllers
             }
         }
 
+        [EnableCors]
         [HttpDelete("{id}")]
         public Response Delete(int id)
         {
@@ -132,7 +133,8 @@ namespace NightWorks.Endpoint.Controllers
             {
                 
                 int addressid = o.Read(id).Address_Id;
-                a.Delete(addressid);
+                o.Delete(id);
+                a.Delete(addressid);                
                 //deleting the address will delete the event automatically
                 //o.Delete(id);
                 return new Response(id, "Succesfull");                                
