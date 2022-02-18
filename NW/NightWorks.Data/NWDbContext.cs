@@ -23,7 +23,7 @@ namespace NigthWorks.Data
 
         public NWDbContext()
         {
-            Database.EnsureCreated();
+            //Database.EnsureCreated();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder builder)
