@@ -28,7 +28,7 @@ namespace NigthWorks.Models
 
         [MaxLength(30)]
         [Required]
-        [JsonIgnore]
+        //[JsonIgnore]
         public string Password { get; set; }
 
         public int? Money { get; set; }

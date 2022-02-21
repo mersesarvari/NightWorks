@@ -94,6 +94,7 @@ namespace API
 
         //Felhasználó Bejelentkeztetés
         [HttpGet("manage")]
+        [AllowAnonymous]
         public Response LoginUser(string email, string password)
         {
             try
@@ -109,23 +110,22 @@ namespace API
         //New login method
         [HttpPost("auth")]
         [AllowAnonymous]
-        public IActionResult Authenticate(string email, string password)
+        public Response Authenticate(string email, string password)
         {
             try
             {
-                var user = o.Login(email, password);
-                var token = JWTToken.CreateToken(user);
-                if (token == null)
-                    return Unauthorized();
-                return Ok(token);
+                User user = o.Login(email, password);
+                string token = JWTToken.CreateToken(user);
+                return new Response(token, "Succesfull");
             }
             catch (Exception ex)
             {
-                return BadRequest(new Response(null, ex.Message));
+                return new Response(null, ex.Message);
             }
             
         }
         [HttpPost("manage")]
+        [AllowAnonymous]
         public Response RegisterUser([FromBody] User value)
         {
             try

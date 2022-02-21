@@ -4,3 +4,6 @@ Link for roles: https://www.youtube.com/watch?v=wPhRFsH8kyU
 
 Permission with JWT
 terv kitalálása...
+JWT Cliens oldali kezelés: https://www.youtube.com/watch?v=iD49_NIQ-R4
+
+Kitalálni és megírni rendesen a header-eket
