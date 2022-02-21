@@ -21,6 +21,7 @@ namespace API
             this.o = cl;
         }
         [HttpGet]
+        [AllowAnonymous]
         public object GetAll()
         {
             try
@@ -35,6 +36,7 @@ namespace API
         }
 
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public object Get(int id)
         {
             try
@@ -51,6 +53,7 @@ namespace API
 
 
         [HttpPost]
+        [AllowAnonymous]
         public Response Post([FromBody] User value)
         {
             try
