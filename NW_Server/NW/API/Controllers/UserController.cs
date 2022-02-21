@@ -11,6 +11,7 @@ namespace API
 {
     [Route("/user")]
     [ApiController]
+    [Authorize]
     public class UserController : ControllerBase
     {
         IUser_Logic o;
@@ -107,6 +108,7 @@ namespace API
         }
         //New login method
         [HttpPost("auth")]
+        [AllowAnonymous]
         public IActionResult Authenticate(string email, string password)
         {
             try

@@ -24,25 +24,28 @@ namespace API
 {
     public class Startup
     {
-        
+        public Startup(Microsoft.Extensions.Configuration.IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+        public Microsoft.Extensions.Configuration.IConfiguration Configuration { get; set; }
         public void ConfigureServices(IServiceCollection services)
         {            
             services.AddControllers();
-            /*
+            
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options => 
             {
                 options.TokenValidationParameters = new TokenValidationParameters()
                 {
-                    ValidateActor = true,
-                    ValidateAudience = true,
-                    ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
-                    ValidIssuer = Configuration["Jwt:Issuer"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Secure.Key)),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
 
                 };
             
             });
-            */
+            
             #region Addtransients
             services.AddTransient<IUser_Logic, User_Logic>();
             services.AddTransient<IRole_Logic, Role_Logic>();
@@ -75,26 +78,6 @@ namespace API
             (
                 builder => builder.AllowAnyOrigin())
             );
-            /*
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
-            {
-                options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
-                    ValidateLifetime = true,
-                    ValidateIssuerSigningKey = true,
-                    ValidIssuer = Configuration["Jwt:Issuer"],
-                    ValidAudience = Configuration["Jwt:Issuer"],
-                    IssuerSigningKey = new
-                    SymmetricSecurityKey
-                    (Encoding.UTF8.GetBytes
-                    (Configuration["Jwt:Key"]))
-                };
-            });
-            */
-
-
 
         }
 
@@ -104,13 +87,12 @@ namespace API
             {
                 app.UseDeveloperExceptionPage();
             }
-            //Added
-            //app.UseSession();
             app.UseRouting();
             app.UseStaticFiles();
             app.UseRouting();
-            //app.UseAuthentication();
-            //app.UseAuthorization();
+            //
+            app.UseAuthentication();
+            app.UseAuthorization();
             app.UseCors();
 
             app.UseEndpoints(endpoints =>
