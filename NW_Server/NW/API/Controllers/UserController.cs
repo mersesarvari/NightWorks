@@ -11,7 +11,7 @@ namespace API
 {
     [Route("/user")]
     [ApiController]
-    [Authorize]
+    [Authorize(Roles = "admin")]
     public class UserController : ControllerBase
     {
         IUser_Logic o;
@@ -114,7 +114,7 @@ namespace API
             try
             {
                 var user = o.Login(email, password);
-                var token = Token.CreateToken(user);
+                var token = JWTToken.CreateToken(user);
                 if (token == null)
                     return Unauthorized();
                 return Ok(token);

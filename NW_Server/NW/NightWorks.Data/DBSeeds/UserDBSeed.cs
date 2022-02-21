@@ -19,10 +19,10 @@ namespace NightWorks.Data
             User admin = new User()
             {
                 Id = 1,
-                Username = "admin",
-                Email = "admin@admin.com",
-                Password = Secure.Encrypt("admin"),
-                Roleid = 2,
+                Username = "root",
+                Email = "root@root.com",
+                Password = Secure.Encrypt("root"),
+                Rolename = "admin",
                 Money = 500,
                 Validated = false,
                 ProfilePictureRoot = @"test1.png"
@@ -31,7 +31,8 @@ namespace NightWorks.Data
                 Id = 2, Username = "test1", 
                 Email = "test1@test.com", 
                 Password = Secure.Encrypt("test"), 
-                Roleid = 4, Money = 500, 
+                Rolename = "admin", 
+                Money = 500, 
                 Validated = false,
                 ProfilePictureRoot = @"test1.png"
             };
@@ -39,7 +40,8 @@ namespace NightWorks.Data
                 Id = 3, Username = "test2",
                 Email = "test2@test.com",
                 Password = Secure.Encrypt("test"),
-                Roleid = 4, Money = 200,
+                Rolename = "user", 
+                Money = 200,
                 Validated = false,
                 ProfilePictureRoot = @"test2.jpg"
             };

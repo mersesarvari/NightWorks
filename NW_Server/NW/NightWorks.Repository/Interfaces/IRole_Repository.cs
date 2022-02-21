@@ -11,8 +11,8 @@ namespace NigthWorks.Repository
     public interface IRole_Repository
     {
         void Create(Role role);
-        void Delete(int id);
-        Role Read(int id);
+        void Delete(string role);
+        Role Read(string role);
         IList<Role> ReadAll();
         void Update(Role role);
     }

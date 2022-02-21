@@ -35,12 +35,12 @@ namespace API.Controllers
 
         }
         [HttpGet("{id}")]
-        public Response Get(int id)
+        public Response Get(string role)
         {
             try
             {
-                o.Read(id);
-                return new Response(o.Read(id), "Succesfull");
+                o.Read(role);
+                return new Response(o.Read(role), "Succesfull");
             }
             catch (Exception ex)
             {
@@ -78,12 +78,12 @@ namespace API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public Response Delete(int id)
+        public Response Delete(string role)
         {
             try
             {
-                o.Delete(id);
-                return new Response(id, "Succesfull");
+                o.Delete(role);
+                return new Response(role, "Succesfull");
             }
             catch (Exception ex)
             {

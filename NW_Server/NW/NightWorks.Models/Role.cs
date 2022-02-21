@@ -14,9 +14,10 @@ namespace NigthWorks.Models
     public class Role
     {
         [Key]
+        /*
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-
+        */
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string Name { get; set; }
 

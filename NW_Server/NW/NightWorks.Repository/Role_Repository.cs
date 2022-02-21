@@ -18,7 +18,7 @@ namespace NigthWorks.Repository
             this.db = db;
         }
 
-        public Role Read(int id)
+        public Role Read(string role)
         {
             if (db == null)
             {
@@ -26,7 +26,7 @@ namespace NigthWorks.Repository
             }
             else
             {
-                return db.Roles.FirstOrDefault(t => t.Id == id);
+                return db.Roles.FirstOrDefault(t => t.Name == role);
             }
         }
         public void Create(Role obj)
@@ -35,16 +35,16 @@ namespace NigthWorks.Repository
             db.SaveChanges();
         }
 
-        public void Delete(int id)
+        public void Delete(string role)
         {
-            db.Remove(Read(id));
+            db.Remove(Read(role));
             db.SaveChanges();
         }
 
         public void Update(Role obj)
         {
             
-            var oldbrand = Read(obj.Id);
+            var oldbrand = Read(obj.Name);
             oldbrand.Name = obj.Name;
             db.SaveChanges();
         }

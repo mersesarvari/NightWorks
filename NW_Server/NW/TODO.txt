@@ -2,7 +2,5 @@ Hawe toi add permission system in a real was
 Have to add OAuth to our system.
 Link for roles: https://www.youtube.com/watch?v=wPhRFsH8kyU
 
-
-JWT Authentication handler implementálása: Nagyon fontos: https://www.youtube.com/watch?v=vWkPdurauaA
-
-FONTOS TUTORIAL: https://www.youtube.com/watch?v=TDY_DtTEkes
+Permission with JWT
+terv kitalálása...

@@ -28,6 +28,7 @@ namespace NigthWorks.Models
 
         [MaxLength(30)]
         [Required]
+        [JsonIgnore]
         public string Password { get; set; }
 
         public int? Money { get; set; }
@@ -45,7 +46,7 @@ namespace NigthWorks.Models
         public virtual Role Role { get; set; }
 
         [ForeignKey(nameof(Role))]
-        public int Roleid { get; set; }
+        public string Rolename { get; set; }
 
 
         [NotMapped]

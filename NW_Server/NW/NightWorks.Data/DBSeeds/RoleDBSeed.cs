@@ -16,11 +16,11 @@ namespace NightWorks.Data
         }
         public static void LoadData(ModelBuilder mb)
         {
-            Role role1 = new Role() { Id = 1, Name = "root", Permission = 100 };
-            Role role2 = new Role() { Id = 2, Name = "admin", Permission = 90 };
-            Role role3 = new Role() { Id = 3, Name = "moderator", Permission = 80 };
-            Role role4 = new Role() { Id = 4, Name = "user", Permission = 20 };
-            Role role5 = new Role() { Id = 5, Name = "guest", Permission = 10 };
+            Role role1 = new Role() { Name = "root", Permission = 100 };
+            Role role2 = new Role() { Name = "admin", Permission = 90 };
+            Role role3 = new Role() { Name = "moderator", Permission = 80 };
+            Role role4 = new Role() { Name = "user", Permission = 20 };
+            Role role5 = new Role() { Name = "guest", Permission = 10 };
             mb.Entity<Role>().HasData(role1, role2, role3, role4, role5);
         }
     }

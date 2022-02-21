@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace NightWorks.Models
 {
 
-    public static class Token
+    public static class JWTToken
     {
         public static string CreateToken(User user)
         {

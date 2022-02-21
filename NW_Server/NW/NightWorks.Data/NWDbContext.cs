@@ -50,7 +50,7 @@ namespace NigthWorks.Data
             {
                 entity.HasOne(x => x.Role)
                     .WithMany(y => y.Users)
-                    .HasForeignKey(x => x.Roleid)
+                    .HasForeignKey(x => x.Rolename)
                     .OnDelete(DeleteBehavior.Restrict);
             });
             //User -> Posts

@@ -21,9 +21,9 @@ namespace NigthWorks.Logic
             return brandRepository.ReadAll().ToList();
         }
 
-        public Role Read(int id)
+        public Role Read(string role)
         {
-            return brandRepository.Read(id);
+            return brandRepository.Read(role);
         }
 
         public void Create(Role obj)
@@ -35,11 +35,11 @@ namespace NigthWorks.Logic
             brandRepository.Create(obj);
         }
 
-        public void Delete(int id)
+        public void Delete(string role)
         {
-            if (brandRepository.Read(id) != null)
+            if (brandRepository.Read(role) != null)
             {
-                brandRepository.Delete(id);
+                brandRepository.Delete(role);
             }
             else
             {
