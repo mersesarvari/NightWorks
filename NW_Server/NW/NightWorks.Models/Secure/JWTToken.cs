@@ -17,11 +17,11 @@ namespace NightWorks.Models
         public static string CreateToken(User user)
         {
             List<Claim> lista = new List<Claim>();
-            lista.Add(new Claim("id", user.Id.ToString()));
-            lista.Add(new Claim("username", user.Username));            
-            lista.Add(new Claim("email", user.Email));
-            lista.Add(new Claim("password", user.Password));            
-            lista.Add(new Claim("role", user.Role.Name));
+            lista.Add(new Claim("_id", user.Id.ToString()));
+            lista.Add(new Claim("_username", user.Username));            
+            lista.Add(new Claim("_email", user.Email));
+            lista.Add(new Claim("_password", user.Password));            
+            lista.Add(new Claim("_role", user.Role.Name));
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Secure.Key));
             ;
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);

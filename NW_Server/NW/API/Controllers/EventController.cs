@@ -129,18 +129,24 @@ namespace API.Controllers
 
         [EnableCors]
         [HttpDelete("{id}")]
-        [Authorize("DeletePolicy")]
+        //[Authorize("DeletePolicy")]
         public Response Delete(int id, [FromHeader] string Authorization)
         {
             try
             {
+
                 //this is giving back the email address
-                var email = JWTToken.GetDataFromToken(HttpContext,"email")
+                //var email = JWTToken.GetDataFromToken(HttpContext,"_email")
                 ;
                 int addressid = o.Read(id).Address_Id;
-                o.Delete(id, email);
-                a.Delete(addressid);
-                return new Response(id, "Succesfull");                                
+                if (PolicyManager.DeletePolicy(HttpContext, addressid, Authorization))
+                {
+                    o.Delete(id, email);
+                    a.Delete(addressid);
+                    return new Response(id, "Succesfull");
+                }
+                
+                                              
             }
             catch (Exception ex)
             {
