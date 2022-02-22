@@ -1,5 +1,6 @@
 using Castle.Core.Configuration;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -7,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using NightWorks.Logic;
+using NightWorks.Models;
 using NightWorks.Repository;
 using NightWorksLogic;
 using NigthWorks.Data;
@@ -45,8 +47,16 @@ namespace API
                 };
             
             });
-            
+
+            services.AddAuthorization(configure =>
+            {
+                configure.AddPolicy("DeletePolicy", policyBuilder =>
+                 {
+                     policyBuilder.AddRequirements(new IdRequirement(1));
+                 });
+            });
             #region Addtransients
+            services.AddSingleton<IAuthorizationHandler, IdRequirementsHandler>();
             services.AddTransient<IUser_Logic, User_Logic>();
             services.AddTransient<IRole_Logic, Role_Logic>();
             services.AddTransient<IPost_Logic, Post_Logic>();

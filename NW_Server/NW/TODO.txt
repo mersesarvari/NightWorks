@@ -1,9 +1,12 @@
-Hawe toi add permission system in a real was
+﻿Hawe toi add permission system in a real was
 Have to add OAuth to our system.
 Link for roles: https://www.youtube.com/watch?v=wPhRFsH8kyU
 
 Permission with JWT
-terv kital�l�sa...
-JWT Cliens oldali kezel�s: https://www.youtube.com/watch?v=iD49_NIQ-R4
+terv kitalálása...
+JWT Cliens oldali kezelés: https://www.youtube.com/watch?v=iD49_NIQ-R4
 
-Kital�lni �s meg�rni rendesen a header-eket
+Kitalálni és megírni rendesen a header-eket
+
+
+Hogyan ellenőrzöm le, hogy valaki a saját adatát törli vagy nem?

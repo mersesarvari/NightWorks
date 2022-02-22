@@ -7,6 +7,7 @@ using NightWorks.Logic;
 using Microsoft.AspNetCore.Cors;
 using NightWorks.Models;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace API.Controllers
 {
@@ -128,6 +129,7 @@ namespace API.Controllers
 
         [EnableCors]
         [HttpDelete("{id}")]
+        [Authorize("DeletePolicy")]
         public Response Delete(int id, [FromHeader] string Authorization)
         {
             try

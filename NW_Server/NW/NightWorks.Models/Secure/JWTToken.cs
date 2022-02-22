@@ -17,10 +17,11 @@ namespace NightWorks.Models
         public static string CreateToken(User user)
         {
             List<Claim> lista = new List<Claim>();
-            lista.Add(new Claim(ClaimTypes.Name, user.Username));            
-            lista.Add(new Claim(ClaimTypes.Email, user.Email));
-            lista.Add(new Claim(ClaimTypes.Authentication, user.Password));            
-            lista.Add(new Claim(ClaimTypes.Role, user.Role.Name));
+            lista.Add(new Claim("id", user.Id.ToString()));
+            lista.Add(new Claim("username", user.Username));            
+            lista.Add(new Claim("email", user.Email));
+            lista.Add(new Claim("password", user.Password));            
+            lista.Add(new Claim("role", user.Role.Name));
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Secure.Key));
             ;
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -36,11 +37,11 @@ namespace NightWorks.Models
             return handler.ReadJwtToken(stream);
 
         }
-        //type should be ClaimTypes.Valami
+        //Már nem jó mert át lettek nevezve a jwt token adatok
         public static string GetDataFromToken(HttpContext context, string type) {
             ClaimsIdentity identity = context.User.Identity as ClaimsIdentity;
             IEnumerable<Claim> claim = identity.Claims;
-            var data = claim.Where(x => x.Type == type).FirstOrDefault().ToString().Split(':')[2].Trim();
+            var data = claim.Where(x => x.Type == type).FirstOrDefault().ToString().Split(':')[1].Trim();
             return data;
 
         }
