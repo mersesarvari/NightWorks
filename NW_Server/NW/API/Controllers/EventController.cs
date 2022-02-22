@@ -135,7 +135,7 @@ namespace API.Controllers
             try
             {
                 //this is giving back the email address
-                var email = JWTToken.GetDataFromToken(HttpContext,ClaimTypes.Email)
+                var email = JWTToken.GetDataFromToken(HttpContext,"email")
                 ;
                 int addressid = o.Read(id).Address_Id;
                 o.Delete(id, email);
