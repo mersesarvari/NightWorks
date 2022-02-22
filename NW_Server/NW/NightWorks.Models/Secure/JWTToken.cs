@@ -1,4 +1,5 @@
-﻿using Microsoft.IdentityModel.Tokens;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.IdentityModel.Tokens;
 using NigthWorks.Models;
 using System;
 using System.Collections.Generic;
@@ -29,6 +30,19 @@ namespace NightWorks.Models
                 signingCredentials: creds);
             var jwt = new JwtSecurityTokenHandler().WriteToken(token);
             return jwt;
+        }
+        public static JwtSecurityToken DecodeToken(string stream) {
+            var handler = new JwtSecurityTokenHandler();
+            return handler.ReadJwtToken(stream);
+
+        }
+        //type should be ClaimTypes.Valami
+        public static string GetDataFromToken(HttpContext context, string type) {
+            ClaimsIdentity identity = context.User.Identity as ClaimsIdentity;
+            IEnumerable<Claim> claim = identity.Claims;
+            var data = claim.Where(x => x.Type == type).FirstOrDefault().ToString().Split(':')[2].Trim();
+            return data;
+
         }
     }
 }

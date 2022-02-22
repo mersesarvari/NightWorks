@@ -6,6 +6,7 @@ using System;
 using NightWorks.Logic;
 using Microsoft.AspNetCore.Cors;
 using NightWorks.Models;
+using System.Security.Claims;
 
 namespace API.Controllers
 {
@@ -127,16 +128,16 @@ namespace API.Controllers
 
         [EnableCors]
         [HttpDelete("{id}")]
-        public Response Delete(int id)
+        public Response Delete(int id, [FromHeader] string Authorization)
         {
             try
             {
-                
+                //this is giving back the email address
+                var email = JWTToken.GetDataFromToken(HttpContext,ClaimTypes.Email)
+                ;
                 int addressid = o.Read(id).Address_Id;
-                o.Delete(id);
-                a.Delete(addressid);                
-                //deleting the address will delete the event automatically
-                //o.Delete(id);
+                o.Delete(id, email);
+                a.Delete(addressid);
                 return new Response(id, "Succesfull");                                
             }
             catch (Exception ex)

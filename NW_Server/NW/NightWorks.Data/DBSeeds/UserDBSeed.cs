@@ -31,7 +31,7 @@ namespace NightWorks.Data
                 Id = 2, Username = "test1", 
                 Email = "test1@test.com", 
                 Password = Secure.Encrypt("test"), 
-                Rolename = "admin", 
+                Rolename = "user", 
                 Money = 500, 
                 Validated = false,
                 ProfilePictureRoot = @"test1.png"

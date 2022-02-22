@@ -1,10 +1,14 @@
-﻿using NightWorks.Logic;
+﻿using Microsoft.AspNetCore.Http;
+using NightWorks.Logic;
+using NightWorks.Models;
 using NightWorks.Repository;
 using NigthWorks.Data;
 using NigthWorks.Models;
+using NigthWorks.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,11 +16,13 @@ namespace NightWorks.Logic
 {
     public class Event_Logic:IEvent_Logic 
     {
+        IUser_Repository userrepo;
         IEvent_Repository repo;
         IEvent_Keyword_ConnectRepository EKrepo;
         IEvent_User_Connect_Repository EUrepo;
-        public Event_Logic(IEvent_Repository repo, IEvent_Keyword_ConnectRepository EKrepo, IEvent_User_Connect_Repository EUrepo)
+        public Event_Logic(IEvent_Repository repo, IEvent_Keyword_ConnectRepository EKrepo, IEvent_User_Connect_Repository EUrepo, IUser_Repository userrepo)
         {
+            this.userrepo = userrepo;
             this.repo = repo;
             this.EKrepo = EKrepo;
             this.EUrepo = EUrepo;
@@ -28,16 +34,24 @@ namespace NightWorks.Logic
             repo.Create(item);
         }
 
-        public void Delete(int id)
+        public void Delete(int id, string email)
         {
-            var x = Read(id);
+            var x = repo.Read(id);
+            User current = userrepo.GetUserbyEmail(email);
             if (x == null)
             {
                 throw new InvalidOperationException(
-                    "Event not found"
+                    "Event not found so it cant be deleted"
                 );
             }
-            repo.Delete(id);
+            if (current.Id == x.Owner_Id || current.Role.Name=="Moderator" || current.Role.Name == "admin") {
+                repo.Delete(id);
+            }
+            else
+            {
+                throw new Exception("You dont have a permission to execute this command!");
+            }
+            
         }
 
         public IList<Keyword> GetEventTypes(int id)
