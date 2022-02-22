@@ -34,23 +34,16 @@ namespace NightWorks.Logic
             repo.Create(item);
         }
 
-        public void Delete(int id, string email)
+        public void Delete(int id)
         {
             var x = repo.Read(id);
-            User current = userrepo.GetUserbyEmail(email);
             if (x == null)
             {
                 throw new InvalidOperationException(
                     "Event not found so it cant be deleted"
                 );
             }
-            if (current.Id == x.Owner_Id || current.Role.Name=="Moderator" || current.Role.Name == "admin") {
-                repo.Delete(id);
-            }
-            else
-            {
-                throw new Exception("You dont have a permission to execute this command!");
-            }
+            repo.Delete(id);
             
         }
 

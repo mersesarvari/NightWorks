@@ -13,7 +13,7 @@ namespace NightWorks.Logic
         IList<NWEvent> ReadAll();
         void Create(NWEvent item);
         void Update(NWEvent item);
-        void Delete(int id, string token);
+        void Delete(int id);
         IList<User> GetEventUsers(int id);
         IList<Keyword> GetEventTypes(int id);
 

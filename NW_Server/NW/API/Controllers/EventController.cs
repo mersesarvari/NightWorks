@@ -108,7 +108,6 @@ namespace API.Controllers
 
                 return new Response(null, ex.Message);
             }
-
         }
 
 
@@ -129,24 +128,22 @@ namespace API.Controllers
 
         [EnableCors]
         [HttpDelete("{id}")]
-        //[Authorize("DeletePolicy")]
         public Response Delete(int id, [FromHeader] string Authorization)
         {
             try
-            {
-
-                //this is giving back the email address
-                //var email = JWTToken.GetDataFromToken(HttpContext,"_email")
-                ;
-                int addressid = o.Read(id).Address_Id;
-                if (PolicyManager.DeletePolicy(HttpContext, addressid, Authorization))
+            {                
+                int ownerid = o.Read(id).Owner_Id;
+                if (PolicyManager.BasicPolicy(HttpContext, ownerid, Authorization))
                 {
-                    o.Delete(id, email);
+                    int addressid = o.Read(id).Address_Id;
+                    o.Delete(id);
                     a.Delete(addressid);
                     return new Response(id, "Succesfull");
                 }
-                
-                                              
+                else
+                {
+                    throw new Exception("You dont have a permission to execute this command");
+                }
             }
             catch (Exception ex)
             {

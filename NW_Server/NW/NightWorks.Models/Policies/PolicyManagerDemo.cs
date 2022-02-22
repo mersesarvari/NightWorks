@@ -9,25 +9,18 @@ namespace NightWorks.Models
 {
     public static class PolicyManager
     {
-        public static bool DeletePolicy(HttpContext context,int ownerid,string Authorization)   
+        //Basic policy for CRUD methods 
+        public static bool BasicPolicy(HttpContext context, int ownerid, string Authorization)
         {
             int userid = int.Parse(JWTToken.GetDataFromToken(context, "_id").Trim());
-            var email = JWTToken.GetDataFromToken(context, "_email").Trim();
             var role = JWTToken.GetDataFromToken(context, "_role").Trim();
-            if (role == "admin" || role == "root" || role == "moderator")
+            if (role == "admin" || role == "root" || role == "moderator" || ownerid == userid)
             {
                 return true;
             }
             else
             {
-                if (ownerid == userid)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                return false;
             }
         }
 
