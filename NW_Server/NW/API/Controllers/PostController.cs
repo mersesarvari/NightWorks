@@ -19,73 +19,73 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public Response GetAll()
+        public IActionResult GetAll()
         {
             try
             {
-                return new Response(o.ReadAll(), "Succesfull");
+                return Ok(o.ReadAll());
             }
             catch (Exception ex)
             {
-                return new Response(null, ex.Message);
+                return BadRequest(ex.Message);
             }
 
         }
 
         [HttpGet("{id}")]
-        public object Get(int id)
+        public IActionResult Get(int id)
         {
             try
             {
                 o.Read(id);
-                return new Response(o.Read(id), "Succesfull");
+                return Ok(o.Read(id));
             }
             catch (Exception ex)
             {
-                return new Response(null, ex.Message);
+                return BadRequest(ex.Message);
             }
         }
 
 
         [HttpPost]
-        public Response Post([FromBody] Post value)
+        public IActionResult Post([FromBody] Post value)
         {
             try
             {
                 o.Create(value);
-                return new Response(value, "Succesfull");
+                return Ok("POST request was succesfull!");
             }
             catch (Exception ex)
             {
-                return new Response(null, ex.Message);
+                return BadRequest(ex.Message);
             }
         }
 
         [HttpPut]
-        public Response Put([FromBody] Post value)
+        public IActionResult Put([FromBody] Post value)
         {
             try
             {
                 o.Update(value);
-                return new Response(value, "Succesfull");
+                return Ok("PUT request was succesfull!");
             }
             catch (Exception ex)
             {
-                return new Response(null, ex.Message);
+                return BadRequest(ex.Message);
             }
         }
 
         [HttpDelete("{id}")]
-        public Response Delete(int id)
+        public IActionResult Delete(int id)
         {
             try
             {
                 o.Delete(id);
-                return new Response(id, "Succesfull");
+                return Ok("DELETE request was succesfull!");
             }
             catch (Exception ex)
             {
-                return new Response(null, ex.Message);
+                return BadRequest(ex.Message);
             }
         }
     }

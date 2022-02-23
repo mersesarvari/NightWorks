@@ -25,64 +25,41 @@ namespace API.Controllers
             return Ok("File Upload API running");
         }
         [HttpGet("{route}")]
-        public Object Get(string route)
+        public object Get(string route)
         {
             try
             {
-                Byte[] b = System.IO.File.ReadAllBytes(@"D:\\NW_Project\\Images\\" + route);   // You can use your own method over here.         
-                return File(b, "image/jpeg");
+            
+            Byte[] b = System.IO.File.ReadAllBytes(@"D:\\NW_Extensions\\Images\\" + route);   // You can use your own method over here.         
+                return File(b, "image/png");
             }
             catch (Exception ex)
             {
 
-                return ex.Message;
+                return BadRequest(ex.Message);
             }
             
         }
-        /*
-        [HttpPost]
-        public IActionResult Upload(IFormFile file)
-        {
-            return Ok();
-        }*/
-        /*
-        [Route("/alma")]
-        [HttpGet]
-        public IEnumerable<_File> GetAll()
-        {
-            return o.ReadAll();
-        }
-        */
-        /*
-        [HttpGet("{id}")]
-        public _File Get(int id)
-        {
-            return o.Read(id);
-        }
-        */
-
         [HttpPost]
         public IActionResult PostImage(IFormFile file)
         {
-            string filePath = Path.Combine(Imagefolder, file.FileName);
-            using (Stream fileStream = new FileStream(filePath, FileMode.Create))
+            try
             {
-                file.CopyToAsync(fileStream);
+                string filePath = Path.Combine(Imagefolder, file.FileName);
+                using (Stream fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    file.CopyToAsync(fileStream);
 
+                }
+                return Ok();
             }
-            return Ok();
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
+            
         }        
-        [Route("/alma")]
-        [HttpPost]
-        public void PostImageData([FromBody] _File filedata)
-        {
-            Console.WriteLine(filedata.Name + " is succesfully arrived");
-        }
-        
-
-
     }
-
-
 }
 

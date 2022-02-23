@@ -22,72 +22,72 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public object GetAll()
+        public IActionResult GetAll()
         {
             try
             {
-                return new Response(o.ReadAll(), "Succesfull");
+                return Ok(o.ReadAll());
             }
             catch (Exception ex)
             {
-                return new Response(null, ex.Message);
+                return BadRequest(ex.Message);
             }
 
         }
         [HttpGet("{id}")]
-        public Response Get(string role)
+        public IActionResult Get(string role)
         {
             try
             {
                 o.Read(role);
-                return new Response(o.Read(role), "Succesfull");
+                return Ok(o.Read(role));
             }
             catch (Exception ex)
             {
-                return new Response(null, ex.Message);
+                return BadRequest(ex.Message);
             }
 
         }
 
         [HttpPost]
-        public Response Post([FromBody] Role value)
+        public IActionResult Post([FromBody] Role value)
         {
             try
             {
                 o.Create(value);
-                return new Response(value, "Succesfull");
+                return Ok("POST request was succesfull!");
             }
             catch (Exception ex)
             {
-                return new Response(null, ex.Message);
+                return BadRequest(ex.Message);
             }
         }
 
         [HttpPut]
-        public Response Put([FromBody] Role value)
+        public IActionResult Put([FromBody] Role value)
         {
             try
             {
                 o.Update(value);
-                return new Response(value, "Succesfull");
+                return Ok("PUT request was succesfull!");
             }
             catch (Exception ex)
             {
-                return new Response(null, ex.Message);
+                return BadRequest(ex.Message);
             }
         }
 
         [HttpDelete("{id}")]
-        public Response Delete(string role)
+        public IActionResult Delete(string role)
         {
             try
             {
                 o.Delete(role);
-                return new Response(role, "Succesfull");
+                return Ok("DELETE request was succesfull!");
             }
             catch (Exception ex)
             {
-                return new Response(null, ex.Message);
+                return BadRequest(ex.Message);
             }
         }
     }

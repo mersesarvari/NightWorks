@@ -27,108 +27,104 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public Response GetAll()
+        public IActionResult GetAll()
         {
             try
             {
-                //return o.ReadAll();
-                return new Response(o.ReadAll(),"Succesfull");
+                return Ok(o.ReadAll());
             }
             catch (Exception ex)
             {
-                return new Response(null,ex.Message);
+                return BadRequest(ex.Message);
             }
 
         }
         [HttpGet("{id}")]
-        public Response Get(int id)
+        public IActionResult Get(int id)
         {
             try
             {
-                return new Response(o.Read(id), "Succesfull");
+                return Ok(o.Read(id));
             }
             catch (Exception ex)
             {
-                return new Response(null, ex.Message);
+                return BadRequest(ex.Message);
             }
         }
         [HttpPost]
-        public Response Post([FromBody] NWEvent value)
+        public IActionResult Post([FromBody] NWEvent value)
         {
             try
             {
                 o.Create(value);
-                return new Response(value, "Succesfull");
+                return Ok("POST request was succesfull!");
             }
             catch (Exception ex)
             {
-                return new Response(null, ex.Message);
+                return BadRequest(ex.Message);
                 
             }
             
         }
         [HttpGet("parameter")]
-        public Response GetByParameter(string location)
+        public IActionResult GetByParameter(string location)
         {
             try
             {
                 o.ReadAllByParameter(location);
-                return new Response(o.ReadAllByParameter(location), "Succesfull");
+                return Ok(o.ReadAllByParameter(location));
             }
             catch (System.Exception ex)
             {
-                return new Response(null,ex.Message);
+                return BadRequest(ex.Message);
             }
 
         }
         [HttpPost("/keyword")]
-        public Response AddKeyword([FromBody] Keyword value)
+        public IActionResult AddKeyword([FromBody] Keyword value)
         {
             k.Create(value);
             try
             {
-                return new Response(value, "Succesfull");
+                return Ok("POST request was succesfull!");
             }
             catch (Exception ex)
             {
 
-                return new Response(null, ex.Message);
+                return BadRequest(ex.Message);
             }
         }
         [HttpGet("get")]
-        public Response GetEventsByUser(int ownerid)
+        public IActionResult GetEventsByUser(int ownerid)
         {
             o.GetEventsByUser(ownerid);
             try
             {
-                return new Response(o.GetEventsByUser(ownerid), "Succesfull");
+                return Ok(o.GetEventsByUser(ownerid));
             }
             catch (Exception ex)
             {
-
-                return new Response(null, ex.Message);
+                return BadRequest(ex.Message);
             }
         }
-
-
         [HttpPut]
-        public Response Put([FromBody] NWEvent value)
+        public IActionResult Put([FromBody] NWEvent value)
         {
             try
             {
                 o.Update(value);
-                return new Response(value, "Succesfull");
+                return Ok("PUT request was succesfull!");
             }
             catch (Exception ex)
             {
 
-                return new Response(value, ex.Message);
+                return BadRequest(ex.Message);
             }
         }
 
         [EnableCors]
         [HttpDelete("{id}")]
-        public Response Delete(int id, [FromHeader] string Authorization)
+        public IActionResult Delete(int id, [FromHeader] string Authorization)
         {
             try
             {                
@@ -138,7 +134,7 @@ namespace API.Controllers
                     int addressid = o.Read(id).Address_Id;
                     o.Delete(id);
                     a.Delete(addressid);
-                    return new Response(id, "Succesfull");
+                    return Ok("DELETE request was succesfull!");
                 }
                 else
                 {
@@ -147,7 +143,7 @@ namespace API.Controllers
             }
             catch (Exception ex)
             {
-                return new Response(null, ex.Message);
+                return BadRequest(ex.Message);
             }
         }
     }

@@ -26,32 +26,30 @@ namespace API.Controllers
             this.pl = pl;
         }
         [HttpGet("{id}")]
-        public Response GetAllPostById(int id)
+        public IActionResult GetAllPostById(int id)
         {
             //int id = userlogic.GetUserByEmail(email).Id;
             try
             {
-                pl.GetAllPostByUserId(id);
-                return new Response(pl.GetAllPostByUserId(id), "Succesfull");
+                return Ok(pl.GetAllPostByUserId(id));
             }
             catch (Exception ex)
             {
-                return new Response(null, ex.Message);
+                return BadRequest(ex.Message);
             }
         }
         [HttpGet("{email}")]
-        public Response GetAllPostByEmail(string email)
+        public IActionResult GetAllPostByEmail(string email)
         {
             
             try
             {
                 int id = ul.GetUserByEmail(email).Id;
-                pl.GetAllPostByUserId(id);
-                return new Response(pl.GetAllPostByUserId(id), "Succesfull");
+                return Ok(pl.GetAllPostByUserId(id));
             }
             catch (Exception ex)
             {
-                return new Response(null, ex.Message);
+                return BadRequest(ex.Message);
             }
         }
 

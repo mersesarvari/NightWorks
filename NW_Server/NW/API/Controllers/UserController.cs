@@ -6,12 +6,12 @@ using System;
 using NightWorks.Logic;
 using NightWorks.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 
 namespace API
 {
     [Route("/user")]
     [ApiController]
-    [Authorize(Roles = "admin")]
     public class UserController : ControllerBase
     {
         IUser_Logic o;
@@ -22,31 +22,30 @@ namespace API
         }
         [HttpGet]
         [AllowAnonymous]
-        public object GetAll()
+        public IActionResult GetAll()
         {
             try
             {
                 o.ReadAll();
-                return new Response(o.ReadAll(), "Succesfull");
+                return Ok(o.ReadAll());
             }
             catch (Exception ex)
             {
-                return new Response(null, ex.Message);
+                return BadRequest(ex.Message);
             }
         }
 
         [HttpGet("{id}")]
         [AllowAnonymous]
-        public object Get(int id)
+        public IActionResult Get(int id)
         {
             try
             {
-                o.Read(id);
-                return new Response(o.Read(id), "Succesfull");
+                return Ok(o.Read(id));
             }
             catch (Exception ex)
             {
-                return new Response(null, ex.Message);
+                return BadRequest(ex.Message);
             }
 
         }
@@ -54,91 +53,91 @@ namespace API
 
         [HttpPost]
         [AllowAnonymous]
-        public Response Post([FromBody] User value)
+        public IActionResult Post([FromBody] User value)
         {
             try
             {
                 o.Create(value);
-                return new Response(value, "Succesfull");
+                return Ok(value);
             }
             catch (Exception ex)
             {
-                return new Response(null, ex.Message);
+                return BadRequest(ex.Message);
             }
         }
 
         [HttpPut]
-        public Response Put([FromBody] User value)
+        public IActionResult Put([FromBody] User value)
         {
             try
             {
                 o.Update(value);
-                return new Response(value, "Succesfull");
+                return Ok("Succesfully updated");
             }
             catch (Exception ex)
             {
-                return new Response(null, ex.Message);
+                return BadRequest(ex.Message);
             }
         }
 
         [HttpDelete("{id}")]
-        public Response Delete(int id)
+        public IActionResult Delete(int id)
         {
             try
             {
                 o.Delete(id);
-                return new Response(id, "Succesfull");
+                return Ok("Deleting was succesfull");
             }
             catch (Exception ex)
             {
-                return new Response(null, ex.Message);
+                return BadRequest(ex.Message);
             }
         }
-
-        //Felhasználó Bejelentkeztetés
-        [HttpGet("manage")]
+        [EnableCors]
+        [HttpGet("login")]
         [AllowAnonymous]
-        public Response LoginUser(string email, string password)
-        {
-            try
-            {
-                o.Login(email, password);
-                return new Response(o.Login(email,password), "");
-            }
-            catch (Exception ex)
-            {
-                return new Response(null, ex.Message);
-            }
-        }
-        //New login method
-        [HttpPost("auth")]
-        [AllowAnonymous]
-        public Response Authenticate(string email, string password)
+        public IActionResult Auth(string email, string password)
         {
             try
             {
                 User user = o.Login(email, password);
                 string token = JWTToken.CreateToken(user);
-                return new Response(token, "Succesfull");
+                return Ok(token);
             }
             catch (Exception ex)
             {
-                return new Response(null, ex.Message);
+                return BadRequest(ex.Message);
+            }
+
+        }
+        [HttpGet("validate")]
+        [AllowAnonymous]
+        public IActionResult Login([FromHeader] string Authorization)
+        {
+            try
+            {
+                return Ok(o.Read(int.Parse(JWTToken.GetDataFromToken(HttpContext, "_id"))));
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
             }
             
         }
+        
         [HttpPost("manage")]
         [AllowAnonymous]
-        public Response RegisterUser([FromBody] User value)
+        public IActionResult RegisterUser([FromBody] User value)
         {
             try
             {
                 o.Create(value);
-                return new Response(value, "Succesfull");
+                return Ok("Registration was succesfull");
             }
             catch (Exception ex)
             {
-                return new Response(null, ex.Message);
+                return BadRequest(ex.Message);
             }
         }
     }
