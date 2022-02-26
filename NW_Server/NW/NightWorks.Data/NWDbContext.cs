@@ -90,16 +90,16 @@ namespace NigthWorks.Data
             mb.Entity<UserSettings_Keyword_Connect>().HasOne(x => x.Keyword).WithMany(x => x.UserSettings_Keyword_Conns).HasForeignKey(x => x.FK_KeywordId).OnDelete(DeleteBehavior.Restrict);            
             RoleDBSeed.LoadData(mb);
             UserDBSeed.LoadData(mb);
-            /*
-            PostDBSeed.LoadData(mb);            
+            
+            //PostDBSeed.LoadData(mb);            
             AddressDBSeed.LoadData(mb);
             EventDBSeed.LoadData(mb);
-            KeywordDBSeed.LoadData(mb);
-            UserSettingsDBSeed.LoadData(mb);
-            Event_User_ConnectDBSeed.LoadData(mb);
-            Event_Keyword_ConnectDBSeed.LoadData(mb);
-            UserSettings_Keyword_ConnectDBSeed.LoadData(mb);
-            */
+            //KeywordDBSeed.LoadData(mb);
+            //UserSettingsDBSeed.LoadData(mb);
+            //Event_User_ConnectDBSeed.LoadData(mb);
+            //Event_Keyword_ConnectDBSeed.LoadData(mb);
+            //UserSettings_Keyword_ConnectDBSeed.LoadData(mb);
+            
 
 
 
