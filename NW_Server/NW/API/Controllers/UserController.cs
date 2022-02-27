@@ -96,11 +96,11 @@ namespace API
         [EnableCors]
         [HttpGet("login")]
         [AllowAnonymous]
-        public IActionResult Auth(string email, string password)
+        public IActionResult Auth([FromBody] User value)
         {
             try
             {
-                User user = o.Login(email, password);
+                User user = o.Login(value.Email, value.Password);
                 string token = JWTToken.CreateToken(user);
                 return Ok(token);
             }

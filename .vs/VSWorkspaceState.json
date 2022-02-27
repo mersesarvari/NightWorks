@@ -1,7 +1,12 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\NW_Server",
+    "\\NW_Server\\NW",
+    "\\NW_Server\\NW\\API",
+    "\\NW_Server\\NW\\API\\Controllers",
+    "\\NW_Server\\NW\\NightWorks.Data"
   ],
-  "SelectedNode": "\\NightWorks.sln",
+  "SelectedNode": "\\NW_Server\\NW\\API\\Controllers\\UserController.cs",
   "PreviewInSolutionExplorer": false
 }
