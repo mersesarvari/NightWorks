@@ -84,10 +84,14 @@ namespace API
             services.AddControllers().AddJsonOptions(x =>
                 x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
-            services.AddCors(options => options.AddDefaultPolicy
-            (
-                builder => builder.AllowAnyOrigin())
-            );
+            services.AddCors(options => options.AddDefaultPolicy(
+                builder =>
+                {
+                    builder.AllowAnyOrigin();
+                    builder.AllowAnyMethod();
+                    builder.AllowAnyHeader();
+                }
+            ));
 
         }
 

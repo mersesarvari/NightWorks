@@ -94,15 +94,15 @@ namespace API
             }
         }
         [EnableCors]
-        [HttpGet("login")]
+        [HttpPost("login")]
         [AllowAnonymous]
-        public IActionResult Auth([FromBody] User value)
+        public IActionResult Auth([FromBody] LoginUser value)
         {
             try
             {
                 User user = o.Login(value.Email, value.Password);
                 string token = JWTToken.CreateToken(user);
-                return Ok(token);
+                return Ok(new Token { Value=token});
             }
             catch (Exception ex)
             {
