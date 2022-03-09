@@ -43,7 +43,7 @@ namespace NightWorks.Data
             NWEvent e2 = new NWEvent()
             {
                 Id = 2,
-                EventName = "Bath Party",
+                EventName = "Bath Party at Budapest",
                 Startingdate = new DateTime(2021, 12, 15, 15, 30, 00),
                 Endingdate = new DateTime(2022, 01, 03, 00, 00, 00),
                 EventText = "The story of Sparty starts in 1994, when a group of friends decided to bring together two things they love: the ancient " +
@@ -60,7 +60,7 @@ namespace NightWorks.Data
             NWEvent e3 = new NWEvent()
             {
                 Id = 3,
-                EventName = "ProbaEvent2",
+                EventName = "Lorem Ipsum event",
                 Startingdate = new DateTime(2021, 12, 15, 15, 30, 00),
                 Endingdate = new DateTime(2022, 12, 15, 18, 00, 00),
                 EventText = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard " +
