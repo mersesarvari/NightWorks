@@ -26,8 +26,9 @@ namespace NightWorks.Data
                 EventText = "[Event1] This is our test events text. This text will fill de body od our posts",
                 Owner_Id = 1,
                 Address_Id = 1,
-                IconPhoto = "coins.png"
-                
+                IconPhoto = "coins.png",
+                CoverPhoto = @"event1.jpg"
+
 
             };
             NWEvent e2 = new NWEvent()
@@ -37,9 +38,11 @@ namespace NightWorks.Data
                 Startingdate = new DateTime(2021, 12, 15, 15, 30, 00),
                 Endingdate = new DateTime(2022, 01, 03, 00, 00, 00),
                 EventText = "[Event2] This is our test events text. This text will fill de body od our posts",
-                Address_Id=2,
+                Address_Id = 2,
                 Owner_Id = 1,
-                IconPhoto = "biodiversity.png"
+                IconPhoto = "biodiversity.png",
+                CoverPhoto = @"event2.jpg"
+                
 
             };
             NWEvent e3 = new NWEvent()
@@ -51,7 +54,8 @@ namespace NightWorks.Data
                 EventText = "[Event3] This is our test events text. This text will fill de body od our posts",
                 Address_Id = 3,
                 Owner_Id = 2,
-                IconPhoto = "plant.png"
+                IconPhoto = "plant.png",
+                CoverPhoto = @"event3.jpg"
 
             };
             events.Add(e1);

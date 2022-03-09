@@ -17,7 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\NightWorks.Client\NightWorks.Client.csproj" />
     <ProjectReference Include="..\NightWorks.Data\NightWorks.Data.csproj" />
     <ProjectReference Include="..\NightWorks.Logic\NightWorks.Logic.csproj" />
     <ProjectReference Include="..\NightWorks.Models\NightWorks.Models.csproj" />
