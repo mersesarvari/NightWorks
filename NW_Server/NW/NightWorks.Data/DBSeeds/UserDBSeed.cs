@@ -25,7 +25,7 @@ namespace NightWorks.Data
                 Rolename = "admin",
                 Money = 500,
                 Validated = false,
-                ProfilePictureRoot = @"test1.png"
+                ProfilePictureRoot = @"profile1.jpg"
             };
             User a = new User() { 
                 Id = 2, Username = "test1", 
@@ -34,7 +34,7 @@ namespace NightWorks.Data
                 Rolename = "user", 
                 Money = 500, 
                 Validated = false,
-                ProfilePictureRoot = @"test1.png"
+                ProfilePictureRoot = @"profile1.jpg"
             };
             User b = new User() {
                 Id = 3, Username = "test2",
@@ -43,7 +43,7 @@ namespace NightWorks.Data
                 Rolename = "user", 
                 Money = 200,
                 Validated = false,
-                ProfilePictureRoot = @"test2.jpg"
+                ProfilePictureRoot = @"profile1.jpg"
             };
             mb.Entity<User>().HasData(a, b, admin);
         }
