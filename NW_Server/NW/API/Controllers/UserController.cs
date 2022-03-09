@@ -7,6 +7,7 @@ using NightWorks.Logic;
 using NightWorks.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
+using NightWorks.Models.ReturnModels;
 
 namespace API
 {
@@ -47,9 +48,7 @@ namespace API
             {
                 return BadRequest(ex.Message);
             }
-
         }
-
 
         [HttpPost]
         [AllowAnonymous]
@@ -65,7 +64,6 @@ namespace API
                 return BadRequest(ex.Message);
             }
         }
-
         [HttpPut]
         public IActionResult Put([FromBody] User value)
         {
@@ -79,7 +77,6 @@ namespace API
                 return BadRequest(ex.Message);
             }
         }
-
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
@@ -116,7 +113,9 @@ namespace API
         {
             try
             {
-                return Ok(o.Read(int.Parse(JWTToken.GetDataFromToken(HttpContext, "_id"))));
+                User temp = o.Read(int.Parse(JWTToken.GetDataFromToken(HttpContext, "_id")));
+
+                return Ok(new UserTokenFormat() {Id=temp.Id,Username=temp.Username,Email=temp.Email, Password=temp.Password, Role=temp.Role, Picture=temp.ProfilePictureRoot});
             }
             catch (Exception ex)
             {
