@@ -115,7 +115,7 @@ namespace API
             {
                 User temp = o.Read(int.Parse(JWTToken.GetDataFromToken(HttpContext, "_id")));
 
-                return Ok(new UserTokenFormat() {Id=temp.Id,Username=temp.Username,Email=temp.Email, Password=temp.Password, Role=temp.Role, Picture=temp.ProfilePictureRoot});
+                return Ok(new UserTokenFormat() {Id=temp.Id,Username=temp.Username,Email=temp.Email, Password=temp.Password, Picture=temp.ProfilePictureRoot});
             }
             catch (Exception ex)
             {
