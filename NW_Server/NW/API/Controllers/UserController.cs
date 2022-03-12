@@ -8,6 +8,7 @@ using NightWorks.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using NightWorks.Models.ReturnModels;
+using System.Net;
 
 namespace API
 {
@@ -91,7 +92,20 @@ namespace API
                 return BadRequest(ex.Message);
             }
         }
-
+        [HttpDelete]
+        public IActionResult Delete([FromHeader] string Authorization)
+        {
+            try
+            {
+                User temp = o.Read(int.Parse(JWTToken.GetDataFromToken(HttpContext, "_id")));
+                o.Delete(temp.Id);
+                return Ok("Deleting was succesfull");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
 
         [HttpPost("login")]
         [AllowAnonymous]
@@ -101,11 +115,11 @@ namespace API
             {
                 User user = o.Login(value.Email, value.Password);
                 string token = JWTToken.CreateToken(user);
-                return Ok(new Token { Value=token});
+                return Ok(token);
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return Ok(ex.Message);
             }
 
         }
@@ -123,7 +137,7 @@ namespace API
             catch (Exception ex)
             {
 
-                return BadRequest(ex.Message);
+                return Ok(new { Message = ex.Message });
             }
             
         }
