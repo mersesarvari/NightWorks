@@ -103,41 +103,47 @@ namespace API
             }
             catch (Exception ex)
             {
+                Request.Headers.Add("Status Code", "300");
                 return BadRequest(ex.Message);
             }
         }
 
         [HttpPost("login")]
         [AllowAnonymous]
-        public IActionResult Auth([FromBody] LoginUser value)
+        public async Task<Object> Auth([FromBody] LoginUser value)
         {
             try
             {
+                var response = new HttpResponseMessage(HttpStatusCode.OK);
                 User user = o.Login(value.Email, value.Password);
                 string token = JWTToken.CreateToken(user);
                 return Ok(token);
             }
             catch (Exception ex)
             {
-                return Ok(ex.Message);
+                var response = new HttpResponseMessage(HttpStatusCode.InternalServerError);
+                response.Content = new StringContent(ex.Message);
+                return Task.FromResult(response);
             }
 
         }
 
         [HttpGet("validate")]
         [AllowAnonymous]
-        public IActionResult Login([FromHeader] string Authorization)
+        public async Task<Object> Login([FromHeader] string Authorization)
         {
+           
             try
             {
+                var response = new HttpResponseMessage(HttpStatusCode.OK);
                 User temp = o.Read(int.Parse(JWTToken.GetDataFromToken(HttpContext, "_id")));
-
                 return Ok(new UserTokenFormat() {Id=temp.Id,Username=temp.Username,Email=temp.Email, Password=temp.Password, Picture=temp.ProfilePictureRoot});
             }
             catch (Exception ex)
             {
-
-                return Ok(new { Message = ex.Message });
+                var response = new HttpResponseMessage(HttpStatusCode.InternalServerError);
+                response.Content = new StringContent(ex.Message);
+                return Task.FromResult(response);
             }
             
         }
