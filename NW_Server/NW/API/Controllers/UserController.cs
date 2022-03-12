@@ -11,6 +11,7 @@ using NightWorks.Models.ReturnModels;
 
 namespace API
 {
+    [EnableCors]
     [Route("/user")]
     [ApiController]
     public class UserController : ControllerBase
@@ -90,7 +91,8 @@ namespace API
                 return BadRequest(ex.Message);
             }
         }
-        [EnableCors]
+
+
         [HttpPost("login")]
         [AllowAnonymous]
         public IActionResult Auth([FromBody] LoginUser value)
@@ -107,6 +109,7 @@ namespace API
             }
 
         }
+
         [HttpGet("validate")]
         [AllowAnonymous]
         public IActionResult Login([FromHeader] string Authorization)
@@ -124,13 +127,17 @@ namespace API
             }
             
         }
-        
-        [HttpPost("manage")]
-        [AllowAnonymous]
+
+        [HttpPost("register")]
+        [AllowAnonymous]        
         public IActionResult RegisterUser([FromBody] User value)
         {
             try
             {
+                value.Money = 0;
+                value.Rolename = "user";
+                value.Validated = false;
+                value.ProfilePictureRoot = "default.png";
                 o.Create(value);
                 return Ok("Registration was succesfull");
             }
