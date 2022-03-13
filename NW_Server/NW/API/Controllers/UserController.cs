@@ -185,7 +185,7 @@ namespace API
             try
             {
                 User tempuser = o.Read(int.Parse(NightWorks.Models.JWTToken.GetDataFromToken(HttpContext, "_id")));
-                var data = setur.ReadAllbyUserId(tempuser.Id);
+                var data = o.ReadAllEventByUserId(tempuser.Id);
                 return new ResponseFormat(200, $"Reading wa succesfull", data);
             }
             catch (Exception ex)

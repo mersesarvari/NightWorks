@@ -74,16 +74,28 @@ namespace NigthWorks.Repository
                 return db.Users.ToList();
             }
         }
-        public IList<SaveEventToUser> ReadAllEventByUserId(int id)
+        public IList<NWEvent> ReadAllEventByUserId(int id)
         {
             var raw = Read(id);
             var savedevents = new List<SaveEventToUser>();
+            var responselist = new List<NWEvent>();
             foreach (SaveEventToUser item in raw.SavedEvents)
             {
                 savedevents.Add(item);
             }
-            if(savedevents!=null)
-                return savedevents;
+            if (savedevents != null)
+            {
+                foreach (var item in savedevents)
+                {
+                    responselist.Add(db.Events.FirstOrDefault(x => x.Id == item.EventId));
+                }
+                if (responselist != null)
+                    return responselist;
+                else
+                {
+                    throw new Exception("List with the return values is null");
+                }
+            }
             else
             {
                 throw new Exception("List with the return values is null");

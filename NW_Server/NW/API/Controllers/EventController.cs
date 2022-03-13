@@ -27,15 +27,16 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAll()
+        public ResponseFormat GetAll()
         {
             try
             {
-                return Ok(o.ReadAll());
+
+                return new ResponseFormat(200,"Succesfull GET request",o.ReadAll());
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return new ResponseFormat(750, ex.Message);
             }
 
         }

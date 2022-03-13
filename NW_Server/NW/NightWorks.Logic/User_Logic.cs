@@ -109,9 +109,9 @@ namespace NigthWorks.Logic
         {
             return repo.GetUserbyEmail(email);
         }
-        public IList<SaveEventToUser> ReadAllEventByUserId(int userid)
+        public IList<NWEvent> ReadAllEventByUserId(int userid)
         {
-            return saveEventToUserrepo.ReadAllbyUserId(userid);
+            return repo.ReadAllEventByUserId(userid);
         }
     }
 }
