@@ -163,7 +163,8 @@ namespace API
             }
         }
 
-        [HttpPost("saveevent")]
+        [Route("/event/save")]
+        [HttpPost]
         public ResponseFormat SaveEvent([FromHeader] string Authorization,int eventid)
         {
             try
