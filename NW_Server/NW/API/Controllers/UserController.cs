@@ -180,7 +180,7 @@ namespace API
 
         [Route("/savedevents")]
         [HttpGet]
-        public ResponseFormat SavedEvents()
+        public ResponseFormat ReadAllEventByUserId()
         {
             try
             {

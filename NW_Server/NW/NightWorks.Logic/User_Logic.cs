@@ -10,10 +10,12 @@ namespace NigthWorks.Logic
     public class User_Logic : IUser_Logic
     {
         IUser_Repository repo;
+        ISaveEventToUser_Repository saveEventToUserrepo;
 
-        public User_Logic(IUser_Repository repo)
+        public User_Logic(IUser_Repository repo, ISaveEventToUser_Repository saveeventtouserrepo)
         {
             this.repo = repo;
+            this.saveEventToUserrepo= saveeventtouserrepo;
         }
 
         //CRUD
@@ -106,6 +108,10 @@ namespace NigthWorks.Logic
         public User GetUserByEmail(string email)
         {
             return repo.GetUserbyEmail(email);
+        }
+        public IList<SaveEventToUser> ReadAllEventByUserId(int userid)
+        {
+            return saveEventToUserrepo.ReadAllbyUserId(userid);
         }
     }
 }

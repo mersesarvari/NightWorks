@@ -16,7 +16,7 @@ namespace NigthWorks.Repository
         IList<User> ReadAll();
         void Update(User user);
         User GetUserbyEmail(string email);
-        public IList<SaveEventToUser> ReadAllSavedEvents(int userid);
+        public IList<SaveEventToUser> ReadAllEventByUserId(int id);
 
 
     }
