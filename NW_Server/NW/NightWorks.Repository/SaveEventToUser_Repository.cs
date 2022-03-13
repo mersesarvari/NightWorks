@@ -40,6 +40,20 @@ namespace NigthWorks.Repository
             }
 
         }
+        public void Delete(int userid, int eventid)
+        {
+            if (ReadByData(userid,eventid) != null)
+            {
+                var test = ReadByData(userid, eventid);
+                db.Remove(ReadByData(userid, eventid));
+                db.SaveChanges();
+            }
+            else
+            {
+                throw new Exception("This item doesnt exist!");
+            }
+
+        }
         public SaveEventToUser Read(int id)
         {
             if (db == null)
@@ -77,7 +91,7 @@ namespace NigthWorks.Repository
             }
 
         }
-        public bool NotExisting(int userid, int eventid)
+        private bool NotExisting(int userid, int eventid)
         {
             bool existing = true;
             var list = ReadAll();
@@ -92,20 +106,19 @@ namespace NigthWorks.Repository
         }
         public SaveEventToUser ReadByData(int userid, int eventid)
         {
-            SaveEventToUser a = new SaveEventToUser();
+            int id=-1;
             var list = ReadAll();
             foreach (var item in list)
             {
                 if (item.UserId == userid && item.EventId == eventid)
                 {
-                    a.Id = item.Id;
-                    a.UserId = item.UserId;
-                    a.EventId = item.EventId;
+                    id = item.Id;
                 }
             }
-            if (a != null)
+            var returndata = Read(id);
+            if (returndata != null)
             {
-                return a;
+                return returndata;
             }
             else
             {

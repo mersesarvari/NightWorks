@@ -163,6 +163,9 @@ namespace API
             }
         }
 
+
+        #region Event Management
+        //Save event for the user
         [Route("/event/save")]
         [HttpPost]
         public ResponseFormat SaveEvent([FromHeader] string Authorization,int eventid)
@@ -181,6 +184,7 @@ namespace API
             }
         }
 
+        //returns the list of the user's saved events
         [Route("/savedevents")]
         [HttpGet]
         public ResponseFormat ReadAllEventByUserId()
@@ -197,5 +201,24 @@ namespace API
                 return new ResponseFormat(750, ex.Message);
             }
         }
+
+        [Route("/deletesavedevent")]
+        [HttpDelete]
+        public ResponseFormat DeleteSavedEvent(int eventid)
+        {
+            try
+            {
+                User tempuser = o.Read(int.Parse(NightWorks.Models.JWTToken.GetDataFromToken(HttpContext, "_id")));
+                setur.Delete(tempuser.Id, eventid);
+                return new ResponseFormat(200, $"Reading wa succesfull", eventid);
+            }
+            catch (Exception ex)
+            {
+
+                return new ResponseFormat(750, ex.Message);
+            }
+        }
+
+        #endregion
     }
 }

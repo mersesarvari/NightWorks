@@ -8,11 +8,11 @@ namespace NigthWorks.Repository
     {
         void Create(SaveEventToUser obj);
         void Delete(int id);
-        bool NotExisting(int userid, int eventid);
         SaveEventToUser Read(int id);
         IList<SaveEventToUser> ReadAll();
         SaveEventToUser ReadByData(int userid, int eventid);
         void Update(SaveEventToUser obj);
         public IList<SaveEventToUser> ReadAllbyUserId(int userid);
+        public void Delete(int userid, int eventid);
     }
 }
