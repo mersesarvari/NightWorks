@@ -107,7 +107,8 @@ namespace API
             }
         }
 
-        [HttpPost("login")]
+        [Route("/login")]
+        [HttpPost]
         [AllowAnonymous]
         public ResponseFormat Auth([FromBody] LoginUser value)
         {
@@ -124,8 +125,8 @@ namespace API
 
         }
 
-        [HttpGet("validate")]
-        [AllowAnonymous]
+        [Route("/auth")]
+        [HttpGet]
         public ResponseFormat Login([FromHeader] string Authorization)
         {
            
@@ -142,7 +143,8 @@ namespace API
             
         }
 
-        [HttpPost("register")]
+        [Route("/register")]
+        [HttpPost]
         [AllowAnonymous]        
         public ResponseFormat RegisterUser([FromBody] User value)
         {
