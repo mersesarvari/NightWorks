@@ -75,6 +75,7 @@ namespace API
             services.AddTransient<IKeyword_Repository, Keyword_Repository>();
             services.AddTransient<IAddress_Repository, Address_Repository>();
             services.AddTransient<IEvent_Keyword_ConnectRepository, Event_Keyword_ConnectRepository>();
+            services.AddTransient<ISaveEventToUser_Repository, SaveEventToUser_Repository>();
             services.AddTransient<IEvent_User_Connect_Repository, Event_User_Connect_Repository>();
             services.AddTransient<IUserSettings_Keyword_ConnectRepository, UserSettings_Keyword_ConnectRepository>();
             services.AddTransient<IFile_Repository, File_Repository>();

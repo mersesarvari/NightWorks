@@ -4,6 +4,7 @@ using NigthWorks.Models;
 using NightWorks.Data;
 using System.Linq;
 using System;
+using NightWorks.Models;
 
 namespace NigthWorks.Data
 {
@@ -18,6 +19,7 @@ namespace NigthWorks.Data
         public virtual DbSet<Keyword> Keywords { get; set; }
         public virtual DbSet<NWEvent> Events { get; set; }
         public virtual DbSet<Event_Keyword_Connect> Event_Keyword_Connects { get; set; }
+        public virtual DbSet<SaveEventToUser> SaveEventToUser_Connect { get; set; }
         public virtual DbSet<Event_User_Connect> Event_User_Connects { get; set; }
         public virtual DbSet<UserSettings_Keyword_Connect> UserSettings_Keyword_Connects { get; set; }
         #endregion
@@ -83,11 +85,15 @@ namespace NigthWorks.Data
             mb.Entity<Event_User_Connect>().HasOne(y => y.User).WithMany(y => y.Event_User_Conns).HasForeignKey(y => y.UserId).OnDelete(DeleteBehavior.Restrict);
             mb.Entity<Event_User_Connect>().HasOne(x => x.Event).WithMany(x => x.Event_User_Conns).HasForeignKey(x => x.EventId).OnDelete(DeleteBehavior.Restrict);
             mb.Entity<Event_Keyword_Connect>().HasKey(pt => new { pt.FK_KeywordId, pt.FK_EventId });
+
             mb.Entity<Event_Keyword_Connect>().HasOne(y => y.Keyword).WithMany(y => y.Event_Keyword_Conns).HasForeignKey(y => y.FK_KeywordId).OnDelete(DeleteBehavior.Restrict);
             mb.Entity<Event_Keyword_Connect>().HasOne(x => x.Event).WithMany(x => x.Event_Keyword_Conns).HasForeignKey(x => x.FK_EventId).OnDelete(DeleteBehavior.Restrict);
             mb.Entity<UserSettings_Keyword_Connect>().HasKey(pt => new { pt.FK_KeywordId, pt.FK_UserSettingsId });
             mb.Entity<UserSettings_Keyword_Connect>().HasOne(y => y.UserSettings).WithMany(y => y.UserSettings_Keyword_Conns).HasForeignKey(y => y.FK_UserSettingsId).OnDelete(DeleteBehavior.Restrict);
-            mb.Entity<UserSettings_Keyword_Connect>().HasOne(x => x.Keyword).WithMany(x => x.UserSettings_Keyword_Conns).HasForeignKey(x => x.FK_KeywordId).OnDelete(DeleteBehavior.Restrict);            
+            mb.Entity<UserSettings_Keyword_Connect>().HasOne(x => x.Keyword).WithMany(x => x.UserSettings_Keyword_Conns).HasForeignKey(x => x.FK_KeywordId).OnDelete(DeleteBehavior.Restrict);
+            mb.Entity<SaveEventToUser>().HasKey(pt => new { pt.UserId, pt.EventId });
+            mb.Entity<SaveEventToUser>().HasOne(y => y.User).WithMany(y => y.SavedEvents).HasForeignKey(y => y.UserId).OnDelete(DeleteBehavior.Restrict);
+            mb.Entity<SaveEventToUser>().HasOne(x => x.Event).WithMany(x => x.SavedUsers).HasForeignKey(x => x.EventId).OnDelete(DeleteBehavior.Restrict);
             RoleDBSeed.LoadData(mb);
             UserDBSeed.LoadData(mb);
             

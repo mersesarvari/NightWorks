@@ -1,4 +1,5 @@
-﻿using NigthWorks.Models;
+﻿using NightWorks.Models;
+using NigthWorks.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -58,7 +59,11 @@ namespace NigthWorks.Models
         [NotMapped]
         [JsonIgnore]
         public virtual IList<Event_User_Connect> Event_User_Conns { get; set; }
-        
+
+        [NotMapped]
+        [JsonIgnore]
+        public virtual IList<SaveEventToUser> SavedUsers { get; set; }
+
         public virtual IList<_File> Images { get; set; }
 
     }

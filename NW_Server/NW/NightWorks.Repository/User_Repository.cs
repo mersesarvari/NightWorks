@@ -32,9 +32,8 @@ namespace NigthWorks.Repository
 
         public void Create(User obj)
         {
-            var context = new NWDbContext();
-            context.Add(obj);
-            context.SaveChanges();
+            db.Add(obj);
+            db.SaveChanges();
         }
 
         public void Delete(int id)
@@ -52,15 +51,14 @@ namespace NigthWorks.Repository
 
         public void Update(User obj)
         {
-            var s = Read(obj.Id);
-            if (s == null)
+            User temp = Read(obj.Id);
+            if (temp == null)
             {
                 throw new InvalidOperationException(
                     "User not found"
                 );
             }
-            s.Money = obj.Money;
-            s.Username = obj.Username;
+            temp.Username = obj.Username;
             db.SaveChanges();
         }
 
@@ -96,5 +94,28 @@ namespace NigthWorks.Repository
             
         }
 
+        public void SaveEvent(int userid, int eventid)
+        {
+            /*
+            NWEvent tempevent;
+            User tempuser = Read(userid);
+            User change= new();
+            if (db != null)
+            {
+                tempevent = (db.Events.FirstOrDefault(x => x.Id == eventid));
+            }
+            else
+            {
+                throw new Exception("There is no data in database");
+            }
+            if (change.SavedEvents == null)
+            {
+                change.SavedEvents = new List<NWEvent>();
+            }
+            change.SavedEvents.Add(tempevent);
+            tempuser.SavedEvents = change.SavedEvents;            
+            db.SaveChanges();
+            */
+        }
     }
 }

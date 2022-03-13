@@ -107,5 +107,10 @@ namespace NigthWorks.Logic
         {
             return repo.GetUserbyEmail(email);
         }
+
+        public void SaveEvent(int userid, int eventid)
+        {
+            repo.SaveEvent(userid, eventid);
+        }
     }
 }

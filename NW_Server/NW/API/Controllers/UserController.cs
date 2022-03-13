@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using NightWorks.Models.ReturnModels;
 using System.Net;
+using NightWorks.Repository;
 
 namespace API
 {
@@ -17,11 +18,15 @@ namespace API
     [ApiController]
     public class UserController : ControllerBase
     {
+        ISaveEventToUser_Repository setur;
+        IEvent_Logic eventlogic;
         IUser_Logic o;
 
-        public UserController(IUser_Logic cl)
+        public UserController(IUser_Logic cl, IEvent_Logic eventlogic,ISaveEventToUser_Repository setur)
         {
             this.o = cl;
+            this.setur = setur;
+            this.eventlogic = eventlogic;
         }
         [HttpGet]
         [AllowAnonymous]
@@ -93,58 +98,58 @@ namespace API
             }
         }
         [HttpDelete]
-        public IActionResult Delete([FromHeader] string Authorization)
+        public ResponseFormat Delete([FromHeader] string Authorization)
         {
             try
             {
                 User temp = o.Read(int.Parse(JWTToken.GetDataFromToken(HttpContext, "_id")));
                 o.Delete(temp.Id);
-                return Ok("Deleting was succesfull");
+                return new ResponseFormat(200, "Deleting was succesfull!", temp);
             }
             catch (Exception ex)
             {
-                Request.Headers.Add("Status Code", "300");
-                return BadRequest(ex.Message);
+                return new ResponseFormat(750, ex.Message);
             }
         }
 
         [HttpPost("login")]
         [AllowAnonymous]
-        public IActionResult Auth([FromBody] LoginUser value)
+        public ResponseFormat Auth([FromBody] LoginUser value)
         {
             try
             {
                 User user = o.Login(value.Email, value.Password);
                 string token = JWTToken.CreateToken(user);
-                return Ok(token);
+                return new ResponseFormat(200,"Authentication was succesfull",token);
             }
             catch (Exception ex)
             {
-                return StatusCode(500, ex.Message);
+                return new ResponseFormat(750, ex.Message);
             }
 
         }
 
         [HttpGet("validate")]
         [AllowAnonymous]
-        public IActionResult Login([FromHeader] string Authorization)
+        public ResponseFormat Login([FromHeader] string Authorization)
         {
            
             try
             {
                 User temp = o.Read(int.Parse(JWTToken.GetDataFromToken(HttpContext, "_id")));
-                return Ok(new UserTokenFormat() {Id=temp.Id,Username=temp.Username,Email=temp.Email, Password=temp.Password, Picture=temp.ProfilePictureRoot});
+                UserTokenFormat user = new UserTokenFormat() { Id = temp.Id, Username = temp.Username, Email = temp.Email, Password = temp.Password, Picture = temp.ProfilePictureRoot };
+                return new ResponseFormat(200, "Login was succesfull", user);
             }
             catch (Exception ex)
             {
-                return StatusCode(500,ex.Message);
+                return new ResponseFormat(750,ex.Message);
             }
             
         }
 
         [HttpPost("register")]
         [AllowAnonymous]        
-        public IActionResult RegisterUser([FromBody] User value)
+        public ResponseFormat RegisterUser([FromBody] User value)
         {
             try
             {
@@ -153,11 +158,43 @@ namespace API
                 value.Validated = false;
                 value.ProfilePictureRoot = "default.png";
                 o.Create(value);
-                return Ok("Registration was succesfull");
+                return new ResponseFormat(200, "Registration was succesfull", value);
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return new ResponseFormat(200, ex.Message);
+            }
+        }
+
+        [HttpPost("saveevent")]
+        public ResponseFormat SaveEvent([FromHeader] string Authorization,int eventid)
+        {
+            #region Commented
+            /*
+            try
+            {
+                User temp = o.Read(int.Parse(JWTToken.GetDataFromToken(HttpContext, "_id")));
+                o.SaveEvent(temp.Id, eventid);
+                return new ResponseFormat(200,$"Adding event({eventid}) to user({temp.Id}) was succesfull");
+            }
+            catch (Exception ex)
+            {
+
+                return new ResponseFormat(750, ex.Message);
+            }
+            */
+            #endregion
+            try
+            {
+                User tempuser = o.Read(int.Parse(JWTToken.GetDataFromToken(HttpContext, "_id")));
+                NWEvent tempevent = eventlogic.Read(eventid);
+                setur.Create(new SaveEventToUser() { UserId = tempuser.Id, EventId = tempevent.Id });
+                return new ResponseFormat(200, $"Adding event({eventid}) to user({tempuser.Id}) was succesfull");
+
+            }
+            catch (Exception ex)
+            {
+                return new ResponseFormat(750, ex.Message);
             }
         }
     }

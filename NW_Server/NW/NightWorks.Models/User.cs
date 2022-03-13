@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NightWorks.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -40,6 +41,10 @@ namespace NigthWorks.Models
         [NotMapped]
         [JsonIgnore]
         public virtual IList<NWEvent> Events { get; set; }
+        //Events Saved
+        [NotMapped]
+        [JsonIgnore]
+        public virtual IList<SaveEventToUser> SavedEvents { get; set; }
 
         [NotMapped]
         [JsonIgnore]
