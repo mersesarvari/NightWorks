@@ -1,15 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 using NigthWorks.Logic;
-using NigthWorks.Models;
-using System;
 using NightWorks.Logic;
-using NightWorks.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
-using NightWorks.Models.ReturnModels;
-using System.Net;
-using NightWorks.Repository;
+using NigthWorks.Models;
+using NigthWorks.Repository;
 
 namespace API
 {
@@ -102,7 +97,7 @@ namespace API
         {
             try
             {
-                User temp = o.Read(int.Parse(JWTToken.GetDataFromToken(HttpContext, "_id")));
+                User temp = o.Read(int.Parse(NightWorks.Models.JWTToken.GetDataFromToken(HttpContext, "_id")));
                 o.Delete(temp.Id);
                 return new ResponseFormat(200, "Deleting was succesfull!", temp);
             }
@@ -119,7 +114,7 @@ namespace API
             try
             {
                 User user = o.Login(value.Email, value.Password);
-                string token = JWTToken.CreateToken(user);
+                string token = NightWorks.Models.JWTToken.CreateToken(user);
                 return new ResponseFormat(200,"Authentication was succesfull",token);
             }
             catch (Exception ex)
@@ -136,7 +131,7 @@ namespace API
            
             try
             {
-                User temp = o.Read(int.Parse(JWTToken.GetDataFromToken(HttpContext, "_id")));
+                User temp = o.Read(int.Parse(NightWorks.Models.JWTToken.GetDataFromToken(HttpContext, "_id")));
                 UserTokenFormat user = new UserTokenFormat() { Id = temp.Id, Username = temp.Username, Email = temp.Email, Password = temp.Password, Picture = temp.ProfilePictureRoot };
                 return new ResponseFormat(200, "Login was succesfull", user);
             }
@@ -169,24 +164,9 @@ namespace API
         [HttpPost("saveevent")]
         public ResponseFormat SaveEvent([FromHeader] string Authorization,int eventid)
         {
-            #region Commented
-            /*
             try
             {
-                User temp = o.Read(int.Parse(JWTToken.GetDataFromToken(HttpContext, "_id")));
-                o.SaveEvent(temp.Id, eventid);
-                return new ResponseFormat(200,$"Adding event({eventid}) to user({temp.Id}) was succesfull");
-            }
-            catch (Exception ex)
-            {
-
-                return new ResponseFormat(750, ex.Message);
-            }
-            */
-            #endregion
-            try
-            {
-                User tempuser = o.Read(int.Parse(JWTToken.GetDataFromToken(HttpContext, "_id")));
+                User tempuser = o.Read(int.Parse(NightWorks.Models.JWTToken.GetDataFromToken(HttpContext, "_id")));
                 NWEvent tempevent = eventlogic.Read(eventid);
                 setur.Create(new SaveEventToUser() { UserId = tempuser.Id, EventId = tempevent.Id });
                 return new ResponseFormat(200, $"Adding event({eventid}) to user({tempuser.Id}) was succesfull");
@@ -194,6 +174,23 @@ namespace API
             }
             catch (Exception ex)
             {
+                return new ResponseFormat(750, ex.Message);
+            }
+        }
+
+        [Route("/savedevents")]
+        [HttpGet]
+        public ResponseFormat SavedEvents()
+        {
+            try
+            {
+                User tempuser = o.Read(int.Parse(NightWorks.Models.JWTToken.GetDataFromToken(HttpContext, "_id")));
+                var data = setur.ReadAllbyUserId(tempuser.Id);
+                return new ResponseFormat(200, $"Reading wa succesfull", data);
+            }
+            catch (Exception ex)
+            {
+
                 return new ResponseFormat(750, ex.Message);
             }
         }

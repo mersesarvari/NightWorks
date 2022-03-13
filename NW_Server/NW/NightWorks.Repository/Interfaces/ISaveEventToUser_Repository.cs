@@ -1,7 +1,8 @@
-﻿using NightWorks.Models;
+﻿
+using NigthWorks.Models;
 using System.Collections.Generic;
 
-namespace NightWorks.Repository
+namespace NigthWorks.Repository
 {
     public interface ISaveEventToUser_Repository
     {
@@ -12,5 +13,6 @@ namespace NightWorks.Repository
         IList<SaveEventToUser> ReadAll();
         SaveEventToUser ReadByData(int userid, int eventid);
         void Update(SaveEventToUser obj);
+        public IList<SaveEventToUser> ReadAllbyUserId(int userid);
     }
 }

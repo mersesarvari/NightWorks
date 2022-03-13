@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NightWorks.Models
+namespace NigthWorks.Models
 {
     public delegate void FunkcioKivalto(object obj);
     public class ResponseFormat 

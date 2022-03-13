@@ -1,12 +1,12 @@
-﻿using NightWorks.Models;
-using NigthWorks.Data;
+﻿using NigthWorks.Data;
+using NigthWorks.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NightWorks.Repository
+namespace NigthWorks.Repository
 {
     public class SaveEventToUser_Repository : ISaveEventToUser_Repository
     {
@@ -101,6 +101,26 @@ namespace NightWorks.Repository
                     a.Id = item.Id;
                     a.UserId = item.UserId;
                     a.EventId = item.EventId;
+                }
+            }
+            if (a != null)
+            {
+                return a;
+            }
+            else
+            {
+                throw new Exception("This item doestn exist!");
+            }
+        }
+        public IList<SaveEventToUser> ReadAllbyUserId(int userid)
+        {
+            IList<SaveEventToUser> a = new List<SaveEventToUser>();
+            var list = ReadAll();
+            foreach (var item in list)
+            {
+                if (item.UserId == userid)
+                {
+                    a.Add(Read(item.Id));
                 }
             }
             if (a != null)

@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NigthWorks.Data;
 using NigthWorks.Models;
+using NightWorks.Models;
 
 namespace NigthWorks.Repository
 {
@@ -94,28 +95,16 @@ namespace NigthWorks.Repository
             
         }
 
-        public void SaveEvent(int userid, int eventid)
+        public IList<SaveEventToUser> ReadAllSavedEvents(int userid)
         {
-            /*
-            NWEvent tempevent;
-            User tempuser = Read(userid);
-            User change= new();
-            if (db != null)
-            {
-                tempevent = (db.Events.FirstOrDefault(x => x.Id == eventid));
-            }
-            else
+            if (db == null)
             {
                 throw new Exception("There is no data in database");
             }
-            if (change.SavedEvents == null)
+            else
             {
-                change.SavedEvents = new List<NWEvent>();
+                return db.SaveEventToUser_Connect.ToList();
             }
-            change.SavedEvents.Add(tempevent);
-            tempuser.SavedEvents = change.SavedEvents;            
-            db.SaveChanges();
-            */
         }
     }
 }

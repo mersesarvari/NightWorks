@@ -1,11 +1,10 @@
-﻿using NigthWorks.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NightWorks.Models.ReturnModels
+namespace NigthWorks.Models
 {
     public class UserTokenFormat
     {

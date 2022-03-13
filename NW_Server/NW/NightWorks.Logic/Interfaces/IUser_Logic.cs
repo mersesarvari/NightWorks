@@ -19,10 +19,5 @@ namespace NigthWorks.Logic{
 
         User Login(string email, string password);
         User GetUserByEmail(string email);
-        void SaveEvent(int userid, int eventid);
-
-
-
-
     }
 }
