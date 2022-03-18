@@ -25,7 +25,7 @@ namespace NightWorks.Logic
         void AddUserToEvent(int eventid, int userid);
         void AddKeywordToEvent(int eventid, int keywordid);
         void RemoveUserFromEvent(int id);
-        void RemoveKeywordFromEvent(int id);
+        void RemoveKeywordFromEvent(int eventid, int keywordid);
 
 
     }

@@ -29,16 +29,13 @@ namespace NightWorks.Repository
             }
             
         }
-        public void Delete(int id)
+        public void Delete(int eventid, int keywordid)
         {
-            if (Read(id)!=null)
-            {
-                db.Remove(Read(id));
+            var current = ReadByData(eventid, keywordid);
+            if (current != null)
+            { 
+                db.Event_Keyword_Connects.Remove(current);
                 db.SaveChanges();
-            }
-            else
-            {
-                throw new Exception("This item doesnt exist!");
             }
             
         }

@@ -100,7 +100,7 @@ namespace NigthWorks.Data
             //PostDBSeed.LoadData(mb);            
             AddressDBSeed.LoadData(mb);
             EventDBSeed.LoadData(mb);
-            //KeywordDBSeed.LoadData(mb);
+            KeywordDBSeed.LoadData(mb);
             //UserSettingsDBSeed.LoadData(mb);
             //Event_User_ConnectDBSeed.LoadData(mb);
             //Event_Keyword_ConnectDBSeed.LoadData(mb);

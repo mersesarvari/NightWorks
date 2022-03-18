@@ -102,9 +102,9 @@ namespace NightWorks.Logic
             EUrepo.Delete(id);
         }
 
-        public void RemoveKeywordFromEvent(int id)
+        public void RemoveKeywordFromEvent(int eventid, int keywordid)
         {
-            EKrepo.Delete(id);
+            EKrepo.Delete(eventid, keywordid);
         }
 
         public IList<NWEvent> ReadAllByParameter(string parameter)

@@ -20,13 +20,11 @@ namespace NigthWorks.Models
         [NotMapped]
         [JsonIgnore]
         public virtual NWEvent Event { get; set; }
-        //[ForeignKey(nameof(Event))]
         public int FK_EventId { get; set; }
 
         [NotMapped]
         [JsonIgnore]
         public virtual Keyword Keyword { get; set; }
-        //[ForeignKey(nameof(Keyword))]
         public int FK_KeywordId { get; set; }
 
         

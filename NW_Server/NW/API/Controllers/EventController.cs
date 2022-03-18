@@ -147,5 +147,41 @@ namespace API.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [Route("/addkeywordtoevent")]
+        [EnableCors]
+        [HttpPost]
+        public ResponseFormat AddKeywordToEvent(string keywordid, string eventid)
+        {
+            try
+            {
+                o.AddKeywordToEvent(int.Parse(eventid), int.Parse(keywordid));
+                return new ResponseFormat(200, $"Adding a new keyword(id={keywordid}) to event(id={eventid}) was succesfull");
+            }
+            catch (Exception ex)
+            {
+
+                return new ResponseFormat(750, $"Eventid: {eventid} | KeywordId: {keywordid}", ex.Message);
+            }
+            
+        }
+        [Route("/removekeywordfromevent")]
+        [EnableCors]
+        [HttpPost]
+        public ResponseFormat RemoveKeywordFromEvent(string keywordid, string eventid)
+        {
+            try
+            {
+                o.RemoveKeywordFromEvent(int.Parse(eventid), int.Parse(keywordid));
+                return new ResponseFormat(200, $"Adding a new keyword(id={keywordid}) to event(id={eventid}) was succesfull");
+            }
+            catch (Exception ex)
+            {
+
+                return new ResponseFormat(750, $"Eventid: {eventid} | KeywordId: {keywordid}", ex.Message);
+            }
+
+        }
+
     }
 }

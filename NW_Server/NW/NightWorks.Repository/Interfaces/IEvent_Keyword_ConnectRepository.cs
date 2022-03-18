@@ -14,7 +14,7 @@ namespace NightWorks.Repository
 
         public void Update(Event_Keyword_Connect obj);
 
-        public void Delete(int id);
+        public void Delete(int eventid, int keywordid);
 
         public IList<Event_Keyword_Connect> ReadAll();
 
