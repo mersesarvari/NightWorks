@@ -53,16 +53,16 @@ namespace API.Controllers
             }
         }
         [HttpPost]
-        public IActionResult Post([FromBody] NWEvent value)
+        public ResponseFormat Post([FromBody] NWEvent value)
         {
             try
             {
                 o.Create(value);
-                return Ok("POST request was succesfull!");
+                return new ResponseFormat(200,"POST request was succesfull!");
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return new ResponseFormat(750,ex.Message);
                 
             }
             
@@ -80,20 +80,6 @@ namespace API.Controllers
                 return BadRequest(ex.Message);
             }
 
-        }
-        [HttpPost("/keyword")]
-        public IActionResult AddKeyword([FromBody] Keyword value)
-        {
-            k.Create(value);
-            try
-            {
-                return Ok("POST request was succesfull!");
-            }
-            catch (Exception ex)
-            {
-
-                return BadRequest(ex.Message);
-            }
         }
         [HttpGet("get")]
         public IActionResult GetEventsByUser(int ownerid)

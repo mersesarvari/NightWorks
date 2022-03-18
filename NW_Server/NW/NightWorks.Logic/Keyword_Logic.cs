@@ -19,7 +19,14 @@ namespace NightWorksLogic
         }
         public void Create(Keyword item)
         {
-            repo.Create(item);
+            if (repo.ReadByParameter(item.Name) == null)
+            {
+                repo.Create(item);
+            }
+            else
+            {
+                throw new Exception("This keyword is already exists");
+            }
         }
 
         public void Delete(int id)

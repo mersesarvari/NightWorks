@@ -17,9 +17,8 @@ namespace NightWorks.Repository
         }
         public void Create(Keyword item)
         {
-            var context = new NWDbContext();
-            context.Add(item);
-            context.SaveChanges();
+            db.Add(item);
+            db.SaveChanges();
         }
 
         public void Delete(int id)
@@ -82,6 +81,17 @@ namespace NightWorks.Repository
             s.Name = item.Name;
             
             db.SaveChanges();
+        }
+        public Keyword ReadByParameter(string name)
+        {
+            if (db == null)
+            {
+                throw new Exception("There is no data in database");
+            }
+            else
+            {
+                return db.Keywords.FirstOrDefault(t => t.Name == name);
+            }
         }
     }
 }

@@ -15,8 +15,10 @@ namespace NightWorks.Repository
         void Update(Keyword item);
         void Delete(int id);
         IList<NWEvent> GetTypeEvents(int id);
-        
-        
-        
+        Keyword ReadByParameter(string name);
+
+
+
+
     }
 }
