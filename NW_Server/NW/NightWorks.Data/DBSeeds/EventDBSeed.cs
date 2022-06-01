@@ -35,7 +35,7 @@ namespace NightWorks.Data
                 "INDEPENDENT electronic music festival brand, but also the most INTERNATIONAL music festival brand in the world.",
                 Owner_Id = 1,
                 Address_Id = 1,
-                IconPhoto = "coins.png",
+                IconPhoto = "coins.jpg",
                 CoverPhoto = @"event1.jpg"
 
 
@@ -52,7 +52,7 @@ namespace NightWorks.Data
                 "life in the legendary Széchenyi Bath.So don’t say that we haven’t warned you: it’s going to be a party you will never forget.",
                 Address_Id = 2,
                 Owner_Id = 1,
-                IconPhoto = "biodiversity.png",
+                IconPhoto = "biodiversity.jpg",
                 CoverPhoto = @"event2.jpg"
                 
 
@@ -70,7 +70,7 @@ namespace NightWorks.Data
                 "and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
                 Address_Id = 3,
                 Owner_Id = 2,
-                IconPhoto = "plant.png",
+                IconPhoto = "plant.jpg",
                 CoverPhoto = @"event3.jpg"
 
             };

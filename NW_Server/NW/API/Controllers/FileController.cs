@@ -19,7 +19,7 @@ namespace API.Controllers
         {
             this.o = o;
         }
-        string Imagefolder = @"D:\Laptop\NightWorks\NightWorks.Data\Images\";
+        string Imagefolder = @"Images\";
         public IActionResult GetOK()
         {
             return Ok("File Upload API running");
@@ -30,7 +30,7 @@ namespace API.Controllers
             try
             {
             
-            Byte[] b = System.IO.File.ReadAllBytes(@"D:\\NW_Extensions\\Images\\" + route);   // You can use your own method over here.         
+            Byte[] b = System.IO.File.ReadAllBytes(@"Images\" + route);   // You can use your own method over here.         
                 return File(b, "image/png");
             }
             catch (Exception ex)
