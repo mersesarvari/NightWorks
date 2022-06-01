@@ -219,7 +219,7 @@ namespace API
             {
                 User tempuser = o.Read(int.Parse(NightWorks.Models.JWTToken.GetDataFromToken(HttpContext, "_id")));
                 setur.Delete(tempuser.Id, eventid);
-                return new ResponseFormat(200, $"Reading wa succesfull", eventid);
+                return new ResponseFormat(200, $"Reading was succesfull", eventid);
             }
             catch (Exception ex)
             {
