@@ -25,7 +25,7 @@ namespace NightWorks.Data
                 Rolename = "admin",
                 Money = 500,
                 Validated = false,
-                ProfilePictureRoot = @"profile1.jpg"
+                ProfilePictureRoot = @"profile3.jpg"
             };
             User a = new User() { 
                 Id = 2, Username = "test1", 
@@ -34,7 +34,7 @@ namespace NightWorks.Data
                 Rolename = "user", 
                 Money = 500, 
                 Validated = false,
-                ProfilePictureRoot = @"profile1.jpg"
+                ProfilePictureRoot = @"profile2.jpg"
             };
             User b = new User() {
                 Id = 3, Username = "test2",

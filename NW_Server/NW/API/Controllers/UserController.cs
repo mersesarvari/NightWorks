@@ -63,8 +63,8 @@ namespace API
             try
             {
                 o.Create(value);
-                return Ok(value);
                 this.hub.Clients.All.SendAsync("UserCreated", value);
+                return Ok(value);                
             }
             catch (Exception ex)
             {
@@ -163,7 +163,7 @@ namespace API
                 value.Validated = false;
                 value.ProfilePictureRoot = "default.png";
                 o.Create(value);
-                this.hub.Clients.All.SendAsync("UserCreated", value);
+                //this.hub.Clients.All.SendAsync("UserCreated", value);
                 return new ResponseFormat(200, "Registration was succesfull", value);
             }
             catch (Exception ex)
@@ -183,7 +183,9 @@ namespace API
             {
                 User tempuser = o.Read(int.Parse(NightWorks.Models.JWTToken.GetDataFromToken(HttpContext, "_id")));
                 NWEvent tempevent = eventlogic.Read(eventid);
-                setur.Create(new SaveEventToUser() { UserId = tempuser.Id, EventId = tempevent.Id });
+                var user = new SaveEventToUser() { UserId = tempuser.Id, EventId = tempevent.Id };
+                setur.Create(user);
+                this.hub.Clients.All.SendAsync("EventSaved", user);
                 return new ResponseFormat(200, $"Adding event({eventid}) to user({tempuser.Id}) was succesfull");
 
             }
@@ -219,6 +221,7 @@ namespace API
             {
                 User tempuser = o.Read(int.Parse(NightWorks.Models.JWTToken.GetDataFromToken(HttpContext, "_id")));
                 setur.Delete(tempuser.Id, eventid);
+                this.hub.Clients.All.SendAsync("EventUnsaved", tempuser);
                 return new ResponseFormat(200, $"Reading was succesfull", eventid);
             }
             catch (Exception ex)
