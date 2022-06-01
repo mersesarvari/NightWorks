@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using NigthWorks.Models;
 using NigthWorks.Repository;
+using Microsoft.AspNetCore.SignalR;
+using API.Services;
 
 namespace API
 {
@@ -16,12 +18,14 @@ namespace API
         ISaveEventToUser_Repository setur;
         IEvent_Logic eventlogic;
         IUser_Logic o;
+        IHubContext<SignalRHub> hub;
 
-        public UserController(IUser_Logic cl, IEvent_Logic eventlogic,ISaveEventToUser_Repository setur)
+        public UserController(IUser_Logic cl, IEvent_Logic eventlogic,ISaveEventToUser_Repository setur, IHubContext<SignalRHub> hub)
         {
             this.o = cl;
             this.setur = setur;
             this.eventlogic = eventlogic;
+            this.hub = hub;
         }
         [HttpGet]
         [AllowAnonymous]
@@ -60,6 +64,7 @@ namespace API
             {
                 o.Create(value);
                 return Ok(value);
+                this.hub.Clients.All.SendAsync("UserCreated", value);
             }
             catch (Exception ex)
             {
@@ -72,6 +77,7 @@ namespace API
             try
             {
                 o.Update(value);
+                this.hub.Clients.All.SendAsync("UserUpdated", value);
                 return Ok("Succesfully updated");
             }
             catch (Exception ex)
@@ -84,8 +90,10 @@ namespace API
         {
             try
             {
+                var user = Get(id);
                 o.Delete(id);
                 return Ok("Deleting was succesfull");
+                this.hub.Clients.All.SendAsync("UserDeleted", user);
             }
             catch (Exception ex)
             {
@@ -99,6 +107,7 @@ namespace API
             {
                 User temp = o.Read(int.Parse(NightWorks.Models.JWTToken.GetDataFromToken(HttpContext, "_id")));
                 o.Delete(temp.Id);
+                this.hub.Clients.All.SendAsync("UserDeleted", temp);
                 return new ResponseFormat(200, "Deleting was succesfull!", temp);
             }
             catch (Exception ex)
@@ -128,8 +137,7 @@ namespace API
         [Route("/auth")]
         [HttpGet]
         public ResponseFormat Login([FromHeader] string Authorization)
-        {
-           
+        {           
             try
             {
                 User temp = o.Read(int.Parse(NightWorks.Models.JWTToken.GetDataFromToken(HttpContext, "_id")));
@@ -155,6 +163,7 @@ namespace API
                 value.Validated = false;
                 value.ProfilePictureRoot = "default.png";
                 o.Create(value);
+                this.hub.Clients.All.SendAsync("UserCreated", value);
                 return new ResponseFormat(200, "Registration was succesfull", value);
             }
             catch (Exception ex)

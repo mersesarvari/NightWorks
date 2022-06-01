@@ -1,3 +1,4 @@
+using API.Services;
 using Castle.Core.Configuration;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -21,6 +22,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using API.Services;
 
 namespace API
 {
@@ -82,6 +84,8 @@ namespace API
             services.AddTransient<NWDbContext, NWDbContext>();
             #endregion
 
+            services.AddSignalR();
+
             services.AddControllers().AddJsonOptions(x =>
                 x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
@@ -113,6 +117,7 @@ namespace API
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<SignalRHub>("/hub");
             });
             
         }
