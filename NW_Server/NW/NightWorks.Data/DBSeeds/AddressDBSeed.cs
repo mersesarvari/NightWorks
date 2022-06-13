@@ -38,9 +38,33 @@ namespace NightWorks.Data
                 Latitude = 46.072483,
                 FormattedAddress = "Pécs, Bajcsy-Zsilinszky u. 5, 7622 Hungary"
             };
+            Address a4 = new Address()
+            {
+                AddressId = 4,
+                Longitude = 18.229786,
+                Latitude = 46.072483,
+                FormattedAddress = "Proba utca 4"
+            };
+            Address a5 = new Address()
+            {
+                AddressId = 5,
+                Longitude = 18.229786,
+                Latitude = 46.072483,
+                FormattedAddress = "Proba utca 5"
+            };
+            Address a6 = new Address()
+            {
+                AddressId = 6,
+                Longitude = 18.229786,
+                Latitude = 46.072483,
+                FormattedAddress = "Proba utca 6"
+            };
             addresses.Add(a1);
             addresses.Add(a2);
             addresses.Add(a3);
+            addresses.Add(a4);
+            addresses.Add(a5);
+            addresses.Add(a6);
             mb.Entity<Address>().HasData(addresses);
         }
     }
